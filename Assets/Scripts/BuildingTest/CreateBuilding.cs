@@ -4,20 +4,30 @@ using UnityEngine;
 
 public class CreateBuilding : ActionBehavior {
     public GameObject ghostPrefab;
+    public GameObject buildingPrefab;
+    public float maxBuildDistance = 30;
 
     private GameObject active = null;
 
     public override System.Action GetClickAction() {
         return delegate () {
             var go = GameObject.Instantiate(ghostPrefab);
-            go.AddComponent<FindBuildingSite>();
+            var finder = go.AddComponent<FindBuildingSite>();
+            finder.buildingPrefab = buildingPrefab;
+            finder.maxBuildDistance = maxBuildDistance;
+            //finder.info = GetComponent<Player>().info;
+            finder.source = transform;
             active = go;
         };
     }
 
     void Start() {
         var go = GameObject.Instantiate(ghostPrefab);
-        go.AddComponent<FindBuildingSite>();
+        var finder = go.AddComponent<FindBuildingSite>();
+        finder.buildingPrefab = buildingPrefab;
+        finder.maxBuildDistance = maxBuildDistance;
+        //finder.info = GetComponent<Player>().info;
+        finder.source = transform;
         active = go;
     }
 
