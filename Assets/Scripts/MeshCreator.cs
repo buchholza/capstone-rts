@@ -16,12 +16,6 @@ public class MeshCreator : MonoBehaviour {
 	void Start () {
 		Mesh mesh = GetComponent<MeshFilter>().mesh;
 
-        newVerts.Add(new Vector3(0, 0, 0));
-        newVerts.Add(new Vector3(0, 1, 0));
-        newVerts.Add(new Vector3(1, 1, 0));
-
-        pushQuad(new Vector3(0, 0, 0), new Vector3(0, 1, 0), new Vector3(1, 1, 0), new Vector3(1, 0, 0));
-
         for (int x = 0; x < 20; x++) {
             for (int z = 0; z < 20; z++) {
                 if (Random.Range(0, 20) < 1) {
@@ -80,7 +74,7 @@ public class MeshCreator : MonoBehaviour {
 	}
 
     void addTree (int x, int z) {
-        Instantiate(treeObject, new Vector3(x+0.5f, 0, z+0.5f), Quaternion.identity);
+        Instantiate(treeObject, new Vector3(x, 0, z), Quaternion.identity);
     }
 
     /*
