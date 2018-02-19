@@ -335,7 +335,7 @@ MonoBehaviour:
     startingUnits:
     - {fileID: 1112016201945204, guid: a25ed902f9540ae4b8216321ae3f3984, type: 2}
     isAI: 0
-    currency: 0
+    currency: 500
   groundCollider: {fileID: 1985912140}
 --- !u!4 &1455834171
 Transform:
