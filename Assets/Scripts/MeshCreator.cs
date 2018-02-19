@@ -77,7 +77,11 @@ public class MeshCreator : MonoBehaviour {
         var res = UnityEngine.AI.NavMesh.AddNavMeshData(data);
 
         var triangulation = UnityEngine.AI.NavMesh.CalculateTriangulation();//no areas, vertices or triangles
-        Instantiate(unitObject, new Vector3(0, 0, 0), Quaternion.identity);
+
+        if (unitObject != null)
+            Instantiate(unitObject, new Vector3(0, 0, 0), Quaternion.identity);
+
+        GetComponent<MeshCollider>().sharedMesh = mesh;
 	}
 
     void addTree (int x, int z) {
