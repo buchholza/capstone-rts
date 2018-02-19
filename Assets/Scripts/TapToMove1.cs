@@ -35,7 +35,7 @@ public class TapToMove1 : MonoBehaviour
         {
             collecting = false;
             Destroy(objectToCollect);
-            // TODO increment resource counter
+            Debug.Log(++Player.defaultPlayer.currency);
         }
 
     }
