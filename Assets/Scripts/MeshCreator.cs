@@ -11,27 +11,34 @@ public class MeshCreator : MonoBehaviour {
     List<Vector3> newVerts = new List<Vector3>();
     List<int> newTris = new List<int>();
 
+    public GameObject treeObject;
+    public GameObject unitObject;
+
+    public int halfWidth = 10;
+    public int halfHeight = 10;
+
 	void Start () {
 		Mesh mesh = GetComponent<MeshFilter>().mesh;
 
-        newVerts.Add(new Vector3(0, 0, 0));
-        newVerts.Add(new Vector3(0, 1, 0));
-        newVerts.Add(new Vector3(1, 1, 0));
-
-        pushQuad(new Vector3(0, 0, 0), new Vector3(0, 1, 0), new Vector3(1, 1, 0), new Vector3(1, 0, 0));
-
-        for (int x = 0; x < 20; x++) {
-            for (int y = 0; y < 20; y++) {
+        for (int x = 0; x < halfWidth * 2; x++) {
+            for (int z = 0; z < halfHeight * 2; z++) {
+                int xx = x - halfWidth;
+                int zz = z - halfHeight;
                 if (Random.Range(0, 20) < 1) {
-                    pushRamp(x, y, 3);
+                    pushWall(xx, zz);
                 } else {
-                    pushFloor(x, y);
+                    pushFloor(xx, zz);
+                    if (Random.Range(0, 20) < 1) {
+                        addTree(xx, zz);
+                    }
                 }
             }
         }
 
         Vector3[] vertArray = newVerts.ToArray();
         int[] triArray = newTris.ToArray();
+
+        // this NavMeshBuildSettings is copy pasted from some place
 
         NavMeshBuildSettings bs = new NavMeshBuildSettings() {
             agentClimb = 10f,
@@ -41,7 +48,8 @@ public class MeshCreator : MonoBehaviour {
             agentTypeID = 0,
             minRegionArea = 0.1f,
             tileSize = 5,
-            voxelSize = 0.005f };/*whatever, doesnt matter for quad source*/
+            voxelSize = 0.005f /*whatever, doesnt matter for quad source*/
+        };
 
         mesh.Clear();
 
@@ -52,22 +60,29 @@ public class MeshCreator : MonoBehaviour {
         mesh.RecalculateTangents();
         mesh.RecalculateBounds();
 
+        // this next part is also copy pasted from some place
+
         var sources = new List<NavMeshBuildSource>() {
             new NavMeshBuildSource() {
                 area = 0,
-                component = null/*a sprite?*/,
+                component = null /*a sprite?*/,
                 shape = NavMeshBuildSourceShape.Mesh,
                 size = new Vector3(7.2f,4.8f),
                 sourceObject = mesh /*mesh*/,
-                transform = Matrix4x4.identity/*already in world coordinates*/
+                transform = Matrix4x4.identity /*already in world coordinates*/
             }
         };
 
         var data = NavMeshBuilder.BuildNavMeshData(bs, sources, mesh.bounds, Vector3.zero, Quaternion.identity);
-        var res = UnityEngine.AI.NavMesh.AddNavMeshData(data);//res.valid = true
+        var res = UnityEngine.AI.NavMesh.AddNavMeshData(data);
 
         var triangulation = UnityEngine.AI.NavMesh.CalculateTriangulation();//no areas, vertices or triangles
+        Instantiate(unitObject, new Vector3(0, 0, 0), Quaternion.identity);
 	}
+
+    void addTree (int x, int z) {
+        Instantiate(treeObject, new Vector3(x, 0, z), Quaternion.identity);
+    }
 
     /*
     p1 -----> p2
