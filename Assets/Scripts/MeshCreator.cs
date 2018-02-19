@@ -12,18 +12,24 @@ public class MeshCreator : MonoBehaviour {
     List<int> newTris = new List<int>();
 
     public GameObject treeObject;
+    public GameObject unitObject;
+
+    public int halfWidth = 10;
+    public int halfHeight = 10;
 
 	void Start () {
 		Mesh mesh = GetComponent<MeshFilter>().mesh;
 
-        for (int x = 0; x < 20; x++) {
-            for (int z = 0; z < 20; z++) {
+        for (int x = 0; x < halfWidth * 2; x++) {
+            for (int z = 0; z < halfHeight * 2; z++) {
+                int xx = x - halfWidth;
+                int zz = z - halfHeight;
                 if (Random.Range(0, 20) < 1) {
-                    pushWall(x, z);
+                    pushWall(xx, zz);
                 } else {
-                    pushFloor(x, z);
+                    pushFloor(xx, zz);
                     if (Random.Range(0, 20) < 1) {
-                        addTree(x, z);
+                        addTree(xx, zz);
                     }
                 }
             }
@@ -71,6 +77,7 @@ public class MeshCreator : MonoBehaviour {
         var res = UnityEngine.AI.NavMesh.AddNavMeshData(data);
 
         var triangulation = UnityEngine.AI.NavMesh.CalculateTriangulation();//no areas, vertices or triangles
+        Instantiate(unitObject, new Vector3(0, 0, 0), Quaternion.identity);
 	}
 
     void addTree (int x, int z) {
