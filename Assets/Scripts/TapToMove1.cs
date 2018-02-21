@@ -35,7 +35,8 @@ public class TapToMove1 : MonoBehaviour
         {
             collecting = false;
             Destroy(objectToCollect);
-            Debug.Log(++Player.defaultPlayer.currency);
+            Player.defaultPlayer.currency++;
+            Debug.Log(Player.defaultPlayer.currency);
         }
 
     }
