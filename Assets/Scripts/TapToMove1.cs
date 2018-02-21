@@ -1,14 +1,18 @@
 ﻿using UnityEngine;
 using System.Collections;
 using UnityEngine.AI;
+using UnityEngine.UI;
 
 public class TapToMove1 : MonoBehaviour
 {
     bool collecting;
     GameObject objectToCollect;
+    
+    public Text woodText;
 
     void Start()
     {
+        setWoodText();
     }
 
     void Update()
@@ -36,8 +40,16 @@ public class TapToMove1 : MonoBehaviour
             collecting = false;
             Destroy(objectToCollect);
             Player.defaultPlayer.currency++;
-            Debug.Log(Player.defaultPlayer.currency);
+
+            setWoodText();
+            
         }
 
     }
+
+    void setWoodText()
+    {
+        woodText.text = "Wood: " + Player.defaultPlayer.currency.ToString();
+    }
+
 }
