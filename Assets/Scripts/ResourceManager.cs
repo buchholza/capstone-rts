@@ -6,7 +6,6 @@ public class ResourceManager : MonoBehaviour {
     public int food = 0;
     void Awake()
     {
-        me = this;
     }
 	
     public void ReducedResources(string resource, int amount)
