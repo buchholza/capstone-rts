@@ -15,8 +15,9 @@ public class TapToMove1 : MonoBehaviour
     {
         //check if the screen is touched / clicked   
         NavMeshAgent agent = GetComponent<NavMeshAgent>();
+        SelectableUnitComponent selectable = GetComponent<SelectableUnitComponent>();
 
-        if ((Input.touchCount > 0 && Input.GetTouch(0).phase == TouchPhase.Began) || (Input.GetMouseButtonDown(1)))
+        if ((Input.touchCount > 0 && Input.GetTouch(0).phase == TouchPhase.Began) || (Input.GetMouseButtonDown(1)) && selectable.selectionCircle != null)
         {
             RaycastHit hit;
             Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
