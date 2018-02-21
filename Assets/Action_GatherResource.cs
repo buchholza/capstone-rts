@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -25,20 +26,20 @@ public class Action_GatherResource : MonoBehaviour {
 	void Update () {
 		
 	}
-    public override void initialiseLocation(Vector3 position)
+    public override void firstLocation(Vector3 position)
     {
         bool multiPartAction = true;
         positionOfResource = position;
         try
         {
-            positionOfStoreHouse = BuildingStore.me.getNearestBuildingOfType("StoreHouse", this.gameObject.transform.position);
+            positionOfStoreHouse = BuildingStore.me.getNearestBuildingOfType("StoreHouse", gameObject.transform.position);
         }
         catch
         {
             loop = false;
         }
     }
-    public override void doAction()
+    public void doAction()
     {
         atRes = atResource();
         atStore = atStoreHouse();
@@ -63,11 +64,17 @@ public class Action_GatherResource : MonoBehaviour {
 
         }
     }
+
+    private T getComponent<T>()
+    {
+        throw new NotImplementedException();
+    }
+
     void moveToStoreHouse()
     {
         if(movingToStoreHouse==false)
         {
-            UnitMovement um = this.getComponent<UnitMovement>();
+            UnitMovement um = this.GetComponent<UnitMovement>();
             um.moveToLocation(positionOfStoreHouse);
             movingToStoreHouse = true;
         }
@@ -83,7 +90,7 @@ public class Action_GatherResource : MonoBehaviour {
     }
     void depositResource()
     {
-        ResourceManager.me.IncreaseResources(resource, 10);
+        //ResourceManager.me.IncreaseResources(resource, 10);
         resetAction();
     }
     bool atResource()
@@ -121,12 +128,5 @@ public class Action_GatherResource : MonoBehaviour {
         movingToStoreHouse = false;
         storedResource = false;
     }
-    public override bool getIsActionComplete()
-    {
-        return !loop;
-    }
-    public override bool getActionType()
-    {
-        return "ResourceGather";
-    }
+   
 }

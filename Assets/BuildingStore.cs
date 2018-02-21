@@ -3,11 +3,10 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class BuildingStore : MonoBehaviour {
+    
 
-	// Use this for initialization
-	void Start () {
-		
-	}
+    // Use this for initialization
+    
 	
 	// Update is called once per frame
 	void Update () {
@@ -15,7 +14,14 @@ public class BuildingStore : MonoBehaviour {
 	}
     public void getNearestBuildingOfType(string buildingType, Vector3 position)
     {
-
+        if(buildingType=="StoreHouse")
+        {
+            UnitMovement.me.moveToLocation(position);
+        }
+        else
+        {
+            UnitMovement.me.doNothing();
+        }
 
     }
 }

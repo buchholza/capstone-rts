@@ -6,17 +6,9 @@ public class ResourceManager : MonoBehaviour {
     public int food = 0;
     void Awake()
     {
-        //me = this;
+        me = this;
     }
-	// Use this for initialization
-	void Start () {
-		
-	}
 	
-	// Update is called once per frame
-	void Update () {
-		
-	}
     public void ReducedResources(string resource, int amount)
     {
         alterResourceValue(resource, amount * -1);
@@ -31,7 +23,9 @@ public class ResourceManager : MonoBehaviour {
         {
             case "food":
                 if (food > amount)
+                {
                     return true;
+                }
                 else
                 {
                     return false;

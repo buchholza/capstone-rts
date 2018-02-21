@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class ResourceManager : MonoBehaviour {
     public int food = 0;
+    internal static object me;
+
     void Awake()
     {
        
