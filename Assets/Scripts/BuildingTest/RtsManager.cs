@@ -7,12 +7,14 @@ using UnityEngine.AI;
 public class RtsManager : MonoBehaviour {
     public static RtsManager current = null;
 
-    public Collider groundCollider;
+    public List<PlayerInfo> players = new List<PlayerInfo>();
+    public GameObject groundCollider;
 
     public Vector3? ScreenPointToMapPosition(Vector2 point) {
         var ray = Camera.main.ScreenPointToRay(point);
         RaycastHit hit;
-        if(!groundCollider.Raycast(ray, out hit, Mathf.Infinity)) {
+        Collider newCollider = groundCollider.GetComponent<Collider>();
+        if(!newCollider.Raycast(ray, out hit, Mathf.Infinity)) {
             return null;
         }
 
@@ -49,6 +51,19 @@ public class RtsManager : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
         current = this;
+        
+        foreach(var playerInfo in players) { // For each set of player info in players list
+            foreach(var unit in playerInfo.startingUnits) { // Instantiate every unit in its starting units list
+                var gameObject = (GameObject)GameObject.Instantiate(unit, playerInfo.location.position, playerInfo.location.rotation);
+                var player = gameObject.AddComponent<Player>(); // Attach Player object to them with corresponding player info
+                player.info = playerInfo;
+                if(!playerInfo.isAI) {
+                    if(Player.defaultPlayer == null) {
+                        Player.defaultPlayer = playerInfo;
+                    }
+                }
+            }
+        }
 	}
 	
 	// Update is called once per frame
