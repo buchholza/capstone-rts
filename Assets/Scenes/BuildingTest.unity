@@ -3029,7 +3029,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fe90e0937e3c67d4386b7c7a7c38ea06, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  selectionCirclePrefab: {fileID: 0}
+  selectionCirclePrefab: {fileID: 166266, guid: dc884a6ec589ce249acc9b5326859165,
+    type: 2}
 --- !u!1 &1529420500
 GameObject:
   m_ObjectHideFlags: 0
