@@ -25,7 +25,8 @@ public class FindBuildingSite : MonoBehaviour {
             return;
         }
 
-        transform.position = tempTarget.Value;
+        // TODO: Find a better way to keep buildings above ground
+        transform.position = tempTarget.Value + new Vector3(0, 0.5f, 0);
 
         if(Vector3.Distance(transform.position, source.position) > maxBuildDistance) {
             rend.material.color = red;
