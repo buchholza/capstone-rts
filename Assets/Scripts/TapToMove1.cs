@@ -40,4 +40,7 @@ public class TapToMove1 : MonoBehaviour
         }
 
     }
+    void Destroy() {
+
+    }
 }

@@ -38,6 +38,8 @@ public class UnitSelectionComponent : MonoBehaviour
                 if( IsWithinSelectionBounds( selectableObject.gameObject ) )
                 {
                     selectedObjects.Add( selectableObject );
+                    selectableObject.isSelected = true;
+
                 }
             }
 
