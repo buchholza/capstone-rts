@@ -20,10 +20,11 @@ GameObject:
   m_Component:
   - component: {fileID: 4226466892843344}
   - component: {fileID: 114184171022982760}
-  - component: {fileID: 114196614817087162}
   - component: {fileID: 195752420500067304}
   - component: {fileID: 114748085267659192}
-  m_Layer: 0
+  - component: {fileID: 114660886225615500}
+  - component: {fileID: 135489924761810942}
+  m_Layer: 8
   m_Name: Unit
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -55,7 +56,7 @@ GameObject:
   - component: {fileID: 4329006181533880}
   - component: {fileID: 33137638262855372}
   - component: {fileID: 23171507909008808}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: CharacterHead
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -72,7 +73,7 @@ GameObject:
   - component: {fileID: 4844200830073486}
   - component: {fileID: 33610541261939652}
   - component: {fileID: 23526192003576764}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: CharacterBody
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -114,7 +115,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1467617781966990}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 1.8025601, y: -0.31, z: 5.31}
+  m_LocalPosition: {x: 9.488131, y: 0.4956746, z: 6.2828236}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4226466892843344}
@@ -229,7 +230,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isSelected: 0
   selectionCircle: {fileID: 0}
---- !u!114 &114196614817087162
+--- !u!114 &114660886225615500
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -237,12 +238,17 @@ MonoBehaviour:
   m_GameObject: {fileID: 1347345562115204}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f994656ff68eac04a878137d62cfc0c9, type: 3}
+  m_Script: {fileID: 11500000, guid: 850892499fc100f4894494c0de8549fc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  collecting: 0
-  objectToCollect: {fileID: 0}
-  woodText: {fileID: 0}
+  LOS: 0
+  safeArea: {x: 0, y: 0, z: 0}
+  safeRadius: 0
+  health: 10
+  Aggression: {fileID: 0}
+  team: 0
+  tapToMove: {fileID: 0}
+  wanderNPC: {fileID: 0}
 --- !u!114 &114748085267659192
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -255,6 +261,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   woodText: {fileID: 0}
+--- !u!135 &135489924761810942
+SphereCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1347345562115204}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 0.5
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!195 &195752420500067304
 NavMeshAgent:
   m_ObjectHideFlags: 1
