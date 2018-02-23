@@ -41,7 +41,7 @@ public class Aggression : MonoBehaviour {
         UnitAttribute enemy = target.GetComponentInParent<UnitAttribute>();
         unitAttribute.wanderNPC.enabled = false;
         transform.position = Vector3.MoveTowards(transform.position, target.transform.position, 2 * Time.deltaTime);
-                enemy.beingAttacked(2);
+                enemy.beingAttacked(20);
             print(enemy.health);
     }
 
