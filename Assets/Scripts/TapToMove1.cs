@@ -28,7 +28,10 @@ public class TapToMove1 : MonoBehaviour
 
             if (Physics.Raycast(ray, out hit))
             {
-                if (hit.transform.name == "Tree(Clone)") {
+                if (
+                    hit.transform.name == "Tree(Clone)"
+                    || hit.transform.name == "Rock(Clone)"
+                ) {
                     collecting = true;
                     objectToCollect = hit.transform.gameObject;
                 }
