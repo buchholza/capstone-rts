@@ -2,8 +2,11 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+using UnityEngine.UI;
+
 public class PeriodicSpawn : MonoBehaviour {
     public GameObject unit;
+    public Text woodText;
 
 	// Use this for initialization
 	void Start () {
@@ -12,6 +15,7 @@ public class PeriodicSpawn : MonoBehaviour {
 	
 	void Spawn() {
         Vector3 location = new Vector3(transform.position.x + 5, transform.position.y, transform.position.z + 5);
-        GameObject.Instantiate(unit, location, transform.rotation);
+        var go = GameObject.Instantiate(unit, location, transform.rotation);
+        go.GetComponent<TapToMove1>().woodText = woodText;
     }
 }
