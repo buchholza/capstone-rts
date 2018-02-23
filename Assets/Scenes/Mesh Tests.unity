@@ -144,6 +144,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   treeObject: {fileID: 1139769645222934, guid: 03bcb9a61690e8441aec714c89bf438a, type: 2}
+  rockObject: {fileID: 1765565430606160, guid: 4c469717ddaa0c64a8de1f0ecc93c477, type: 2}
   unitObject: {fileID: 1756787329892076, guid: 4fb714048e03dec47956e07f47efdf34, type: 2}
   halfWidth: 10
   halfHeight: 10
