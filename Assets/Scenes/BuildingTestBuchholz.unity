@@ -1121,7 +1121,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b67ab1f52082b664ba668b81599c6e83, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  selectionCirclePrefab: {fileID: 166266, guid: dc884a6ec589ce249acc9b5326859165,
+  selectionCirclePrefab: {fileID: 1614516386533766, guid: c3bcf04b291ee6c4fb848091c06f2f19,
     type: 2}
 --- !u!1 &572608206
 GameObject:
@@ -3955,6 +3955,7 @@ MonoBehaviour:
   team: 1
   tapToMove: {fileID: 0}
   wanderNPC: {fileID: 0}
+  actions: []
 --- !u!114 &1852437160
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -235,6 +235,7 @@ MonoBehaviour:
   team: 0
   tapToMove: {fileID: 0}
   wanderNPC: {fileID: 0}
+  actions: []
 --- !u!114 &114730235457040776
 MonoBehaviour:
   m_ObjectHideFlags: 1
