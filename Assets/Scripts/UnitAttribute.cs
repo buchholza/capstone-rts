@@ -14,6 +14,7 @@ public class UnitAttribute : MonoBehaviour {
     public TapToMove tapToMove;
     public WanderNPC wanderNPC;
 
+    public List<Action> actions = new List<Action>();
 
 	// Use this for initialization
 	void Start () {
