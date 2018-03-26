@@ -85,7 +85,10 @@ public class SelectionManager : MonoBehaviour {
                     } 
                 }
             }
-            
+
+            var lastUnit = selectedUnits[0].GetComponent<UnitAttribute>();
+            //Access Health
+            //Set unit menu to visible, display health value
             isSelecting = false;
         }
 
