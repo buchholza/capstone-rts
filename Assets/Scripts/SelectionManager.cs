@@ -87,6 +87,7 @@ public class SelectionManager : MonoBehaviour {
                         selectable.OnSelect();
                         selectable.selectionCircle = Instantiate(selectionCirclePrefab);
                         selectable.selectionCircle.transform.position = new Vector3(0, 0, 0);
+                        selectable.selectionCircle.transform.localScale = obj.transform.lossyScale * 1.75f;
                         selectable.selectionCircle.transform.SetParent(obj.transform, false);
                     } 
                 }
