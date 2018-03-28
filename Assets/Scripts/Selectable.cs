@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class Selectable : MonoBehaviour {
+    [HideInInspector]
     public GameObject selectionCircle;
 
 	void Start() {
