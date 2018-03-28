@@ -92,11 +92,11 @@ public class SelectionManager : MonoBehaviour {
                         selectable.selectionCircle.transform.position = new Vector3(0, 0, 0);
                         selectable.selectionCircle.transform.localScale = obj.transform.lossyScale * 1.75f;
                         selectable.selectionCircle.transform.SetParent(obj.transform, false);
-
-                        isSelecting = false;
                     } 
                 }
             }
+
+            isSelecting = false;
         }
 
         // When player right-clicks, send selected units to location they clicked
