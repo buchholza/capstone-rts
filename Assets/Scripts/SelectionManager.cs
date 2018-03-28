@@ -2,14 +2,18 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
+using UnityEngine.UI;
 
 public class SelectionManager : MonoBehaviour {
     public GameObject selectionCirclePrefab;
+    public GameObject unitMenu;
+    public Text healthText;
 
     private bool isSelecting = false;
     private Vector3 mousePosition1;
     private Rect selectionBox;
     private List<GameObject> selectedUnits = new List<GameObject>();
+
 
     private const float CLICK_DELTA = 0.25f; // Maximum time between button press and release to be considered a click
     private float pressTime; // Time at which the mouse button was first pressed
@@ -44,7 +48,6 @@ public class SelectionManager : MonoBehaviour {
                 if(selectionBox.Contains(position)) {
                     if(obj.selectionCircle == null) {
                         obj.selectionCircle = Instantiate(selectionCirclePrefab);
-                        obj.selectionCircle.transform.position = new Vector3(0, 0, 0);
                         obj.selectionCircle.transform.SetParent(obj.transform, false);
                     }
                 } else {
@@ -81,20 +84,17 @@ public class SelectionManager : MonoBehaviour {
                 Ray ray = Camera.main.ScreenPointToRay(mousePosition1);
                 if(Physics.Raycast(ray, out hit)) {
                     if(hit.collider.gameObject.GetComponent<Selectable>() != null) {
-                        GameObject obj = hit.collider.gameObject;
-                        selectedUnits.Add(obj);
-                        Selectable selectable = obj.GetComponent<Selectable>();
-                        selectable.OnSelect();
-                        selectable.selectionCircle = Instantiate(selectionCirclePrefab);
-                        selectable.selectionCircle.transform.position = new Vector3(0, 0, 0);
-                        selectable.selectionCircle.transform.SetParent(obj.transform, false);
+                        selectedUnits.Add(hit.collider.gameObject);
+                        hit.collider.gameObject.GetComponent<Selectable>().OnSelect();
                     } 
                 }
             }
-
             var lastUnit = selectedUnits[0].GetComponent<UnitAttribute>();
             //Access Health
+            float health = lastUnit.health;
             //Set unit menu to visible, display health value
+            healthText.text = "Health: " + health;
+            unitMenu.active = true;
             isSelecting = false;
         }
 
