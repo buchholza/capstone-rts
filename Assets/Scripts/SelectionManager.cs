@@ -84,8 +84,14 @@ public class SelectionManager : MonoBehaviour {
                 Ray ray = Camera.main.ScreenPointToRay(mousePosition1);
                 if(Physics.Raycast(ray, out hit)) {
                     if(hit.collider.gameObject.GetComponent<Selectable>() != null) {
-                        selectedUnits.Add(hit.collider.gameObject);
-                        hit.collider.gameObject.GetComponent<Selectable>().OnSelect();
+                        GameObject obj = hit.collider.gameObject;
+                        selectedUnits.Add(obj);
+                        Selectable selectable = obj.GetComponent<Selectable>();
+                        selectable.OnSelect();
+                        selectable.selectionCircle = Instantiate(selectionCirclePrefab);
+                        selectable.selectionCircle.transform.position = new Vector3(0, 0, 0);
+                        selectable.selectionCircle.transform.localScale = obj.transform.lossyScale * 1.75f;
+                        selectable.selectionCircle.transform.SetParent(obj.transform, false);
                     } 
                 }
             }
