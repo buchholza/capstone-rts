@@ -92,18 +92,11 @@ public class SelectionManager : MonoBehaviour {
                         selectable.selectionCircle.transform.position = new Vector3(0, 0, 0);
                         selectable.selectionCircle.transform.localScale = obj.transform.lossyScale * 1.75f;
                         selectable.selectionCircle.transform.SetParent(obj.transform, false);
+
+                        isSelecting = false;
                     } 
                 }
             }
-
-            var lastUnit = selectedUnits[0].GetComponent<UnitAttribute>();
-
-            //Access Health
-            float health = lastUnit.health;
-            //Set unit menu to visible, display health value
-            healthText.text = "Health: " + health;
-            unitMenu.active = true;
-            isSelecting = false;
         }
 
         // When player right-clicks, send selected units to location they clicked
@@ -120,6 +113,18 @@ public class SelectionManager : MonoBehaviour {
                     agent.destination = hit.point;
                 }
             } 
+        }
+
+        if(selectedUnits.Count > 0) {
+            var lastUnit = selectedUnits[0].GetComponent<UnitAttribute>();
+
+            if(lastUnit != null) {
+                //Access Health
+                float health = lastUnit.health;
+                //Set unit menu to visible, display health value
+                healthText.text = "Health: " + health;
+                unitMenu.active = true;
+            }
         }
 	}
 

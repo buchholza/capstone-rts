@@ -11,18 +11,13 @@ public class UnitAttribute : MonoBehaviour {
     private bool isAttacked;
     public Component Aggression;
     public int team;
-    public TapToMove tapToMove;
     public WanderNPC wanderNPC;
 
     public List<Action> actions = new List<Action>();
 
 	// Use this for initialization
 	void Start () {
-		if (team == 0) {
-            tapToMove = GetComponent<TapToMove>();
-            tapToMove.enabled = true;
-        }
-        else {
+        if(team != 0) {
             wanderNPC = GetComponent<WanderNPC>();
             wanderNPC.enabled = true;
         }
