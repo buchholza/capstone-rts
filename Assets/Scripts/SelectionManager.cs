@@ -7,6 +7,7 @@ using UnityEngine.UI;
 public class SelectionManager : MonoBehaviour {
     public GameObject selectionCirclePrefab;
     public GameObject unitMenu;
+    public GameObject buildingMenu;
     public Text healthText;
 
     private bool isSelecting = false;
@@ -124,6 +125,8 @@ public class SelectionManager : MonoBehaviour {
                 //Set unit menu to visible, display health value
                 healthText.text = "Health: " + health;
                 unitMenu.active = true;
+            } else {
+                buildingMenu.active = true;
             }
         }
 	}

@@ -897,9 +897,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 'Upgrade 2
-
-    750 Glod'
+  m_Text: Close
 --- !u!222 &379576119
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -1123,6 +1121,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   selectionCirclePrefab: {fileID: 1614516386533766, guid: c3bcf04b291ee6c4fb848091c06f2f19,
     type: 2}
+  unitMenu: {fileID: 1299534314}
+  buildingMenu: {fileID: 1139057720}
+  healthText: {fileID: 1685943686}
 --- !u!1 &572608206
 GameObject:
   m_ObjectHideFlags: 0
@@ -1673,9 +1674,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 'Upgrade 2
-
-    300 Glod'
+  m_Text: Close
 --- !u!222 &791244214
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -1837,7 +1836,7 @@ GameObject:
   - component: {fileID: 815803142}
   - component: {fileID: 815803141}
   m_Layer: 5
-  m_Name: upgrade2
+  m_Name: close
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1900,7 +1899,18 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 815803142}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1299534314}
+        m_MethodName: SetActive
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
 --- !u!114 &815803142
@@ -2997,7 +3007,7 @@ GameObject:
   - component: {fileID: 1409009112}
   - component: {fileID: 1409009111}
   m_Layer: 5
-  m_Name: upgrade2
+  m_Name: close
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3060,7 +3070,18 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1409009112}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1139057720}
+        m_MethodName: SetActive
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
 --- !u!114 &1409009112
@@ -3970,7 +3991,6 @@ MonoBehaviour:
   health: 10
   Aggression: {fileID: 0}
   team: 1
-  tapToMove: {fileID: 0}
   wanderNPC: {fileID: 0}
   actions: []
 --- !u!114 &1852437160
