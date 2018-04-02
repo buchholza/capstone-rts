@@ -11,6 +11,7 @@ public class SelectionManager : MonoBehaviour {
     public GameObject buildingMenu;
     public Text healthText;
     public Text testText;
+    public GameObject unitToTrain;
 
     private bool isSelecting = false;
     private Vector3 mousePosition1;
@@ -183,5 +184,15 @@ public class SelectionManager : MonoBehaviour {
             lastUnit.health = 30;
             healthText.text = "Health: " + lastUnit.health;
         }
+    }
+
+    public void OnTrainUnitButtonClick() {
+        Invoke("TrainUnit", 5);
+    }
+
+    public void TrainUnit() {
+        Transform parent = selectedUnits[0].GetComponent<Transform>();
+        var obj = Instantiate(unitToTrain, parent);
+        obj.transform.position += new Vector3(5, 0, 0);
     }
 }
