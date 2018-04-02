@@ -6,6 +6,7 @@ public class CreateBuilding : ActionBehavior {
     public GameObject ghostPrefab;
     public GameObject buildingPrefab;
     public float maxBuildDistance = 30;
+    public GameObject player;
 
     private GameObject active = null;
 
@@ -13,6 +14,7 @@ public class CreateBuilding : ActionBehavior {
         return delegate () {
             var go = GameObject.Instantiate(ghostPrefab);
             var finder = go.AddComponent<FindBuildingSite>();
+            
             finder.buildingPrefab = buildingPrefab;
             finder.maxBuildDistance = maxBuildDistance;
             //finder.info = GetComponent<Player>().info;
@@ -22,13 +24,18 @@ public class CreateBuilding : ActionBehavior {
     }
 
     public void OnClick() {
+        
         var go = GameObject.Instantiate(ghostPrefab);
         var finder = go.AddComponent<FindBuildingSite>();
+       
+        
+        
         finder.buildingPrefab = buildingPrefab;
         finder.maxBuildDistance = maxBuildDistance;
         //finder.info = GetComponent<Player>().info;
         finder.source = transform;
         active = go;
+       
     }
 
     void Start() {

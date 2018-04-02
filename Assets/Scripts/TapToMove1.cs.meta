@@ -5,7 +5,11 @@ licenseType: Free
 MonoImporter:
   externalObjects: {}
   serializedVersion: 2
-  defaultReferences: []
+  defaultReferences:
+  - woodText: {instanceID: 0}
+  - rockText: {instanceID: 0}
+  - villager: {fileID: 400004, guid: 2018d39461264d647b260ebca2dfde8a, type: 3}
+  - resource: {fileID: 4364295401556144, guid: 03bcb9a61690e8441aec714c89bf438a, type: 2}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 

@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class ResourceManager : MonoBehaviour {
     public int food = 0;
+    public int glod = 0;
+    public int metal = 1000;
     void Awake()
     {
     }
@@ -29,6 +31,24 @@ public class ResourceManager : MonoBehaviour {
                 {
                     return false;
                 }
+            case "Glod":
+                if(glod>amount)
+                {
+                    return true;
+                }
+                else
+                {
+                    return false;
+                }
+            case "metal":
+                if(metal>amount)
+                {
+                    return true;
+                }
+                else
+                {
+                    return false;
+                }
             default:
                 break;
         }
@@ -43,6 +63,12 @@ public class ResourceManager : MonoBehaviour {
         case "food":
             food += amount;
             break;
+        case "glod":
+            glod += amount;
+            break;
+        case "metal":
+             metal += amount;
+             break;
         default:
             break;
     }
