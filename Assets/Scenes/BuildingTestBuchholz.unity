@@ -1210,10 +1210,11 @@ MonoBehaviour:
   selectionCirclePrefab: {fileID: 1614516386533766, guid: c3bcf04b291ee6c4fb848091c06f2f19,
     type: 2}
   unitMenu: {fileID: 1299534314}
-  buildingMenu: {fileID: 0}
+  buildingMenu: {fileID: 1139057720}
   healthText: {fileID: 1685943686}
   testText: {fileID: 0}
-  unitToTrain: {fileID: 0}
+  unitToTrain: {fileID: 1347345562115204, guid: 02f17d062d5a18a4db9aaa4e822c2346,
+    type: 2}
 --- !u!1 &572608206
 GameObject:
   m_ObjectHideFlags: 0
