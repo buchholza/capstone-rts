@@ -155,11 +155,10 @@ public class SelectionManager : MonoBehaviour {
         // lastUnit is set to null if the last thing in the selection was a building
         if(lastUnit == null) {
             testText.text = "successfully pulled";
-            // TODO: figure out how to actually call the upgrade function
 
-            // var buildingUnit = selectedUnits[0].GetComponent<UpgradeBuilding1>();
-            // buildingUnit.version++;
-            // testText.text = "successfully updated";
+            var buildingUnit = selectedUnits[0].GetComponent<UpgradeBuilding1>();
+            buildingUnit.version++;
+            testText.text = "successfully updated";
         }
     }
 
