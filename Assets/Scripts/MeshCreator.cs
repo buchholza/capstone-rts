@@ -12,6 +12,7 @@ public class MeshCreator : MonoBehaviour {
     List<int> newTris = new List<int>();
 
     public GameObject treeObject;
+    public GameObject rockObject;
     public GameObject unitObject;
 
     public int halfWidth = 10;
@@ -24,12 +25,15 @@ public class MeshCreator : MonoBehaviour {
             for (int z = 0; z < halfHeight * 2; z++) {
                 int xx = x - halfWidth;
                 int zz = z - halfHeight;
-                if (Random.Range(0, 20) < 1) {
+                if (Random.Range(0, 18) < 1) {
                     pushWall(xx, zz);
                 } else {
                     pushFloor(xx, zz);
                     if (Random.Range(0, 20) < 1) {
                         addTree(xx, zz);
+                    }
+                    else if (Random.Range(0, 25) < 1) {
+                        addRock(xx, zz);
                     }
                 }
             }
@@ -86,6 +90,11 @@ public class MeshCreator : MonoBehaviour {
 
     void addTree (int x, int z) {
         Instantiate(treeObject, new Vector3(x, 0, z), Quaternion.identity);
+    }
+
+    void addRock (int x, int z) {
+        if (rockObject != null)
+            Instantiate(rockObject, new Vector3(x + 0.5f, 0.2f, z + 0.5f), Quaternion.identity);
     }
 
     /*
