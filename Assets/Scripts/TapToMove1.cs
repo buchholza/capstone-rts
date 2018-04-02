@@ -32,6 +32,8 @@ public class TapToMove1 : MonoBehaviour
     Vector3 pos;
     void Start()
     {
+        idleText = GameObject.Find("IdleVillager");
+        idletext.setActive(false);
         setWoodText();
     }
 
@@ -41,7 +43,6 @@ public class TapToMove1 : MonoBehaviour
             idleText.SetActive(false);
         }
         else {
-            idleText = GameObject.Find("IdleVillager");
             idleText.SetActive(true);
         }
         //check if the screen is touched / clicked   
