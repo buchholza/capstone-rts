@@ -9,11 +9,13 @@ public class SelectionManager : MonoBehaviour {
     public GameObject unitMenu;
     public GameObject buildingMenu;
     public Text healthText;
+    public Text testText;
 
     private bool isSelecting = false;
     private Vector3 mousePosition1;
     private Rect selectionBox;
     private List<GameObject> selectedUnits = new List<GameObject>();
+    private UnitAttribute lastUnit;
 
 
     private const float CLICK_DELTA = 0.25f; // Maximum time between button press and release to be considered a click
@@ -116,8 +118,9 @@ public class SelectionManager : MonoBehaviour {
             } 
         }
 
+        // When selection is finished, sets up the relevant menu for the unit last selected
         if(selectedUnits.Count > 0) {
-            var lastUnit = selectedUnits[0].GetComponent<UnitAttribute>();
+            lastUnit = selectedUnits[0].GetComponent<UnitAttribute>();
 
             if(lastUnit != null) {
                 //Access Health
@@ -145,6 +148,35 @@ public class SelectionManager : MonoBehaviour {
             var rect = Utils.GetScreenRect(mousePosition1, Input.mousePosition);
             Utils.DrawScreenRect(rect, new Color(0.8f, 0.8f, 0.95f, 0.25f));
             Utils.DrawScreenRectBorder(rect, 2, new Color(0.8f, 0.8f, 0.95f));
+        }
+    }
+
+    public void BuildingUpgrade() {
+        // lastUnit is set to null if the last thing in the selection was a building
+        if(lastUnit == null) {
+            testText.text = "successfully pulled";
+            // TODO: figure out how to actually call the upgrade function
+
+            // var buildingUnit = selectedUnits[0].GetComponent<UpgradeBuilding1>();
+            // buildingUnit.version++;
+            // testText.text = "successfully updated";
+        }
+    }
+
+    public void BuildingSell() {
+        // lastUnit is set to null if the last thing in the selection was a building        
+        if(lastUnit == null) {
+            // Destroys the selected building
+            Destroy(selectedUnits[0]);
+        }
+    }
+
+    public void UnitUpgrade() {
+        // lastUnit is not set to null if the last thing in the selection was a unit
+        if(lastUnit != null) {
+            // upgrades the unit's health to 30 from the default 10, then refreshes the health display
+            lastUnit.health = 30;
+            healthText.text = "Health: " + lastUnit.health;
         }
     }
 }
