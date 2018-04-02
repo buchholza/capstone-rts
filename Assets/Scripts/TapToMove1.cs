@@ -18,6 +18,7 @@ public class TapToMove1 : MonoBehaviour
     public bool collectingResource = false;
     public bool movingToStoreHouse = false;
     public bool storedResource = false;
+
     // Vector3 closestResource;
     Vector3 closestBuilding;
       
@@ -37,6 +38,7 @@ public class TapToMove1 : MonoBehaviour
     void Update()
     {
         if (isIdle) {
+            idleText = GameObject.Find("IdleVillager");
             idleText.SetActive(true);
         }
         else {
