@@ -111,16 +111,30 @@ public class SelectionManager : MonoBehaviour {
 
         // When player right-clicks, send selected units to location they clicked
         if(Input.GetMouseButtonDown(1)) {
-            foreach(var unit in selectedUnits) {
+            //Generates an offset for template for each unit
+            int width = 0;
+            int depth = 0;
+            Vector3 offsetGrid = new Vector3(width * 2, 0, depth * 2);
+
+            foreach (var unit in selectedUnits) {
                 NavMeshAgent agent = unit.GetComponent<NavMeshAgent>();
                 if(agent == null) {
                     continue;
                 }
-
+                
                 RaycastHit hit;
                 Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-                if(Physics.Raycast(ray, out hit)) {
-                    agent.destination = hit.point;
+                if (Physics.Raycast(ray, out hit)) {
+                    agent.destination = hit.point + offsetGrid;
+                }
+
+                //increments the offset to provide a 5 x '#ofUnitsSelected/5' grid for the units to move to.
+                if (width < 5) {
+                    width++;
+                }
+                else {
+                    width = 0;
+                    depth++;
                 }
             } 
         }

@@ -12,6 +12,7 @@ public class TapToMove1 : MonoBehaviour
     bool isMoving;
     bool hasResource = false;
     GameObject objectToCollect;
+    public GameObject idleText;
     public bool movingToResource = false;
 
     public bool collectingResource = false;
@@ -35,6 +36,12 @@ public class TapToMove1 : MonoBehaviour
 
     void Update()
     {
+        if (isIdle) {
+            idleText.SetActive(true);
+        }
+        else {
+            idleText.SetActive(false);
+        }
         //check if the screen is touched / clicked   
         NavMeshAgent agent = GetComponent<NavMeshAgent>();
         SelectableUnitComponent selectable = GetComponent<SelectableUnitComponent>();
