@@ -37,12 +37,12 @@ public class TapToMove1 : MonoBehaviour
 
     void Update()
     {
-        if (isIdle) {
-            idleText = GameObject.Find("IdleVillager");
-            idleText.SetActive(true);
+        if (hasResource || movingToResource || collectingResource || movingToStoreHouse || storedResource) {
+            idleText.SetActive(false);
         }
         else {
-            idleText.SetActive(false);
+            idleText = GameObject.Find("IdleVillager");
+            idleText.SetActive(true);
         }
         //check if the screen is touched / clicked   
         NavMeshAgent agent = GetComponent<NavMeshAgent>();
