@@ -2,33 +2,23 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
-using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
 public class SelectionManager : MonoBehaviour {
     public GameObject selectionCirclePrefab;
     public GameObject unitMenu;
-    public GameObject buildingMenu;
     public Text healthText;
-    public Text testText;
-    public GameObject unitToTrain;
 
     private bool isSelecting = false;
     private Vector3 mousePosition1;
     private Rect selectionBox;
     private List<GameObject> selectedUnits = new List<GameObject>();
-    private UnitAttribute lastUnit;
 
 
     private const float CLICK_DELTA = 0.25f; // Maximum time between button press and release to be considered a click
     private float pressTime; // Time at which the mouse button was first pressed
 
 	void Update () {
-        // If over a UI element and not finishing up a drag
-        if(EventSystem.current.IsPointerOverGameObject() && !isSelecting) {
-            return;
-        }
-
         // When left mouse button clicked, begin selection by storing first mouse position
 		if(Input.GetMouseButtonDown(0)) {
             pressTime = Time.time;
@@ -102,41 +92,52 @@ public class SelectionManager : MonoBehaviour {
                         selectable.selectionCircle.transform.position = new Vector3(0, 0, 0);
                         selectable.selectionCircle.transform.localScale = obj.transform.lossyScale * 1.75f;
                         selectable.selectionCircle.transform.SetParent(obj.transform, false);
+
+                        isSelecting = false;
                     } 
                 }
             }
-
-            isSelecting = false;
         }
 
         // When player right-clicks, send selected units to location they clicked
         if(Input.GetMouseButtonDown(1)) {
-            foreach(var unit in selectedUnits) {
+            //Generates an offset for template for each unit
+            int width = 0;
+            int depth = 0;
+            Vector3 offsetGrid = new Vector3(width * 2, 0, depth * 2);
+
+            foreach (var unit in selectedUnits) {
                 NavMeshAgent agent = unit.GetComponent<NavMeshAgent>();
                 if(agent == null) {
                     continue;
                 }
-
+                
                 RaycastHit hit;
                 Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-                if(Physics.Raycast(ray, out hit)) {
-                    agent.destination = hit.point;
+                if (Physics.Raycast(ray, out hit)) {
+                    agent.destination = hit.point + offsetGrid;
+                }
+
+                //increments the offset to provide a 5 x '#ofUnitsSelected/5' grid for the units to move to.
+                if (width < 5) {
+                    width++;
+                }
+                else {
+                    width = 0;
+                    depth++;
                 }
             } 
         }
 
-        // When selection is finished, sets up the relevant menu for the unit last selected
         if(selectedUnits.Count > 0) {
-            lastUnit = selectedUnits[0].GetComponent<UnitAttribute>();
+            var lastUnit = selectedUnits[0].GetComponent<UnitAttribute>();
 
             if(lastUnit != null) {
                 //Access Health
                 float health = lastUnit.health;
                 //Set unit menu to visible, display health value
                 healthText.text = "Health: " + health;
-                unitMenu.active = true;
-            } else {
-                buildingMenu.active = true;
+                unitMenu.SetActive(true);
             }
         }
 	}
@@ -156,43 +157,5 @@ public class SelectionManager : MonoBehaviour {
             Utils.DrawScreenRect(rect, new Color(0.8f, 0.8f, 0.95f, 0.25f));
             Utils.DrawScreenRectBorder(rect, 2, new Color(0.8f, 0.8f, 0.95f));
         }
-    }
-
-    public void BuildingUpgrade() {
-        // lastUnit is set to null if the last thing in the selection was a building
-        if(lastUnit == null) {
-            testText.text = "successfully pulled";
-
-            var buildingUnit = selectedUnits[0].GetComponent<UpgradeBuilding1>();
-            buildingUnit.version++;
-            testText.text = "successfully updated";
-        }
-    }
-
-    public void BuildingSell() {
-        // lastUnit is set to null if the last thing in the selection was a building        
-        if(lastUnit == null) {
-            // Destroys the selected building
-            Destroy(selectedUnits[0]);
-        }
-    }
-
-    public void UnitUpgrade() {
-        // lastUnit is not set to null if the last thing in the selection was a unit
-        if(lastUnit != null) {
-            // upgrades the unit's health to 30 from the default 10, then refreshes the health display
-            lastUnit.health = 30;
-            healthText.text = "Health: " + lastUnit.health;
-        }
-    }
-
-    public void OnTrainUnitButtonClick() {
-        Invoke("TrainUnit", 5);
-    }
-
-    public void TrainUnit() {
-        Transform parent = selectedUnits[0].GetComponent<Transform>();
-        var obj = Instantiate(unitToTrain, parent);
-        obj.transform.position += new Vector3(5, 0, 0);
     }
 }
