@@ -16,6 +16,5 @@ public class PeriodicSpawn : MonoBehaviour {
 	void Spawn() {
         Vector3 location = new Vector3(transform.position.x + 5, transform.position.y, transform.position.z + 5);
         var go = GameObject.Instantiate(unit, location, transform.rotation);
-        go.GetComponent<TapToMove1>().woodText = woodText;
     }
 }

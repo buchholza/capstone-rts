@@ -1,0 +1,18 @@
+fileFormatVersion: 2
+guid: 7a4ef59c66c174142931547a5b41a838
+timeCreated: 1519363390
+licenseType: Free
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences:
+  - treeObject: {fileID: 1139769645222934, guid: 03bcb9a61690e8441aec714c89bf438a,
+      type: 2}
+  - rockObject: {fileID: 1765565430606160, guid: 4c469717ddaa0c64a8de1f0ecc93c477,
+      type: 2}
+  - unitObject: {instanceID: 0}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

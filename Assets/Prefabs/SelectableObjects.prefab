@@ -19,11 +19,10 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4226466892843344}
-  - component: {fileID: 114184171022982760}
   - component: {fileID: 195752420500067304}
-  - component: {fileID: 114748085267659192}
   - component: {fileID: 114660886225615500}
   - component: {fileID: 135489924761810942}
+  - component: {fileID: 114730235457040776}
   m_Layer: 8
   m_Name: Unit
   m_TagString: Untagged
@@ -217,19 +216,6 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1958246259857864}
   m_Mesh: {fileID: 4300002, guid: 2018d39461264d647b260ebca2dfde8a, type: 3}
---- !u!114 &114184171022982760
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1347345562115204}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 92cb42219be57014497e0059634c06a4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  isSelected: 0
-  selectionCircle: {fileID: 0}
 --- !u!114 &114660886225615500
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -247,9 +233,9 @@ MonoBehaviour:
   health: 10
   Aggression: {fileID: 0}
   team: 0
-  tapToMove: {fileID: 0}
   wanderNPC: {fileID: 0}
---- !u!114 &114748085267659192
+  actions: []
+--- !u!114 &114730235457040776
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -257,10 +243,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 1347345562115204}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d5fa9d69977fdba4eb8da1652561a7d5, type: 3}
+  m_Script: {fileID: 11500000, guid: d193e628d34f5234e834dfc79c094b41, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  woodText: {fileID: 0}
+  selectionCircle: {fileID: 0}
 --- !u!135 &135489924761810942
 SphereCollider:
   m_ObjectHideFlags: 1

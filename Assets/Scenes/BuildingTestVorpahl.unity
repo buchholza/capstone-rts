@@ -895,7 +895,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 'Upgrade 1
+  m_Text: 'Upgrade
 
     500 Glod'
 --- !u!222 &239707790
@@ -1045,9 +1045,9 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 'Upgrade 2
+  m_Text: 'Sell
 
-    750 Glod'
+    250 Glod'
 --- !u!222 &379576119
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -1066,7 +1066,7 @@ GameObject:
   - component: {fileID: 543977068}
   - component: {fileID: 543977067}
   m_Layer: 5
-  m_Name: upgrade1
+  m_Name: upgrade
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1233,7 +1233,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8afc336419847e24692b33d2ebf16b34, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ButtonPic: {fileID: 0}
   ghostPrefab: {fileID: 1737032141717870, guid: 41198b86b47398a4b88428ae56e02064,
     type: 2}
   buildingPrefab: {fileID: 1112016201945204, guid: a25ed902f9540ae4b8216321ae3f3984,
@@ -1822,9 +1821,9 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 'Upgrade 2
+  m_Text: 'Sell
 
-    300 Glod'
+    100 Glod'
 --- !u!222 &791244214
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -1898,7 +1897,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 'Upgrade 1
+  m_Text: 'Upgrade
 
     200 Glod'
 --- !u!222 &800255825
@@ -1986,7 +1985,7 @@ GameObject:
   - component: {fileID: 815803142}
   - component: {fileID: 815803141}
   m_Layer: 5
-  m_Name: upgrade2
+  m_Name: sell
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3204,7 +3203,7 @@ GameObject:
   - component: {fileID: 1409009112}
   - component: {fileID: 1409009111}
   m_Layer: 5
-  m_Name: upgrade2
+  m_Name: sell
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4242,7 +4241,7 @@ GameObject:
   - component: {fileID: 1862050034}
   - component: {fileID: 1862050033}
   m_Layer: 5
-  m_Name: upgrade1
+  m_Name: upgrade
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
