@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
+using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
 public class SelectionManager : MonoBehaviour {
@@ -22,6 +23,11 @@ public class SelectionManager : MonoBehaviour {
     private float pressTime; // Time at which the mouse button was first pressed
 
 	void Update () {
+        // If over a UI element and not finishing up a drag
+        if(EventSystem.current.IsPointerOverGameObject() && !isSelecting) {
+            return;
+        }
+
         // When left mouse button clicked, begin selection by storing first mouse position
 		if(Input.GetMouseButtonDown(0)) {
             pressTime = Time.time;
