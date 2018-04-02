@@ -10,22 +10,6 @@ public class CreateBuilding : MonoBehaviour {
 
     private GameObject active = null;
 
-<<<<<<< HEAD:Assets/Scripts/BuildingTest/CreateBuilding.cs
-    public override System.Action GetClickAction() {
-        return delegate () {
-            var go = GameObject.Instantiate(ghostPrefab);
-            var finder = go.AddComponent<FindBuildingSite>();
-            
-            finder.buildingPrefab = buildingPrefab;
-            finder.maxBuildDistance = maxBuildDistance;
-            //finder.info = GetComponent<Player>().info;
-            finder.source = transform;
-            active = go;
-        };
-    }
-
-=======
->>>>>>> 50456b2c968bf204f70fa5878ff621518126a53f:Assets/Scripts/CreateBuilding.cs
     public void OnClick() {
         
         var go = GameObject.Instantiate(ghostPrefab);
