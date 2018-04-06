@@ -33,7 +33,7 @@ public class TapToMove1 : MonoBehaviour
     void Start()
     {
         idleText = GameObject.Find("IdleVillager");
-        idletext.setActive(false);
+        idleText.SetActive(false);
         setWoodText();
     }
 
