@@ -8,13 +8,18 @@ public class PeriodicSpawn : MonoBehaviour {
     public GameObject unit;
     public Text woodText;
 
+    public float spawnTimer = 10f;
+    public  Vector3 spawnOffset = new Vector3(5.0f, 0.0f, 5.0f);
+
 	// Use this for initialization
 	void Start () {
-        InvokeRepeating("Spawn", 2.0f, 10f);
+        InvokeRepeating("Spawn", 2.0f, spawnTimer);
     }
 	
 	void Spawn() {
-        Vector3 location = new Vector3(transform.position.x + 5, transform.position.y, transform.position.z + 5);
-        var go = GameObject.Instantiate(unit, location, transform.rotation);
+        Vector3 center = transform.position;
+        Vector3 location = center + spawnOffset;
+
+        GameObject.Instantiate(unit, location, transform.rotation);
     }
 }

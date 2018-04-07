@@ -28,7 +28,6 @@ public class Aggression : MonoBehaviour {
 
     public void Scan() {
         Collider[] hitColliders = Physics.OverlapSphere(transform.position, unitAttribute.LOS, unitMask);
-        print("scanning is cool " + hitColliders.Length + " ," + UnityEngine.Time.deltaTime);            
         if (hitColliders.Length != 0) {
             Attack(hitColliders[0]);
         }

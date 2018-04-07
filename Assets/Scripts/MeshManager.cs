@@ -10,7 +10,6 @@ public class MeshManager : MonoBehaviour {
 	// Use this for initialization
     public GameObject treeObject;
     public GameObject rockObject;
-    public GameObject unitObject;
 
     public int halfWidth = 10;
     public int halfHeight = 10;
@@ -54,9 +53,6 @@ public class MeshManager : MonoBehaviour {
         var res = UnityEngine.AI.NavMesh.AddNavMeshData(data);
 
         var triangulation = UnityEngine.AI.NavMesh.CalculateTriangulation();//no areas, vertices or triangles
-
-        if (unitObject != null)
-            Instantiate(unitObject, new Vector3(0, 0, 0), Quaternion.identity);
 
         GetComponent<MeshCollider>().sharedMesh = mesh;
 
