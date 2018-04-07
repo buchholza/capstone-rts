@@ -175,7 +175,7 @@ public class SelectionManager : MonoBehaviour {
         if(lastUnit == null) {
             testText.text = "successfully pulled";
 
-            var buildingUnit = selectedUnits[0].GetComponent<UpgradeBuilding1>();
+            var buildingUnit = selectedUnits[0].GetComponent<UpgradeCapitol>();
             buildingUnit.version++;
             testText.text = "successfully updated";
         }

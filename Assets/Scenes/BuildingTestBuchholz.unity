@@ -4966,8 +4966,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   treeObject: {fileID: 1622742485229434, guid: aed1fb36cf1813d4e8967bfa116af1d9, type: 2}
   rockObject: {fileID: 1864554853158792, guid: 8681be08eb517af4eb8de0f1d10b142c, type: 2}
-  halfWidth: 10
-  halfHeight: 10
+  halfWidth: 30
+  halfHeight: 30
 --- !u!1 &2030220879
 GameObject:
   m_ObjectHideFlags: 0

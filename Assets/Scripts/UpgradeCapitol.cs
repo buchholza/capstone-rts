@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class UpgradeBuilding1 : MonoBehaviour {
+public class UpgradeCapitol : MonoBehaviour {
     public int version;
     public GameObject up0;
     public GameObject up1;
