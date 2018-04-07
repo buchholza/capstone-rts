@@ -9,16 +9,15 @@ public class SelectionManager : MonoBehaviour {
     public GameObject selectionCirclePrefab;
     public GameObject unitMenu;
     public GameObject buildingMenu;
+    public GameObject unitToTrain;
     public Text healthText;
     public Text testText;
-    public GameObject unitToTrain;
 
     private bool isSelecting = false;
-    private Vector3 mousePosition1;
+    private Vector3 oldMousePosition;
     private Rect selectionBox;
-    private List<GameObject> selectedUnits = new List<GameObject>();
     private UnitAttribute lastUnit;
-
+    private List<GameObject> selectedUnits = new List<GameObject>();
 
     private const float CLICK_DELTA = 0.25f; // Maximum time between button press and release to be considered a click
     private float pressTime; // Time at which the mouse button was first pressed
@@ -34,7 +33,7 @@ public class SelectionManager : MonoBehaviour {
             pressTime = Time.time;
 
             isSelecting = true;
-            mousePosition1 = Input.mousePosition;
+            oldMousePosition = Input.mousePosition;
 
             // Remove selection circles from previously selected units
             foreach(var obj in FindObjectsOfType<Selectable>()) {
@@ -48,7 +47,7 @@ public class SelectionManager : MonoBehaviour {
         // While left mouse button down
         if(isSelecting) {
             // Define the selection box from the initial and current mouse positions
-            selectionBox = PointsToRect(mousePosition1, Input.mousePosition);
+            selectionBox = PointsToRect(oldMousePosition, Input.mousePosition);
 
             foreach(var obj in FindObjectsOfType<Selectable>()) {
                 // Get position of object in screen coordinates
@@ -74,7 +73,7 @@ public class SelectionManager : MonoBehaviour {
         if(Input.GetMouseButtonUp(0)) {
             // Call OnDeselect for every unit and empty the list before replacing with new selections
             foreach(var unit in selectedUnits) {
-                unit.GetComponent<Selectable>().OnDeselect();
+                if (unit) unit.GetComponent<Selectable>().OnDeselect();
             }
             selectedUnits.Clear();
 
@@ -91,7 +90,7 @@ public class SelectionManager : MonoBehaviour {
                 }
             } else { // If user clicks the mouse
                 RaycastHit hit;
-                Ray ray = Camera.main.ScreenPointToRay(mousePosition1);
+                Ray ray = Camera.main.ScreenPointToRay(oldMousePosition);
                 if(Physics.Raycast(ray, out hit)) {
                     if(hit.collider.gameObject.GetComponent<Selectable>() != null) {
                         GameObject obj = hit.collider.gameObject;
@@ -166,7 +165,7 @@ public class SelectionManager : MonoBehaviour {
     void OnGUI() {
         if(isSelecting) {
             // Create a rect from both mouse positions
-            var rect = Utils.GetScreenRect(mousePosition1, Input.mousePosition);
+            var rect = Utils.GetScreenRect(oldMousePosition, Input.mousePosition);
             Utils.DrawScreenRect(rect, new Color(0.8f, 0.8f, 0.95f, 0.25f));
             Utils.DrawScreenRectBorder(rect, 2, new Color(0.8f, 0.8f, 0.95f));
         }
