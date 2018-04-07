@@ -165,9 +165,8 @@ public class SelectionManager : MonoBehaviour {
     void OnGUI() {
         if(isSelecting) {
             // Create a rect from both mouse positions
-            var rect = Utils.GetScreenRect(oldMousePosition, Input.mousePosition);
-            Utils.DrawScreenRect(rect, new Color(0.8f, 0.8f, 0.95f, 0.25f));
-            Utils.DrawScreenRectBorder(rect, 2, new Color(0.8f, 0.8f, 0.95f));
+            var rect = GetScreenRect(oldMousePosition, Input.mousePosition);
+            DrawScreenRectWithBorder(rect, 2, new Color(0.8f, 0.8f, 0.95f, 0.25f), new Color(0.8f, 0.8f, 0.95f));
         }
     }
 
@@ -207,5 +206,55 @@ public class SelectionManager : MonoBehaviour {
         Transform parent = selectedUnits[0].GetComponent<Transform>();
         var obj = Instantiate(unitToTrain, parent);
         obj.transform.position += new Vector3(5, 0, 0);
+    }
+
+    // nick 4/7: everything below was in Utils.cs, but I moved it here in the
+    // interest of compressing/removing code, and this was the only file using
+    // Utils anymore so now I can delete it
+    static Texture2D _whiteTexture;
+    public static Texture2D WhiteTexture
+    {
+        get
+        {
+            if( _whiteTexture == null )
+            {
+                _whiteTexture = new Texture2D( 1, 1 );
+                _whiteTexture.SetPixel( 0, 0, Color.white );
+                _whiteTexture.Apply();
+            }
+
+            return _whiteTexture;
+        }
+    }
+
+    public static Rect GetScreenRect( Vector3 screenPosition1, Vector3 screenPosition2 ) {
+        // Move origin from bottom left to top left
+        screenPosition1.y = Screen.height - screenPosition1.y;
+        screenPosition2.y = Screen.height - screenPosition2.y;
+        // Calculate corners
+        var topLeft = Vector3.Min( screenPosition1, screenPosition2 );
+        var bottomRight = Vector3.Max( screenPosition1, screenPosition2 );
+        // Create Rect
+        return Rect.MinMaxRect( topLeft.x, topLeft.y, bottomRight.x, bottomRight.y );
+    }
+
+    public static void DrawScreenRectWithBorder(Rect rect, float thickness, Color mainColor, Color borderColor) {
+        Rect top = new Rect(rect.xMin, rect.yMin, rect.width, thickness);
+        Rect left = new Rect(rect.xMin, rect.yMin, thickness, rect.height);
+        Rect right = new Rect(rect.xMax - thickness, rect.yMin, thickness, rect.height);
+        Rect bottom = new Rect(rect.xMin, rect.yMax - thickness, rect.width, thickness);
+
+        Color oldColor = GUI.color;
+
+        GUI.color = mainColor;
+        GUI.DrawTexture(rect, WhiteTexture);
+
+        GUI.color = borderColor;
+        GUI.DrawTexture(top, WhiteTexture);
+        GUI.DrawTexture(left, WhiteTexture);
+        GUI.DrawTexture(right, WhiteTexture);
+        GUI.DrawTexture(bottom, WhiteTexture);
+
+        GUI.color = oldColor;
     }
 }
