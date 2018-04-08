@@ -253,7 +253,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -25, y: -35}
+  m_AnchoredPosition: {x: -15, y: -35}
   m_SizeDelta: {x: 75, y: 75}
   m_Pivot: {x: 1, y: 1}
 --- !u!114 &108180605
@@ -651,7 +651,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 25, y: -45}
+  m_AnchoredPosition: {x: 15, y: -45}
   m_SizeDelta: {x: 100, y: 30}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &237592845
@@ -1113,14 +1113,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4105ba769d1d50b47abfc4034ae68930, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  players:
-  - name: Player 1
-    location: {fileID: 150341344}
-    accentColor: {r: 1, g: 0, b: 0, a: 0}
-    startingUnits:
-    - {fileID: 1112016201945204, guid: a25ed902f9540ae4b8216321ae3f3984, type: 2}
+  player:
+    accentColor: {r: 0, g: 0, b: 0, a: 0}
     isAI: 0
-    currency: 500
+    currency: 0
+  enemy:
+    accentColor: {r: 0, g: 0, b: 0, a: 0}
+    isAI: 0
+    currency: 0
   groundCollider: {fileID: 1985912138}
 --- !u!4 &562189840
 Transform:
@@ -2447,7 +2447,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4342127975196620, guid: 2f1adedfd4940e8408faa16b9b0e0775, type: 2}
       propertyPath: m_LocalPosition.z
-      value: -1.1
+      value: 6.16
       objectReference: {fileID: 0}
     - target: {fileID: 4342127975196620, guid: 2f1adedfd4940e8408faa16b9b0e0775, type: 2}
       propertyPath: m_LocalRotation.x
@@ -2510,6 +2510,12 @@ Prefab:
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: d939eb77aee74b4448d65dcd879c9fe3, type: 2}
+    - target: {fileID: 114251439884832640, guid: 2f1adedfd4940e8408faa16b9b0e0775,
+        type: 2}
+      propertyPath: unit
+      value: 
+      objectReference: {fileID: 1667224120439090, guid: d08622233d05b8d4fbfc528805331e01,
+        type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 2f1adedfd4940e8408faa16b9b0e0775, type: 2}
   m_IsPrefabParent: 0
@@ -2740,7 +2746,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: -0.0000038146973, y: 0}
-  m_SizeDelta: {x: 275, y: 200.1}
+  m_SizeDelta: {x: 250.75, y: 200.1}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &1145887522
 GameObject:
@@ -3792,7 +3798,7 @@ GameObject:
   - component: {fileID: 1563718209}
   - component: {fileID: 1563718208}
   m_Layer: 0
-  m_Name: Plane
+  m_Name: Water
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4394,7 +4400,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_Texture: {fileID: 2800000, guid: 00cd66c2e83173441b815296c978f5c6, type: 3}
+  m_Texture: {fileID: 2800000, guid: f14a1d21c605251449f6e0da42b537c9, type: 3}
   m_UVRect:
     serializedVersion: 2
     x: 0
@@ -4441,7 +4447,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 25, y: 40}
+  m_AnchoredPosition: {x: 12.875, y: 40}
   m_SizeDelta: {x: 75, y: 40}
   m_Pivot: {x: 0, y: 0}
 --- !u!114 &1862050033
@@ -4659,7 +4665,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 25, y: -74.99999}
+  m_AnchoredPosition: {x: 15, y: -74.99999}
   m_SizeDelta: {x: 100, y: 30}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &1904360177
@@ -4841,7 +4847,7 @@ MeshFilter:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1985912138}
-  m_Mesh: {fileID: 4300000, guid: 29e6940a514c4c8459d757507b7734cd, type: 3}
+  m_Mesh: {fileID: 4300000, guid: 40c34ad7eb7041f4fb78773aa915b2ec, type: 3}
 --- !u!4 &1985912142
 Transform:
   m_ObjectHideFlags: 0
