@@ -81,6 +81,6 @@ public class TerrainManager : MonoBehaviour {
 
     void addRock (int x, int z) {
         if (rockObject != null)
-            Instantiate(rockObject, new Vector3(x + 0.5f, 0.2f, z + 0.5f), Quaternion.identity);
+            Instantiate(rockObject, new Vector3(x + 0.5f, 0.0f, z + 0.5f), Quaternion.identity);
     }
 }
