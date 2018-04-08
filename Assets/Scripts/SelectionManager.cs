@@ -208,9 +208,8 @@ public class SelectionManager : MonoBehaviour {
         obj.transform.position += new Vector3(5, 0, 0);
     }
 
-    // nick 4/7: everything below was in Utils.cs, but I moved it here in the
-    // interest of compressing/removing code, and this was the only file using
-    // Utils anymore so now I can delete it
+    // nick 4/7: everything below was in Utils.cs, but I moved it here because
+    // there a was a lot of unused code in utils
     static Texture2D _whiteTexture;
     public static Texture2D WhiteTexture
     {
