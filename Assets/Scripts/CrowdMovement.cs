@@ -28,7 +28,7 @@ public class CrowdMovement : MonoBehaviour {
         if (!crowdTarget && moveTarget != null) {
             float distance = Vector3.Distance(transform.position, moveTarget);
             if (distance < 1.0f)
-                gameObject.GetComponent<UnityEngine.AI.NavMeshAgent>().Stop();
+                gameObject.GetComponent<UnityEngine.AI.NavMeshAgent>().isStopped = true;
         }
     }
 }

@@ -6,5 +6,6 @@ using UnityEngine;
 public class PlayerInfo {
     public Color accentColor;
     public bool isAI;
-    public float currency;
+    public int wood;
+    public int stone;
 }

@@ -142,7 +142,7 @@ public class SelectionManager : MonoBehaviour {
                         continue;
                     }
                     agent.destination = hit.point;
-                    if (agent.isStopped) agent.Resume();
+                    if (agent.isStopped) agent.isStopped = false;
 
                     var crowdMover = unit.GetComponent<CrowdMovement>();
                     if (crowdMover) crowdMover.SetCrowdTarget(ct, i);

@@ -36,8 +36,12 @@ public class GatherResource : MonoBehaviour {
                 isIdle = false;
                 hasResource = true;
                 print(nearestResource.name+";");
-                if (nearestResource.name == "RocksPrefab(Clone)") { stoneCount++; }
-                if (nearestResource.name == "TreePrefab(Clone)") { woodCount++; }
+                if (nearestResource.name == "RocksPrefab(Clone)") {
+                    RtsManager.current.teams[0].stone++; 
+                }
+                if (nearestResource.name == "TreePrefab(Clone)") {
+                    RtsManager.current.teams[0].wood++; 
+                }
                 nearestResource.SetActive(false);
                 allResources.Remove(nearestResource);
             }
@@ -48,8 +52,10 @@ public class GatherResource : MonoBehaviour {
             agent.SetDestination(homeBase.position);
             if (Vector3.Distance(transform.position, homeBase.position) < 1) {
                 hasResource = false;
-                RtsManager.current.woodText.text = "Wood: " + woodCount.ToString();
-                RtsManager.current.stoneText.text = "Stone: " + stoneCount.ToString();
+                RtsManager.current.woodText.text =
+                    "Wood: " + RtsManager.current.teams[0].wood.ToString();
+                RtsManager.current.stoneText.text =
+                    "Stone: " + RtsManager.current.teams[0].stone.ToString();
 
                 isIdle = true;
             }

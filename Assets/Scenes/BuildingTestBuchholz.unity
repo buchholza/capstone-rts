@@ -1132,14 +1132,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4105ba769d1d50b47abfc4034ae68930, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  player:
-    accentColor: {r: 0, g: 0, b: 0, a: 0}
+  teams:
+  - accentColor: {r: 0, g: 0, b: 1, a: 0}
     isAI: 0
-    currency: 0
-  enemy:
-    accentColor: {r: 0, g: 0, b: 0, a: 0}
+    wood: 0
+    stone: 0
+  - accentColor: {r: 1, g: 0, b: 0, a: 0}
     isAI: 1
-    currency: 0
+    wood: 0
+    stone: 0
   groundCollider: {fileID: 1985912138}
   stoneText: {fileID: 1676663407}
   woodText: {fileID: 837862751}

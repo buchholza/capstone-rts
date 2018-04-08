@@ -22,7 +22,7 @@ public class UpgradeBuilding : MonoBehaviour {
             var ray = Camera.main.ScreenPointToRay(Input.mousePosition);
             RaycastHit hit;
             if(Physics.Raycast(ray, out hit) && hit.collider.gameObject.name.Contains("Building")) {
-                hit.collider.gameObject.GetComponent<Player>().info.currency -= 100;
+                hit.collider.gameObject.GetComponent<Player>().info.stone -= 100;
                 Destroy(hit.collider.gameObject);
                 GameObject.Instantiate(upgradePrefab, hit.collider.gameObject.transform.position, hit.collider.gameObject.transform.rotation);
                 isSelecting = false;

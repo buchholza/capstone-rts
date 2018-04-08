@@ -8,8 +8,7 @@ using UnityEngine.UI;
 public class RtsManager : MonoBehaviour {
     public static RtsManager current = null;
 
-    public PlayerInfo player = new PlayerInfo();
-    public PlayerInfo enemy = new PlayerInfo();
+    public PlayerInfo[] teams = new PlayerInfo[2];
     public GameObject groundCollider;
 
     public Text stoneText;
