@@ -8,43 +8,34 @@ public class GatherResource : MonoBehaviour {
 
     public NavMeshAgent agent;
     public Transform homeBase;
-    private bool needsToFind = true;
+    private bool findFirstResource = true;
     private bool isIdle = true;
     private bool hasResource = false;
+    private int woodCount, stoneCount;
     private GameObject nearestResource;
-
-    public void Reset () {
-        needsToFind = true;
-        isIdle = true;
-        hasResource = false;
-        nearestResource = null;
-    }
 
 	// Update is called once per frame
 	void Update () {
 
-        if (!hasResource && !isIdle) {
-            print("???");
-        }
-        
+        //Finds all instance of resources in the game
+		// if(!findFirstResource) {
+        //     findFirstResource = true;
+        // }
+
         //Tells an idle unit to gather the nearest resource
         if (isIdle) {
-            if (needsToFind) {
+            if (findFirstResource) {
                 var allResources = GameObject.FindGameObjectsWithTag("Resource");
                 nearestResource = GetClosestResource(new List<GameObject>(allResources));
-
-                if (nearestResource != null) {
-                    needsToFind = false;
-                }
-
-                print("sick now im gonna go there");
+                if (nearestResource == null) print("null");
                 agent.SetDestination(nearestResource.transform.position);
-                agent.isStopped = false;
+                findFirstResource = false;
             }
 
             if (Vector3.Distance(transform.position, nearestResource.transform.position) < .5) {
                 isIdle = false;
                 hasResource = true;
+                findFirstResource = true;
                 print(nearestResource.name+";");
                 if (nearestResource.name == "RocksPrefab(Clone)") {
                     RtsManager.current.teams[0].stone++; 
@@ -59,8 +50,6 @@ public class GatherResource : MonoBehaviour {
         //Once a resource is gathered, unit returns it to the capitol
         if (hasResource) {
             agent.SetDestination(homeBase.position);
-            agent.isStopped = false;
-
             if (Vector3.Distance(transform.position, homeBase.position) < 1) {
                 hasResource = false;
                 RtsManager.current.woodText.text =
@@ -69,7 +58,6 @@ public class GatherResource : MonoBehaviour {
                     "Stone: " + RtsManager.current.teams[0].stone.ToString();
 
                 isIdle = true;
-                needsToFind = true;
             }
         }
 	}

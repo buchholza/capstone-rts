@@ -19,7 +19,7 @@ public class SelectionManager : MonoBehaviour {
     private bool isSelecting = false;
     private Vector3 oldMousePosition;
     private Rect selectionBox;
-    private UnitAttribute lastUnitAttribute;
+    private UnitAttribute lastUnit;
     private List<GameObject> selectedUnits = new List<GameObject>();
 
     private const float CLICK_DELTA = 0.25f; // Maximum time between button press and release to be considered a click
@@ -130,7 +130,7 @@ public class SelectionManager : MonoBehaviour {
 
             if (hitWorked) {
                 var ct = Instantiate(crowdTargetPrefab, hit.point, Quaternion.identity).GetComponent<CrowdTarget>();
-                ct.SetManagedUnits(selectedUnits);
+                ct.SetManagedUnits(new List<GameObject>(selectedUnits));
 
                 for (int i = 0; i < selectedUnits.Count; i++) {
                     var unit = selectedUnits[i];
@@ -144,6 +144,12 @@ public class SelectionManager : MonoBehaviour {
                     agent.destination = hit.point;
                     if (agent.isStopped) agent.isStopped = false;
 
+                    CrowdMovement crowd = unit.GetComponent<CrowdMovement>();
+                    GatherResource gather = unit.GetComponent<GatherResource>();
+
+                    crowd.enabled = true;
+                    gather.enabled = false;
+
                     var crowdMover = unit.GetComponent<CrowdMovement>();
                     if (crowdMover) crowdMover.SetCrowdTarget(ct, i);
                 } 
@@ -152,15 +158,15 @@ public class SelectionManager : MonoBehaviour {
 
         // When selection is finished, sets up the relevant menu for the unit last selected
         if(selectedUnits.Count > 0) {
-            lastUnitAttribute = selectedUnits[0].GetComponent<UnitAttribute>();
+            lastUnit = selectedUnits[0].GetComponent<UnitAttribute>();
 
-            if (!lastUnitAttribute) {
+            if (!lastUnit) {
                 print("something is seriously messed up");
             }
 
-            if(lastUnitAttribute.type == UnitAttribute.UnitType.NormalUnit) {
+            if(lastUnit.type == UnitAttribute.UnitType.NormalUnit) {
                 //Access Health
-                float health = lastUnitAttribute.health;
+                float health = lastUnit.health;
                 //Set unit menu to visible, display health value
                 healthText.text = "Health: " + health;
                 unitMenu.SetActive(true);
@@ -190,8 +196,8 @@ public class SelectionManager : MonoBehaviour {
 
     public void BuildingUpgrade() {
         // if its not a unit its a building
-        if(lastUnitAttribute.type != UnitAttribute.UnitType.NormalUnit) {
-            if(lastUnitAttribute.type == UnitAttribute.UnitType.Capitol) {
+        if(lastUnit.type != UnitAttribute.UnitType.NormalUnit) {
+            if(lastUnit.type == UnitAttribute.UnitType.Capitol) {
                 var buildingUnit = selectedUnits[0].GetComponent<UpgradeCapitol>();
                 buildingUnit.version++;
             } else {
@@ -207,7 +213,7 @@ public class SelectionManager : MonoBehaviour {
 
     public void BuildingSell() {
         // if its not a unit its a building
-        if(lastUnitAttribute.type != UnitAttribute.UnitType.NormalUnit) {
+        if(lastUnit.type != UnitAttribute.UnitType.NormalUnit) {
             // Destroys the selected building
             Destroy(selectedUnits[0]);
         }
@@ -215,11 +221,23 @@ public class SelectionManager : MonoBehaviour {
 
     public void UnitUpgrade() {
         // test if its a unit
-        if(lastUnitAttribute.type == UnitAttribute.UnitType.NormalUnit) {
+        if(lastUnit.type == UnitAttribute.UnitType.NormalUnit) {
             // upgrades the unit's health to 30 from the default 10, then refreshes the health display
-            lastUnitAttribute.health = 30;
-            lastUnitAttribute.maxHealth = 30;
-            healthText.text = "Health: " + lastUnitAttribute.health;
+            lastUnit.health = 30;
+            lastUnit.maxHealth = 30;
+            healthText.text = "Health: " + lastUnit.health;
+        }
+    }
+
+    public void UnitGather() {
+        // test if its a unit
+        if(lastUnit.type == UnitAttribute.UnitType.NormalUnit) {
+            var gather = lastUnit.GetComponent<GatherResource>();
+            gather.enabled = true;
+            gather.Reset();
+
+            var crowd = lastUnit.GetComponent<CrowdMovement>();
+            crowd.enabled = false;
         }
     }
 
