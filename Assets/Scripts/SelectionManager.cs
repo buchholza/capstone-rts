@@ -16,7 +16,7 @@ public class SelectionManager : MonoBehaviour {
     private bool isSelecting = false;
     private Vector3 oldMousePosition;
     private Rect selectionBox;
-    private UnitAttribute lastUnit;
+    private UnitAttribute lastUnitAttribute;
     private List<GameObject> selectedUnits = new List<GameObject>();
 
     private const float CLICK_DELTA = 0.25f; // Maximum time between button press and release to be considered a click
@@ -36,7 +36,7 @@ public class SelectionManager : MonoBehaviour {
             oldMousePosition = Input.mousePosition;
 
             // Remove selection circles from previously selected units
-            foreach(var obj in FindObjectsOfType<Selectable>()) {
+            foreach(var obj in FindObjectsOfType<UnitAttribute>()) {
                 if(obj.selectionCircle != null) {
                     Destroy(obj.selectionCircle);
                     obj.selectionCircle = null;
@@ -49,7 +49,9 @@ public class SelectionManager : MonoBehaviour {
             // Define the selection box from the initial and current mouse positions
             selectionBox = PointsToRect(oldMousePosition, Input.mousePosition);
 
-            foreach(var obj in FindObjectsOfType<Selectable>()) {
+            foreach(var obj in FindObjectsOfType<UnitAttribute>()) {
+                if (!obj.isPlayerControlled) continue;
+
                 // Get position of object in screen coordinates
                 Vector3 position = Camera.main.WorldToScreenPoint(obj.gameObject.transform.position);
 
@@ -73,13 +75,14 @@ public class SelectionManager : MonoBehaviour {
         if(Input.GetMouseButtonUp(0)) {
             // Call OnDeselect for every unit and empty the list before replacing with new selections
             foreach(var unit in selectedUnits) {
-                if (unit) unit.GetComponent<Selectable>().OnDeselect();
+                if (unit) unit.GetComponent<UnitAttribute>().OnDeselect();
             }
             selectedUnits.Clear();
 
             // If user drags the mouse
             if(Time.time - pressTime > CLICK_DELTA) {
-                foreach(var obj in FindObjectsOfType<Selectable>()) {
+                foreach(var obj in FindObjectsOfType<UnitAttribute>()) {
+                    if (!obj.isPlayerControlled) continue;
                     // Get position of object in screen coordinates
                     Vector3 position = Camera.main.WorldToScreenPoint(obj.gameObject.transform.position);
 
@@ -92,15 +95,17 @@ public class SelectionManager : MonoBehaviour {
                 RaycastHit hit;
                 Ray ray = Camera.main.ScreenPointToRay(oldMousePosition);
                 if(Physics.Raycast(ray, out hit)) {
-                    if(hit.collider.gameObject.GetComponent<Selectable>() != null) {
-                        GameObject obj = hit.collider.gameObject;
-                        selectedUnits.Add(obj);
-                        Selectable selectable = obj.GetComponent<Selectable>();
+                    GameObject hitObject = hit.collider.gameObject;
+                    UnitAttribute hitUnit = hitObject.GetComponent<UnitAttribute>();
+
+                    if(hitUnit != null && hitUnit.isPlayerControlled) {
+                        selectedUnits.Add(hitObject);
+                        UnitAttribute selectable = hitUnit;
                         selectable.OnSelect();
                         selectable.selectionCircle = Instantiate(selectionCirclePrefab);
                         selectable.selectionCircle.transform.position = new Vector3(0, 0, 0);
-                        selectable.selectionCircle.transform.localScale = obj.transform.lossyScale * 1.75f;
-                        selectable.selectionCircle.transform.SetParent(obj.transform, false);
+                        selectable.selectionCircle.transform.localScale = hitObject.transform.lossyScale * 1.75f;
+                        selectable.selectionCircle.transform.SetParent(hitObject.transform, false);
                     } 
                 }
             }
@@ -140,16 +145,22 @@ public class SelectionManager : MonoBehaviour {
 
         // When selection is finished, sets up the relevant menu for the unit last selected
         if(selectedUnits.Count > 0) {
-            lastUnit = selectedUnits[0].GetComponent<UnitAttribute>();
+            lastUnitAttribute = selectedUnits[0].GetComponent<UnitAttribute>();
 
-            if(lastUnit != null) {
+            if (!lastUnitAttribute) {
+                print("something is seriously messed up");
+            }
+
+            if(lastUnitAttribute.isUnit) {
                 //Access Health
-                float health = lastUnit.health;
+                float health = lastUnitAttribute.health;
                 //Set unit menu to visible, display health value
                 healthText.text = "Health: " + health;
-                unitMenu.active = true;
+                unitMenu.SetActive(true);
+                buildingMenu.SetActive(false);
             } else {
-                buildingMenu.active = true;
+                unitMenu.SetActive(false);
+                buildingMenu.SetActive(true);
             }
         }
 	}
@@ -171,8 +182,8 @@ public class SelectionManager : MonoBehaviour {
     }
 
     public void BuildingUpgrade() {
-        // lastUnit is set to null if the last thing in the selection was a building
-        if(lastUnit == null) {
+        // if its not a unit its a building
+        if(!lastUnitAttribute.isUnit) {
             testText.text = "successfully pulled";
 
             var buildingUnit = selectedUnits[0].GetComponent<UpgradeCapitol>();
@@ -182,19 +193,20 @@ public class SelectionManager : MonoBehaviour {
     }
 
     public void BuildingSell() {
-        // lastUnit is set to null if the last thing in the selection was a building        
-        if(lastUnit == null) {
+        // if its not a unit its a building
+        if(!lastUnitAttribute.isUnit) {
             // Destroys the selected building
             Destroy(selectedUnits[0]);
         }
     }
 
     public void UnitUpgrade() {
-        // lastUnit is not set to null if the last thing in the selection was a unit
-        if(lastUnit != null) {
+        // test if its a unit
+        if(lastUnitAttribute.isUnit) {
             // upgrades the unit's health to 30 from the default 10, then refreshes the health display
-            lastUnit.health = 30;
-            healthText.text = "Health: " + lastUnit.health;
+            lastUnitAttribute.health = 30;
+            lastUnitAttribute.maxHealth = 30;
+            healthText.text = "Health: " + lastUnitAttribute.health;
         }
     }
 

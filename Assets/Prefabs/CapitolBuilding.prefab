@@ -859,10 +859,12 @@ MonoBehaviour:
   health: 20
   maxHealth: 20
   Aggression: {fileID: 0}
-  team: 0
   wanderNPC: {fileID: 0}
+  isUnit: 0
+  isPlayerControlled: 1
   actions: []
   healthBarFill: {fileID: 114761366139059872}
+  healthBarCanvas: {fileID: 0}
 --- !u!114 &114251439884832640
 MonoBehaviour:
   m_ObjectHideFlags: 1

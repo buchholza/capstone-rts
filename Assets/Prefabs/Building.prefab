@@ -24,7 +24,7 @@ GameObject:
   - component: {fileID: 23800559258199062}
   - component: {fileID: 208993881112977988}
   - component: {fileID: 114302854417956490}
-  - component: {fileID: 114731996005022022}
+  - component: {fileID: 114891091250782678}
   m_Layer: 0
   m_Name: Building
   m_TagString: Untagged
@@ -113,7 +113,7 @@ MonoBehaviour:
   woodText: {fileID: 0}
   spawnTimer: 15
   spawnOffset: {x: 5, y: 0, z: 5}
---- !u!114 &114731996005022022
+--- !u!114 &114891091250782678
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -121,10 +121,19 @@ MonoBehaviour:
   m_GameObject: {fileID: 1112016201945204}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d193e628d34f5234e834dfc79c094b41, type: 3}
+  m_Script: {fileID: 11500000, guid: 850892499fc100f4894494c0de8549fc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  selectionCircle: {fileID: 0}
+  LOS: 0
+  health: 20
+  maxHealth: 20
+  Aggression: {fileID: 0}
+  wanderNPC: {fileID: 0}
+  isUnit: 0
+  isPlayerControlled: 1
+  actions: []
+  healthBarFill: {fileID: 0}
+  healthBarCanvas: {fileID: 0}
 --- !u!208 &208993881112977988
 NavMeshObstacle:
   m_ObjectHideFlags: 1

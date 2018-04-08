@@ -4,14 +4,26 @@ using UnityEngine;
 using UnityEngine.UI;
 
 public class UnitAttribute : MonoBehaviour {
+    [HideInInspector]
+    public GameObject selectionCircle;
+    // Called when selected
+    public void OnSelect() {
+
+    }
+
+    // Called when deselected
+    public void OnDeselect() {
+
+    }
 
     public int LOS;
     public float health = 20.0f;
     public float maxHealth = 20.0f;
     private bool isAttacked;
     public Component Aggression;
-    public int team;
     public WanderNPC wanderNPC;
+    public bool isUnit = true;
+    public bool isPlayerControlled = true;
 
     public List<Action> actions = new List<Action>();
 
@@ -20,7 +32,7 @@ public class UnitAttribute : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-        if(team != 0) {
+        if(isPlayerControlled == false && isUnit) {
             wanderNPC = GetComponent<WanderNPC>();
             wanderNPC.enabled = true;
         }

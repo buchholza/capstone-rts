@@ -212,13 +212,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   LOS: 3
-  safeArea: {x: 0, y: 0, z: 0}
-  safeRadius: 0
   health: 10
+  maxHealth: 20
   Aggression: {fileID: 0}
-  team: 1
   wanderNPC: {fileID: 0}
+  isUnit: 1
+  isPlayerControlled: 0
   actions: []
+  healthBarFill: {fileID: 0}
+  healthBarCanvas: {fileID: 0}
 --- !u!114 &114372863297737570
 MonoBehaviour:
   m_ObjectHideFlags: 1
