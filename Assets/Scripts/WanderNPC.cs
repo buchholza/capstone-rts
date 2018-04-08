@@ -3,20 +3,12 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class WanderNPC : MonoBehaviour {
-
-
     public float wanderRadius;
     public float wanderTimer;
 
     private Transform target;
     private UnityEngine.AI.NavMeshAgent agent;
     private float timer;
-
-    // Use this for initialization
-    void Start() {
-
-    }
-
 
     void OnEnable() {
         agent = GetComponent<UnityEngine.AI.NavMeshAgent>();

@@ -10,11 +10,6 @@ public class SellBuilding : MonoBehaviour {
         isSelecting = true;
     }
 
-	// Use this for initialization
-	void Start () {
-		
-	}
-	
 	// Update is called once per frame
 	void Update () {
         if(isSelecting && Input.GetMouseButtonDown(0)) {

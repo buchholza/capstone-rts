@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 using UnityEngine.AI;
+using UnityEngine.UI;
 
 public class RtsManager : MonoBehaviour {
     public static RtsManager current = null;
@@ -10,6 +11,9 @@ public class RtsManager : MonoBehaviour {
     public PlayerInfo player = new PlayerInfo();
     public PlayerInfo enemy = new PlayerInfo();
     public GameObject groundCollider;
+
+    public Text stoneText;
+    public Text woodText;
 
     public Vector3? ScreenPointToMapPosition(Vector2 point) {
         var ray = Camera.main.ScreenPointToRay(point);
@@ -52,6 +56,7 @@ public class RtsManager : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
         current = this;
+        current.woodText.text = "test";
 	}
 	
 	// Update is called once per frame

@@ -38,6 +38,7 @@ GameObject:
   - component: {fileID: 114660886225615500}
   - component: {fileID: 135489924761810942}
   - component: {fileID: 114258465932686860}
+  - component: {fileID: 114857609455683152}
   m_Layer: 8
   m_Name: Unit
   m_TagString: Untagged
@@ -182,7 +183,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1467617781966990}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -8.83438, y: -0.2, z: -1.0137477}
+  m_LocalPosition: {x: -1.1346011, y: -0.2, z: -7.348862}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4226466892843344}
@@ -406,9 +407,23 @@ MonoBehaviour:
   wanderNPC: {fileID: 0}
   isPlayerControlled: 1
   type: 0
-  actions: []
   healthBarFill: {fileID: 114303508918832800}
   healthBarCanvas: {fileID: 224454972831149600}
+  manager: {fileID: 0}
+--- !u!114 &114857609455683152
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1347345562115204}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 11c1e50ecf1390b42b7ccc13f43bb10c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  agent: {fileID: 195752420500067304}
+  allResources: []
+  homeBase: {fileID: 0}
 --- !u!135 &135489924761810942
 SphereCollider:
   m_ObjectHideFlags: 1

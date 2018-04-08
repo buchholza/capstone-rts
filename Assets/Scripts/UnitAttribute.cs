@@ -9,15 +9,12 @@ public class UnitAttribute : MonoBehaviour {
 
     [HideInInspector]
     public GameObject selectionCircle;
-    // Called when selected
-    public void OnSelect() {
 
-    }
+    // Called when selected
+    public void OnSelect() { }
 
     // Called when deselected
-    public void OnDeselect() {
-
-    }
+    public void OnDeselect() { }
 
     public int LOS;
     public float health = 20.0f;
@@ -30,6 +27,8 @@ public class UnitAttribute : MonoBehaviour {
 
     public Image healthBarFill;
     public Transform healthBarCanvas;
+
+    public RtsManager manager;
 
 	// Use this for initialization
 	void Start () {

@@ -6,7 +6,6 @@ using UnityEngine.UI;
 
 public class PeriodicSpawn : MonoBehaviour {
     public GameObject unit;
-    public Text woodText;
 
     public float spawnTimer = 10f;
     public  Vector3 spawnOffset = new Vector3(5.0f, 0.0f, 5.0f);
@@ -20,6 +19,10 @@ public class PeriodicSpawn : MonoBehaviour {
         Vector3 center = transform.position;
         Vector3 location = center + spawnOffset;
 
-        GameObject.Instantiate(unit, location, transform.rotation);
+        var newUnit = GameObject.Instantiate(unit, location, transform.rotation);
+        var gather = newUnit.GetComponent<GatherResource>();
+        if (gather) {
+            gather.homeBase = gameObject.transform;
+        }
     }
 }
