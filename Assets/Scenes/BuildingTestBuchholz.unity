@@ -1152,10 +1152,12 @@ MonoBehaviour:
   buildingMenu: {fileID: 1139057720}
   unitToTrain: {fileID: 1347345562115204, guid: 02f17d062d5a18a4db9aaa4e822c2346,
     type: 2}
-  buildingUpgradePrefab: {fileID: 1112016201945204, guid: b4ab6122ed51ee3468efb02dd3dda838,
-    type: 2}
   healthText: {fileID: 1685943686}
   testText: {fileID: 0}
+  buildingUpgradePrefab: {fileID: 1112016201945204, guid: b4ab6122ed51ee3468efb02dd3dda838,
+    type: 2}
+  crowdTargetPrefab: {fileID: 1775431406000416, guid: 72d63aea4fcf49449a9db9b4887e2e9e,
+    type: 2}
 --- !u!1 &572608206
 GameObject:
   m_ObjectHideFlags: 0
@@ -2518,8 +2520,7 @@ Prefab:
       value: 
       objectReference: {fileID: 1667224120439090, guid: d08622233d05b8d4fbfc528805331e01,
         type: 2}
-    - target: {fileID: 114560381937318172, guid: 2f1adedfd4940e8408faa16b9b0e0775,
-        type: 2}
+    - target: {fileID: 0}
       propertyPath: m_Enabled
       value: 0
       objectReference: {fileID: 0}
@@ -2539,7 +2540,7 @@ Prefab:
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents:
-    - {fileID: 114560381937318172, guid: 2f1adedfd4940e8408faa16b9b0e0775, type: 2}
+    - {fileID: 0}
     - {fileID: 114251439884832640, guid: 2f1adedfd4940e8408faa16b9b0e0775, type: 2}
   m_ParentPrefab: {fileID: 100100000, guid: 2f1adedfd4940e8408faa16b9b0e0775, type: 2}
   m_IsPrefabParent: 0
@@ -2569,7 +2570,7 @@ MonoBehaviour:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 981449679}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ec1be6535eb850e48a694ad5027d3232, type: 3}
   m_Name: 

@@ -10,9 +10,11 @@ public class SelectionManager : MonoBehaviour {
     public GameObject unitMenu;
     public GameObject buildingMenu;
     public GameObject unitToTrain;
-    public GameObject buildingUpgradePrefab;
     public Text healthText;
     public Text testText;
+
+    public GameObject buildingUpgradePrefab;
+    public GameObject crowdTargetPrefab;
 
     private bool isSelecting = false;
     private Vector3 oldMousePosition;
@@ -115,33 +117,32 @@ public class SelectionManager : MonoBehaviour {
         }
 
         // When player right-clicks, send selected units to location they clicked
+
         if(Input.GetMouseButtonDown(1)) {
-            //Generates an offset for template for each unit
-            int width = 0;
-            int depth = 0;
-            Vector3 offsetGrid = new Vector3(width * 2, 0, depth * 2);
+            RaycastHit hit;
+            Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+            bool hitWorked = Physics.Raycast(ray, out hit);
 
-            foreach (var unit in selectedUnits) {
-                NavMeshAgent agent = unit.GetComponent<NavMeshAgent>();
-                if(agent == null) {
-                    continue;
-                }
-                
-                RaycastHit hit;
-                Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-                if (Physics.Raycast(ray, out hit)) {
-                    agent.destination = hit.point + offsetGrid;
-                }
+            if (hitWorked) {
+                var ct = Instantiate(crowdTargetPrefab, hit.point, Quaternion.identity).GetComponent<CrowdTarget>();
+                ct.SetManagedUnits(selectedUnits);
 
-                //increments the offset to provide a 5 x '#ofUnitsSelected/5' grid for the units to move to.
-                if (width < 5) {
-                    width++;
-                }
-                else {
-                    width = 0;
-                    depth++;
-                }
-            } 
+                for (int i = 0; i < selectedUnits.Count; i++) {
+                    var unit = selectedUnits[i];
+
+                    if (!unit) continue;
+
+                    NavMeshAgent agent = unit.GetComponent<NavMeshAgent>();
+                    if(agent == null) {
+                        continue;
+                    }
+                    agent.destination = hit.point;
+                    if (agent.isStopped) agent.Resume();
+
+                    var crowdMover = unit.GetComponent<CrowdMovement>();
+                    if (crowdMover) crowdMover.SetCrowdTarget(ct, i);
+                } 
+            }
         }
 
         // When selection is finished, sets up the relevant menu for the unit last selected

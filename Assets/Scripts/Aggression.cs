@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Aggression : MonoBehaviour {
 
-    //private int teamNum;
+    private bool isPlayerControlled;
     public UnitAttribute unitAttribute;
     public LayerMask unitMask;
     public bool attacking;
@@ -13,7 +13,7 @@ public class Aggression : MonoBehaviour {
     // Use this for initialization
     void Start () {
         unitAttribute = GetComponent<UnitAttribute>();
-        //teamNum = unitAttribute.team;
+        isPlayerControlled = unitAttribute.isPlayerControlled;
         unitMask = LayerMask.GetMask("Unit");
 	}
 	
@@ -29,6 +29,8 @@ public class Aggression : MonoBehaviour {
     public void Scan() {
         Collider[] hitColliders = Physics.OverlapSphere(transform.position, unitAttribute.LOS, unitMask);
         if (hitColliders.Length != 0) {
+
+            // it should check if it's on its own team
             Attack(hitColliders[0]);
         }
         else {
@@ -41,7 +43,7 @@ public class Aggression : MonoBehaviour {
         unitAttribute.wanderNPC.enabled = false;
         transform.position = Vector3.MoveTowards(transform.position, target.transform.position, 2 * Time.deltaTime);
         enemy.beingAttacked(4);
-        print(enemy.health);
+        // print(enemy.health);
     }
 
         

@@ -37,7 +37,7 @@ GameObject:
   - component: {fileID: 195752420500067304}
   - component: {fileID: 114660886225615500}
   - component: {fileID: 135489924761810942}
-  - component: {fileID: 114730235457040776}
+  - component: {fileID: 114258465932686860}
   m_Layer: 8
   m_Name: Unit
   m_TagString: Untagged
@@ -321,6 +321,18 @@ MonoBehaviour:
   m_BlockingMask:
     serializedVersion: 2
     m_Bits: 4294967295
+--- !u!114 &114258465932686860
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1347345562115204}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 35dee2b76827e4c498935ac0618d22a0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  moveTarget: {x: 0, y: 0, z: 0}
 --- !u!114 &114303508918832800
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -386,27 +398,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 850892499fc100f4894494c0de8549fc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  selectionCircle: {fileID: 0}
   LOS: 0
   health: 10
   maxHealth: 10
   Aggression: {fileID: 0}
-  team: 0
   wanderNPC: {fileID: 0}
+  isPlayerControlled: 1
+  type: 0
   actions: []
   healthBarFill: {fileID: 114303508918832800}
   healthBarCanvas: {fileID: 224454972831149600}
---- !u!114 &114730235457040776
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1347345562115204}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d193e628d34f5234e834dfc79c094b41, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  selectionCircle: {fileID: 0}
 --- !u!135 &135489924761810942
 SphereCollider:
   m_ObjectHideFlags: 1

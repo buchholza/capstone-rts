@@ -31,7 +31,7 @@ public class EnemyExpand : MonoBehaviour {
 
         Vector3 location = center + offset;
         
-        GameObject.Instantiate(building, location, Quaternion.identity);
+        Instantiate(building, location, Quaternion.identity);
 
     }
 	

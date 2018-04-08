@@ -112,7 +112,7 @@ MonoBehaviour:
   unit: {fileID: 1347345562115204, guid: 02f17d062d5a18a4db9aaa4e822c2346, type: 2}
   woodText: {fileID: 0}
   spawnTimer: 15
-  spawnOffset: {x: 0, y: 0, z: 1}
+  spawnOffset: {x: 0, y: 0, z: -1}
 --- !u!114 &114891091250782678
 MonoBehaviour:
   m_ObjectHideFlags: 1
