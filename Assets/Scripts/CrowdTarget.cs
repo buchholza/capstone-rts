@@ -24,7 +24,10 @@ public class CrowdTarget : MonoBehaviour {
 
     void RemoveTarget () {
         foreach (GameObject unit in managedUnits) {
-            if (unit) unit.GetComponent<CrowdMovement>().DestroyCrowdTarget();
+            if (unit) {
+                CrowdMovement cm = unit.GetComponent<CrowdMovement>();
+                if (cm) cm.DestroyCrowdTarget();
+            }
         }
         Destroy(gameObject);
     }

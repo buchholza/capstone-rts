@@ -28,8 +28,6 @@ public class UnitAttribute : MonoBehaviour {
     public bool isPlayerControlled = true;
     public UnitType type = UnitType.NormalUnit;
 
-    public List<Action> actions = new List<Action>();
-
     public Image healthBarFill;
     public Transform healthBarCanvas;
 

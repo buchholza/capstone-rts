@@ -53,7 +53,7 @@ public class SelectionManager : MonoBehaviour {
             selectionBox = PointsToRect(oldMousePosition, Input.mousePosition);
 
             foreach(var obj in FindObjectsOfType<UnitAttribute>()) {
-                if (!obj.isPlayerControlled) continue;
+                if (!obj.isPlayerControlled || obj.type != UnitAttribute.UnitType.NormalUnit) continue;
 
                 // Get position of object in screen coordinates
                 Vector3 position = Camera.main.WorldToScreenPoint(obj.gameObject.transform.position);
@@ -82,6 +82,9 @@ public class SelectionManager : MonoBehaviour {
             }
             selectedUnits.Clear();
 
+            buildingMenu.SetActive(false);
+            unitMenu.SetActive(false);
+
             // If user drags the mouse
             if(Time.time - pressTime > CLICK_DELTA) {
                 foreach(var obj in FindObjectsOfType<UnitAttribute>()) {
@@ -90,8 +93,10 @@ public class SelectionManager : MonoBehaviour {
                     Vector3 position = Camera.main.WorldToScreenPoint(obj.gameObject.transform.position);
 
                     if(selectionBox.Contains(position)) {
-                        selectedUnits.Add(obj.gameObject);
-                        obj.OnSelect();
+                        if (obj.type == UnitAttribute.UnitType.NormalUnit) {
+                            selectedUnits.Add(obj.gameObject);
+                            obj.OnSelect();
+                        }
                     }
                 }
             } else { // If user clicks the mouse
@@ -219,7 +224,7 @@ public class SelectionManager : MonoBehaviour {
     }
 
     public void OnTrainUnitButtonClick() {
-        Invoke("TrainUnit", 5);
+        Invoke("TrainUnit", 2);
     }
 
     public void TrainUnit() {
