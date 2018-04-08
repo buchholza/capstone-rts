@@ -10,6 +10,7 @@ public class SelectionManager : MonoBehaviour {
     public GameObject unitMenu;
     public GameObject buildingMenu;
     public GameObject unitToTrain;
+    public GameObject buildingUpgradePrefab;
     public Text healthText;
     public Text testText;
 
@@ -184,11 +185,17 @@ public class SelectionManager : MonoBehaviour {
     public void BuildingUpgrade() {
         // if its not a unit its a building
         if(lastUnitAttribute.type != UnitAttribute.UnitType.NormalUnit) {
-            testText.text = "successfully pulled";
+            if(lastUnitAttribute.type == UnitAttribute.UnitType.Capitol) {
+                var buildingUnit = selectedUnits[0].GetComponent<UpgradeCapitol>();
+                buildingUnit.version++;
+            } else {
+                var oldBuilding = selectedUnits[0];
+                Destroy(oldBuilding);
+                GameObject.Instantiate(buildingUpgradePrefab, oldBuilding.transform.position, oldBuilding.transform.rotation);
+            }
 
-            var buildingUnit = selectedUnits[0].GetComponent<UpgradeCapitol>();
-            buildingUnit.version++;
-            testText.text = "successfully updated";
+            // testText.text = "successfully pulled";
+            // testText.text = "successfully updated";
         }
     }
 

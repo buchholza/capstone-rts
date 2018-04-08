@@ -1152,6 +1152,8 @@ MonoBehaviour:
   buildingMenu: {fileID: 1139057720}
   unitToTrain: {fileID: 1347345562115204, guid: 02f17d062d5a18a4db9aaa4e822c2346,
     type: 2}
+  buildingUpgradePrefab: {fileID: 1112016201945204, guid: b4ab6122ed51ee3468efb02dd3dda838,
+    type: 2}
   healthText: {fileID: 1685943686}
   testText: {fileID: 0}
 --- !u!1 &572608206
@@ -5140,21 +5142,6 @@ Prefab:
       propertyPath: woodText
       value: 
       objectReference: {fileID: 837862751}
-    - target: {fileID: 224652505508399636, guid: 2f1adedfd4940e8408faa16b9b0e0775,
-        type: 2}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 224839229710390886, guid: 2f1adedfd4940e8408faa16b9b0e0775,
-        type: 2}
-      propertyPath: m_LocalPosition.z
-      value: 1.09
-      objectReference: {fileID: 0}
-    - target: {fileID: 224839229710390886, guid: 2f1adedfd4940e8408faa16b9b0e0775,
-        type: 2}
-      propertyPath: m_AnchoredPosition.y
-      value: 2.89
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 2f1adedfd4940e8408faa16b9b0e0775, type: 2}
   m_IsPrefabParent: 0

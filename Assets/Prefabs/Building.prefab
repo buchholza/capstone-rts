@@ -112,7 +112,7 @@ MonoBehaviour:
   unit: {fileID: 1347345562115204, guid: 02f17d062d5a18a4db9aaa4e822c2346, type: 2}
   woodText: {fileID: 0}
   spawnTimer: 15
-  spawnOffset: {x: 5, y: 0, z: 5}
+  spawnOffset: {x: 0, y: 0, z: 1}
 --- !u!114 &114891091250782678
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -124,13 +124,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 850892499fc100f4894494c0de8549fc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  selectionCircle: {fileID: 0}
   LOS: 0
   health: 20
   maxHealth: 20
   Aggression: {fileID: 0}
   wanderNPC: {fileID: 0}
-  isUnit: 0
   isPlayerControlled: 1
+  type: 1
   actions: []
   healthBarFill: {fileID: 0}
   healthBarCanvas: {fileID: 0}
