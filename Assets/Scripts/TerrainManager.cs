@@ -5,7 +5,7 @@ using UnityEngine.AI;
 
 using Random = UnityEngine.Random;
 
-public class MeshManager : MonoBehaviour {
+public class TerrainManager : MonoBehaviour {
 
 	// Use this for initialization
     public GameObject treeObject;

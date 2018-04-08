@@ -5,8 +5,6 @@ using UnityEngine;
 public class UnitAttribute : MonoBehaviour {
 
     public int LOS;
-    public Vector3 safeArea;
-    public float safeRadius;
     public float health;
     private bool isAttacked;
     public Component Aggression;
@@ -21,7 +19,6 @@ public class UnitAttribute : MonoBehaviour {
             wanderNPC = GetComponent<WanderNPC>();
             wanderNPC.enabled = true;
         }
-        safeArea = new Vector3(safeRadius,0,safeRadius);
 	}
 	
 	// Update is called once per frame
