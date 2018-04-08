@@ -151,7 +151,7 @@ public class SelectionManager : MonoBehaviour {
                 print("something is seriously messed up");
             }
 
-            if(lastUnitAttribute.isUnit) {
+            if(lastUnitAttribute.type == UnitAttribute.UnitType.NormalUnit) {
                 //Access Health
                 float health = lastUnitAttribute.health;
                 //Set unit menu to visible, display health value
@@ -183,7 +183,7 @@ public class SelectionManager : MonoBehaviour {
 
     public void BuildingUpgrade() {
         // if its not a unit its a building
-        if(!lastUnitAttribute.isUnit) {
+        if(lastUnitAttribute.type != UnitAttribute.UnitType.NormalUnit) {
             testText.text = "successfully pulled";
 
             var buildingUnit = selectedUnits[0].GetComponent<UpgradeCapitol>();
@@ -194,7 +194,7 @@ public class SelectionManager : MonoBehaviour {
 
     public void BuildingSell() {
         // if its not a unit its a building
-        if(!lastUnitAttribute.isUnit) {
+        if(lastUnitAttribute.type != UnitAttribute.UnitType.NormalUnit) {
             // Destroys the selected building
             Destroy(selectedUnits[0]);
         }
@@ -202,7 +202,7 @@ public class SelectionManager : MonoBehaviour {
 
     public void UnitUpgrade() {
         // test if its a unit
-        if(lastUnitAttribute.isUnit) {
+        if(lastUnitAttribute.type == UnitAttribute.UnitType.NormalUnit) {
             // upgrades the unit's health to 30 from the default 10, then refreshes the health display
             lastUnitAttribute.health = 30;
             lastUnitAttribute.maxHealth = 30;

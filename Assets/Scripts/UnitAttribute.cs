@@ -4,6 +4,9 @@ using UnityEngine;
 using UnityEngine.UI;
 
 public class UnitAttribute : MonoBehaviour {
+    
+    public enum UnitType { NormalUnit, Building, Capitol };
+
     [HideInInspector]
     public GameObject selectionCircle;
     // Called when selected
@@ -22,8 +25,8 @@ public class UnitAttribute : MonoBehaviour {
     private bool isAttacked;
     public Component Aggression;
     public WanderNPC wanderNPC;
-    public bool isUnit = true;
     public bool isPlayerControlled = true;
+    public UnitType type = UnitType.NormalUnit;
 
     public List<Action> actions = new List<Action>();
 
@@ -32,7 +35,7 @@ public class UnitAttribute : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-        if(isPlayerControlled == false && isUnit) {
+        if(isPlayerControlled == false && type == UnitType.NormalUnit) {
             wanderNPC = GetComponent<WanderNPC>();
             wanderNPC.enabled = true;
         }
