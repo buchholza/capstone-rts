@@ -17,7 +17,7 @@ public class TerrainManager : MonoBehaviour {
 	void Start () {
 		Mesh mesh = GetComponent<MeshFilter>().mesh;
 
-        // this NavMeshBuildSettings is copy pasted from some place
+        // this nav mesh stuff is mostly copy pasted from some place
 
         NavMeshBuildSettings bs = new NavMeshBuildSettings() {
             agentClimb = 10f,
@@ -30,13 +30,9 @@ public class TerrainManager : MonoBehaviour {
             voxelSize = 0.005f /*whatever, doesnt matter for quad source*/
         };
 
-        // mesh.Clear();
-
         mesh.RecalculateNormals();
         mesh.RecalculateTangents();
         mesh.RecalculateBounds();
-
-        // this next part is also copy pasted from some place
 
         var sources = new List<NavMeshBuildSource>() {
             new NavMeshBuildSource() {
@@ -50,12 +46,13 @@ public class TerrainManager : MonoBehaviour {
         };
 
         var data = NavMeshBuilder.BuildNavMeshData(bs, sources, mesh.bounds, Vector3.zero, Quaternion.identity);
-        var res = UnityEngine.AI.NavMesh.AddNavMeshData(data);
+        UnityEngine.AI.NavMesh.AddNavMeshData(data);
 
-        var triangulation = UnityEngine.AI.NavMesh.CalculateTriangulation();//no areas, vertices or triangles
+        UnityEngine.AI.NavMesh.CalculateTriangulation();//no areas, vertices or triangles
 
         GetComponent<MeshCollider>().sharedMesh = mesh;
 
+        // decorate terrain
         for (int x = 0; x < halfWidth * 2; x++) {
             for (int z = 0; z < halfHeight * 2; z++) {
                 int xx = x - halfWidth;
@@ -72,7 +69,6 @@ public class TerrainManager : MonoBehaviour {
                 }
             }
         }
-
 	}
 
     void addTree (int x, int z) {

@@ -55,7 +55,6 @@ public class RtsManager : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
         current = this;
-        current.woodText.text = "test";
 	}
 	
 	// Update is called once per frame
