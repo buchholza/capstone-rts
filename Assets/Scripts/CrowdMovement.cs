@@ -36,7 +36,7 @@ public class CrowdMovement : MonoBehaviour {
             // if we're gathering then we shouldn't bother with this stuff at all
             var gather = gameObject.GetComponent<GatherResource>();
             if (gather && gather.enabled) {
-                crowdTarget.RemoveIndex(myIndex);
+                // crowdTarget.RemoveIndex(myIndex);
                 DestroyCrowdTarget();
                 return;
             }
