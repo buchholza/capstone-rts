@@ -26,9 +26,13 @@ public class CrowdMovement : MonoBehaviour {
 
     void CheckTarget () {
         if (!crowdTarget && moveTarget != null) {
+            var gather = gameObject.GetComponent<GatherResource>();
+            if (gather && gather.enabled) return;
             float distance = Vector3.Distance(transform.position, moveTarget);
-            if (distance < 1.0f)
+            if (distance < 1.0f) {
+                print("STOP");
                 gameObject.GetComponent<UnityEngine.AI.NavMeshAgent>().isStopped = true;
+            }
         }
     }
 }

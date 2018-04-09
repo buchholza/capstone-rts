@@ -233,11 +233,26 @@ public class SelectionManager : MonoBehaviour {
         // test if its a unit
         if(lastUnit.type == UnitAttribute.UnitType.NormalUnit) {
             var gather = lastUnit.GetComponent<GatherResource>();
-            gather.enabled = true;
-            gather.Reset();
+            if (gather) {
+                if (gather.enabled == false) {
+                    gather.enabled = true;
+                    gather.Reset();
 
-            var crowd = lastUnit.GetComponent<CrowdMovement>();
-            crowd.enabled = false;
+                    var crowd = lastUnit.GetComponent<CrowdMovement>();
+                    if (crowd) crowd.enabled = false;
+
+                    var agent = lastUnit.GetComponent<NavMeshAgent>();
+                    if (agent) agent.isStopped = false;
+                } else {
+                    gather.enabled = false;
+
+                    var crowd = lastUnit.GetComponent<CrowdMovement>();
+                    if (crowd) crowd.enabled = true;
+
+                    var agent = lastUnit.GetComponent<NavMeshAgent>();
+                    if (agent) agent.isStopped = true;
+                }
+            }
         }
     }
 

@@ -37,9 +37,7 @@ public class GatherResource : MonoBehaviour {
                     needsToFind = false;
                 }
 
-                print("sick now im gonna go there");
                 agent.SetDestination(nearestResource.transform.position);
-                agent.isStopped = false;
             }
 
             if (Vector3.Distance(transform.position, nearestResource.transform.position) < .5) {
@@ -59,7 +57,6 @@ public class GatherResource : MonoBehaviour {
         //Once a resource is gathered, unit returns it to the capitol
         if (hasResource) {
             agent.SetDestination(homeBase.position);
-            agent.isStopped = false;
 
             if (Vector3.Distance(transform.position, homeBase.position) < 1) {
                 hasResource = false;
