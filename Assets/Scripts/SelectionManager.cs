@@ -53,6 +53,8 @@ public class SelectionManager : MonoBehaviour {
             selectionBox = PointsToRect(oldMousePosition, Input.mousePosition);
 
             foreach(var obj in FindObjectsOfType<UnitAttribute>()) {
+
+                // we are only interested in selecting units we can control
                 if (!obj.isPlayerControlled || obj.type != UnitAttribute.UnitType.NormalUnit) continue;
 
                 // Get position of object in screen coordinates
@@ -82,6 +84,7 @@ public class SelectionManager : MonoBehaviour {
             }
             selectedUnits.Clear();
 
+            // when we deselect close any open menus
             buildingMenu.SetActive(false);
             unitMenu.SetActive(false);
 
@@ -129,6 +132,7 @@ public class SelectionManager : MonoBehaviour {
             bool hitWorked = Physics.Raycast(ray, out hit);
 
             if (hitWorked) {
+                // tell the crowd system what units were sending where
                 var ct = Instantiate(crowdTargetPrefab, hit.point, Quaternion.identity).GetComponent<CrowdTarget>();
                 ct.SetManagedUnits(new List<GameObject>(selectedUnits));
 
@@ -143,7 +147,8 @@ public class SelectionManager : MonoBehaviour {
                     }
                     agent.destination = hit.point;
                     if (agent.isStopped) agent.isStopped = false;
-
+                    
+                    // if the unit was gathering resources before, now it should stop
                     CrowdMovement crowd = unit.GetComponent<CrowdMovement>();
                     GatherResource gather = unit.GetComponent<GatherResource>();
 

@@ -16,12 +16,16 @@ public class CrowdTarget : MonoBehaviour {
         totalUnits = managedUnits.Count;
     }
 
+    // called when this target still has people trying to get to it and one of
+    // them gets a new target
     public void RemoveIndex (int index) {
        totalUnits--;
        if (totalUnits <= 0) 
        managedUnits[index] = null;
     }
 
+    // called when all the units that are trying to get to this target either
+    // get new targets or make it here
     void RemoveTarget () {
         foreach (GameObject unit in managedUnits) {
             if (unit) {
@@ -33,6 +37,8 @@ public class CrowdTarget : MonoBehaviour {
     }
 
     void CheckUnits () {
+        // if totalunits is -1 we're still being made or something?
+        // this should never happen but just in case we'll just not do anything
         if (totalUnits == -1) return;
 
         // loop though all units and see how many are close to the target
@@ -48,5 +54,8 @@ public class CrowdTarget : MonoBehaviour {
         if (unitsInside > totalUnits - 3) {
             RemoveTarget();
         }
+
+        // the 3.0f and the 3 in that function were totally arbitrary so those
+        // be tweaked if nessasary
     }
 }
