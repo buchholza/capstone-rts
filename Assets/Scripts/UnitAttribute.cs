@@ -23,6 +23,7 @@ public class UnitAttribute : MonoBehaviour {
     public Component Aggression;
     public WanderNPC wanderNPC;
     public bool isPlayerControlled = true;
+    // public int team = 0;
     public UnitType type = UnitType.NormalUnit;
 
     public Image healthBarFill;
