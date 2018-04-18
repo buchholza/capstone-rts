@@ -34,8 +34,10 @@ public class TerrainManager : MonoBehaviour {
 
         Vector2[] uvs = new Vector2[mesh.vertices.Length];
 
+        int scale = 16;
+
         for (int i = 0; i < uvs.Length; i++) {
-            uvs[i] = new Vector2(mesh.vertices[i].x / 4 + mesh.vertices[i].y / 4, mesh.vertices[i].z / 4 + mesh.vertices[i].y / 4);
+            uvs[i] = new Vector2(mesh.vertices[i].x / scale + mesh.vertices[i].y / scale, mesh.vertices[i].z / scale + mesh.vertices[i].y / scale);
         }
 
         mesh.uv = uvs;
