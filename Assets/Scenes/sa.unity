@@ -2970,7 +2970,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ec1be6535eb850e48a694ad5027d3232, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  building: {fileID: 1112016201945204, guid: d196bda9f916e404bb6714f984ced138, type: 2}
+  building: {fileID: 1297390429244644, guid: b69e281cfde193848bb5380372f660c8, type: 2}
   innerRadius: 3
   outerRadius: 10
   spawnTimer: 20
@@ -5471,8 +5471,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   treeObject:
-  - {fileID: 1005474799092082, guid: 62109cb65e4cd6942a52e4c360a89f50, type: 2}
-  - {fileID: 1144390267723730, guid: 25b8c5dd0aa48414290ef3451c255ec9, type: 2}
+  - {fileID: 1320891416011930, guid: b3b99ebfc2f605b4fb4cc1b2114146e0, type: 2}
+  - {fileID: 1015776715386176, guid: 5c150257767764d40ade383ddb4d42d1, type: 2}
   rockObject:
   - {fileID: 179510, guid: bee8d047e16101c438fb33382ab66935, type: 2}
   - {fileID: 190226, guid: 50673ce029549f04d8a30a3886523aad, type: 2}
