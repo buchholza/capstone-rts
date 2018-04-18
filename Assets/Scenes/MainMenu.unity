@@ -1576,6 +1576,7 @@ MonoBehaviour:
   - {fileID: 154622, guid: 9991b226736b6964782c28d07cef8881, type: 2}
   halfWidth: 30
   halfHeight: 30
+  UVscale: -3
 --- !u!23 &1808834542
 MeshRenderer:
   m_ObjectHideFlags: 0
