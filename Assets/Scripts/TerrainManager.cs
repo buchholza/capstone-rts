@@ -14,6 +14,8 @@ public class TerrainManager : MonoBehaviour {
     public int halfWidth = 10;
     public int halfHeight = 10;
 
+    public int UVscale = 8;
+
 	void Start () {
 		Mesh mesh = GetComponent<MeshFilter>().mesh;
 
@@ -34,10 +36,8 @@ public class TerrainManager : MonoBehaviour {
 
         Vector2[] uvs = new Vector2[mesh.vertices.Length];
 
-        int scale = 16;
-
         for (int i = 0; i < uvs.Length; i++) {
-            uvs[i] = new Vector2(mesh.vertices[i].x / scale + mesh.vertices[i].y / scale, mesh.vertices[i].z / scale + mesh.vertices[i].y / scale);
+            uvs[i] = new Vector2(mesh.vertices[i].x / UVscale + mesh.vertices[i].y / UVscale, mesh.vertices[i].z / UVscale + mesh.vertices[i].y / UVscale);
         }
 
         mesh.uv = uvs;
