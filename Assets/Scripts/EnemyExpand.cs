@@ -17,7 +17,7 @@ public class EnemyExpand : MonoBehaviour {
     void Build () {
         Vector3 center = new Vector3(
             transform.position.x,
-            transform.position.y + 0.5f,
+            transform.position.y,
             transform.position.z
         );
 
@@ -31,7 +31,7 @@ public class EnemyExpand : MonoBehaviour {
 
         Vector3 location = center + offset;
 
-        Vector3 groundLocation = center + offset + new Vector3(0, -0.5f, 0);
+        Vector3 groundLocation = center + offset + new Vector3(0, 0, 0);
         
         UnityEngine.AI.NavMeshHit hit;
         if (UnityEngine.AI.NavMesh.SamplePosition(groundLocation, out hit, 0.1f, UnityEngine.AI.NavMesh.AllAreas)) {
