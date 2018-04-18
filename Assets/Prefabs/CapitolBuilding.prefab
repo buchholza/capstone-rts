@@ -22,7 +22,8 @@ GameObject:
   - component: {fileID: 114630222186212068}
   - component: {fileID: 114251439884832640}
   - component: {fileID: 114189914319909184}
-  m_Layer: 0
+  - component: {fileID: 65399366606081658}
+  m_Layer: 8
   m_Name: CapitolBuilding
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -37,7 +38,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4358792859145996}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Capitol2Color
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -54,7 +55,7 @@ GameObject:
   - component: {fileID: 4545728931597504}
   - component: {fileID: 33037266779635968}
   - component: {fileID: 23132472708412134}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Piece001
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -69,7 +70,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4086082089358188}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: upgrade2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -84,7 +85,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4429922117315660}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: upgrade0
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -99,7 +100,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4730220829526636}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Capitol1Color
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -116,7 +117,7 @@ GameObject:
   - component: {fileID: 224204125919276902}
   - component: {fileID: 222900341097497212}
   - component: {fileID: 114097434229349086}
-  m_Layer: 5
+  m_Layer: 8
   m_Name: Border
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -133,7 +134,7 @@ GameObject:
   - component: {fileID: 4399018757262370}
   - component: {fileID: 33783803395330228}
   - component: {fileID: 23403970109970490}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Piece001
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -148,7 +149,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4204875802600704}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Capitol2Base
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -166,7 +167,7 @@ GameObject:
   - component: {fileID: 223269878940204018}
   - component: {fileID: 114339730193385692}
   - component: {fileID: 114741611252952622}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: HealthCanvas
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -183,7 +184,7 @@ GameObject:
   - component: {fileID: 4609734275700646}
   - component: {fileID: 33775749757366282}
   - component: {fileID: 23122315693732308}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Piece000
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -200,7 +201,7 @@ GameObject:
   - component: {fileID: 4047628016204830}
   - component: {fileID: 33795896375798628}
   - component: {fileID: 23458175963228416}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Piece000
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -217,7 +218,7 @@ GameObject:
   - component: {fileID: 4925685297194102}
   - component: {fileID: 33539085137584068}
   - component: {fileID: 23482935226784576}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Piece084
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -234,7 +235,7 @@ GameObject:
   - component: {fileID: 4014652495304788}
   - component: {fileID: 33475331572854200}
   - component: {fileID: 23665096660305276}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Piece011
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -249,7 +250,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4072803031471548}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Capitol1Base
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -264,7 +265,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4718568593409324}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Capitol0Color
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -279,7 +280,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 224652505508399636}
-  m_Layer: 5
+  m_Layer: 8
   m_Name: Health Bar
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -296,7 +297,7 @@ GameObject:
   - component: {fileID: 224045473321546794}
   - component: {fileID: 222543656778582882}
   - component: {fileID: 114761366139059872}
-  m_Layer: 5
+  m_Layer: 8
   m_Name: Fill
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -311,7 +312,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4188561972595436}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: upgrade1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -326,7 +327,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4990002997464918}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Capitol0Base
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -816,6 +817,18 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1628666487362382}
   m_Mesh: {fileID: 4300000, guid: e043f21adbc749b4c8241827f03e1891, type: 3}
+--- !u!65 &65399366606081658
+BoxCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1009474714013390}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 6.7936544, y: 3.382163, z: 3.2498207}
+  m_Center: {x: 2.2057073, y: 1.7204503, z: 1.2278433}
 --- !u!114 &114097434229349086
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -862,9 +875,9 @@ MonoBehaviour:
   wanderNPC: {fileID: 0}
   isPlayerControlled: 1
   type: 2
-  actions: []
   healthBarFill: {fileID: 114761366139059872}
   healthBarCanvas: {fileID: 224839229710390886}
+  manager: {fileID: 0}
 --- !u!114 &114251439884832640
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -877,7 +890,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   unit: {fileID: 1347345562115204, guid: 02f17d062d5a18a4db9aaa4e822c2346, type: 2}
-  woodText: {fileID: 0}
   spawnTimer: 10
   spawnOffset: {x: 1.5, y: 0, z: 0}
 --- !u!114 &114339730193385692
