@@ -84,7 +84,7 @@ public class TerrainManager : MonoBehaviour {
 	}
 
     void addTree (int x, int z) {
-        Instantiate(treeObject[Random.Range(0,2)], new Vector3(x, 0, z), Quaternion.identity);
+        Instantiate(treeObject[Random.Range(0,2)], new Vector3(x, 0.2f, z), Quaternion.identity);
     }
 
     void addRock (int x, int z) {
