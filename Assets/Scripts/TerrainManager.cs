@@ -30,6 +30,16 @@ public class TerrainManager : MonoBehaviour {
             voxelSize = 0.005f /*whatever, doesnt matter for quad source*/
         };
 
+        var UVs = UnityEditor.Unwrapping.GeneratePerTriangleUV(mesh);
+
+        Vector2[] uvs = new Vector2[mesh.vertices.Length];
+
+        for (int i = 0; i < uvs.Length; i++) {
+            uvs[i] = new Vector2(mesh.vertices[i].x / 4 + mesh.vertices[i].y / 4, mesh.vertices[i].z / 4 + mesh.vertices[i].y / 4);
+        }
+
+        mesh.uv = uvs;
+
         mesh.RecalculateNormals();
         mesh.RecalculateTangents();
         mesh.RecalculateBounds();
