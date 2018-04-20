@@ -1548,7 +1548,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 50fd6fea99a231247a56a6fad689b0c3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  upgradePrefab: {fileID: 1112016201945204, guid: b4ab6122ed51ee3468efb02dd3dda838,
+  upgradePrefab: {fileID: 1000124746796266, guid: 2a1740500a0272e4a87047bdfbfb561f,
     type: 2}
 --- !u!114 &562189836
 MonoBehaviour:
@@ -1574,7 +1574,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ghostPrefab: {fileID: 1737032141717870, guid: 41198b86b47398a4b88428ae56e02064,
     type: 2}
-  buildingPrefab: {fileID: 1112016201945204, guid: a25ed902f9540ae4b8216321ae3f3984,
+  buildingPrefab: {fileID: 1000124746796266, guid: 2a1740500a0272e4a87047bdfbfb561f,
     type: 2}
   maxBuildDistance: 30
   player: {fileID: 0}
@@ -1636,7 +1636,7 @@ MonoBehaviour:
     type: 2}
   healthText: {fileID: 1685943686}
   testText: {fileID: 0}
-  buildingUpgradePrefab: {fileID: 1112016201945204, guid: b4ab6122ed51ee3468efb02dd3dda838,
+  buildingUpgradePrefab: {fileID: 1000124746796266, guid: 2a1740500a0272e4a87047bdfbfb561f,
     type: 2}
   crowdTargetPrefab: {fileID: 1775431406000416, guid: 72d63aea4fcf49449a9db9b4887e2e9e,
     type: 2}
@@ -5554,6 +5554,7 @@ MonoBehaviour:
   - {fileID: 154622, guid: 9991b226736b6964782c28d07cef8881, type: 2}
   halfWidth: 30
   halfHeight: 30
+  UVscale: 3
 --- !u!1 &2030220879
 GameObject:
   m_ObjectHideFlags: 0
