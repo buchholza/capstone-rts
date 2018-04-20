@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 public class UnitAttribute : MonoBehaviour {
     
-    public enum UnitType { NormalUnit, Building, Capitol };
+    public enum UnitType { NormalUnit, PitchforkUnit, SwordUnit, SpartanUnit, Capitol, Barracks, Tower};
 
     [HideInInspector]
     public GameObject selectionCircle;

@@ -55,7 +55,7 @@ public class SelectionManager : MonoBehaviour {
             foreach(var obj in FindObjectsOfType<UnitAttribute>()) {
 
                 // we are only interested in selecting units we can control
-                if (!obj.isPlayerControlled || obj.type != UnitAttribute.UnitType.NormalUnit) continue;
+                if (!obj.isPlayerControlled || !isPerson(obj)) continue;
 
                 // Get position of object in screen coordinates
                 Vector3 position = Camera.main.WorldToScreenPoint(obj.gameObject.transform.position);
@@ -96,7 +96,7 @@ public class SelectionManager : MonoBehaviour {
                     Vector3 position = Camera.main.WorldToScreenPoint(obj.gameObject.transform.position);
 
                     if(selectionBox.Contains(position)) {
-                        if (obj.type == UnitAttribute.UnitType.NormalUnit) {
+                        if (isPerson(obj)) {
                             selectedUnits.Add(obj.gameObject);
                             obj.OnSelect();
                         }
@@ -169,7 +169,7 @@ public class SelectionManager : MonoBehaviour {
                 print("something is seriously messed up");
             }
 
-            if(lastUnit.type == UnitAttribute.UnitType.NormalUnit) {
+            if(isPerson(lastUnit)) {
                 //Access Health
                 float health = lastUnit.health;
                 //Set unit menu to visible, display health value
@@ -201,11 +201,11 @@ public class SelectionManager : MonoBehaviour {
 
     public void BuildingUpgrade() {
         // if its not a unit its a building
-        if(lastUnit.type != UnitAttribute.UnitType.NormalUnit) {
+        if(!isPerson(lastUnit)) {
             if(lastUnit.type == UnitAttribute.UnitType.Capitol) {
                 var buildingUnit = selectedUnits[0].GetComponent<UpgradeCapitol>();
                 buildingUnit.version++;
-            } else {
+            } else { // assume its the old type of building (the cube one)
                 var oldBuilding = selectedUnits[0];
                 Destroy(oldBuilding);
                 GameObject.Instantiate(buildingUpgradePrefab, oldBuilding.transform.position, oldBuilding.transform.rotation);
@@ -218,7 +218,7 @@ public class SelectionManager : MonoBehaviour {
 
     public void BuildingSell() {
         // if its not a unit its a building
-        if(lastUnit.type != UnitAttribute.UnitType.NormalUnit) {
+        if(!isPerson(lastUnit)) {
             // Destroys the selected building
             Destroy(selectedUnits[0]);
         }
@@ -226,7 +226,7 @@ public class SelectionManager : MonoBehaviour {
 
     public void UnitUpgrade() {
         // test if its a unit
-        if(lastUnit.type == UnitAttribute.UnitType.NormalUnit) {
+        if(isPerson(lastUnit)) {
             // upgrades the unit's health to 30 from the default 10, then refreshes the health display
             lastUnit.health = 30;
             lastUnit.maxHealth = 30;
@@ -234,9 +234,19 @@ public class SelectionManager : MonoBehaviour {
         }
     }
 
+    public bool isPerson (UnitAttribute unit) {
+        if (unit.type == UnitAttribute.UnitType.NormalUnit
+            || unit.type == UnitAttribute.UnitType.PitchforkUnit
+            || unit.type == UnitAttribute.UnitType.SwordUnit
+            || unit.type == UnitAttribute.UnitType.SpartanUnit ) {
+            return true;
+        }
+        return false;
+    }
+
     public void UnitGather() {
         // test if its a unit
-        if(lastUnit.type == UnitAttribute.UnitType.NormalUnit) {
+        if(isPerson(lastUnit)) {
             var gather = lastUnit.GetComponent<GatherResource>();
             if (gather) {
                 if (gather.enabled == false) {
