@@ -10,8 +10,10 @@ public class SelectionManager : MonoBehaviour {
     public GameObject unitMenu;
     public GameObject buildingMenu;
     public GameObject unitToTrain;
-    public Text healthText;
-    public Text testText;
+    public Text unitHealthText;
+    public Text buildingHealthText;
+    public Text unitTitle;
+    public Text buildingTitle;
 
     public GameObject buildingUpgradePrefab;
     public GameObject crowdTargetPrefab;
@@ -170,13 +172,37 @@ public class SelectionManager : MonoBehaviour {
             }
 
             if(isPerson(lastUnit)) {
-                //Access Health
+                //Access health
                 float health = lastUnit.health;
-                //Set unit menu to visible, display health value
-                healthText.text = "Health: " + health;
+                //Display health value
+                unitHealthText.text = "Health: " + health;
+                //Change the title of the unit menu based on unit's type
+                var typeString = '';
+                if (lastUnit.type == UnitAttribute.UnitType.NormalUnit) {
+                    typeString = "Normal Unit";
+                } else if (lastUnit.type == UnitAttribute.UnitType.PitchforkUnit) {
+                    typeString = "Farmer";
+                } else if (lastUnit.type == UnitAttribute.UnitType.SwordUnit) {
+                    typeString = "Fighter";
+                } else if (lastUnit.type == UnitAttribute.UnitType.SpartanUnit) {
+                    typeString = "Spartan";
+                }
+                unitTitle = typeString;
+                //Set unit menu active, deactivating building menu
                 unitMenu.SetActive(true);
                 buildingMenu.SetActive(false);
             } else {
+                //Change the title of the building menu based on building's type
+                var typeString = '';
+                if (lastUnit.type == UnitAttribute.UnitType.Capitol) {
+                    typeString = "Capitol";
+                } else if (lastUnit.type == UnitAttribute.UnitType.Barracks) {
+                    typeString = "Barracks";
+                } else if (lastUnit.type == UnitAttribute.UnitType.Tower) {
+                    typeString = "Tower";
+                }
+                buildingTitle = typeString;
+                //Set building menu active, deactivating unit menu
                 unitMenu.SetActive(false);
                 buildingMenu.SetActive(true);
             }
@@ -210,9 +236,6 @@ public class SelectionManager : MonoBehaviour {
                 Destroy(oldBuilding);
                 GameObject.Instantiate(buildingUpgradePrefab, oldBuilding.transform.position, oldBuilding.transform.rotation);
             }
-
-            // testText.text = "successfully pulled";
-            // testText.text = "successfully updated";
         }
     }
 
@@ -230,7 +253,7 @@ public class SelectionManager : MonoBehaviour {
             // upgrades the unit's health to 30 from the default 10, then refreshes the health display
             lastUnit.health = 30;
             lastUnit.maxHealth = 30;
-            healthText.text = "Health: " + lastUnit.health;
+            unitHealthText.text = "Health: " + lastUnit.health;
         }
     }
 
