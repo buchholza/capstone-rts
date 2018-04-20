@@ -211,16 +211,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 850892499fc100f4894494c0de8549fc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  selectionCircle: {fileID: 0}
   LOS: 3
   health: 10
   maxHealth: 20
   Aggression: {fileID: 0}
   wanderNPC: {fileID: 0}
-  isUnit: 1
   isPlayerControlled: 0
-  actions: []
+  type: 0
   healthBarFill: {fileID: 0}
   healthBarCanvas: {fileID: 0}
+  manager: {fileID: 0}
 --- !u!114 &114372863297737570
 MonoBehaviour:
   m_ObjectHideFlags: 1
