@@ -13,6 +13,7 @@ public class RtsManager : MonoBehaviour {
 
     public Text stoneText;
     public Text woodText;
+    public GameObject winText;
 
     public Vector3? ScreenPointToMapPosition(Vector2 point) {
         var ray = Camera.main.ScreenPointToRay(point);
@@ -55,10 +56,20 @@ public class RtsManager : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
         current = this;
+        winText.SetActive(false);
 	}
 	
 	// Update is called once per frame
 	void Update () {
 		
 	}
+
+    public void CapitolStatus() {
+        int remainingCapitols = teams.Length;
+        foreach (PlayerInfo player in teams) {
+            if (!player.hasCapitol) {remainingCapitols--;}
+        }
+        Time.timeScale = 0;
+        winText.SetActive(true);
+    }
 }

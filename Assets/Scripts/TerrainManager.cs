@@ -8,11 +8,13 @@ using Random = UnityEngine.Random;
 public class TerrainManager : MonoBehaviour {
 
 	// Use this for initialization
-    public GameObject treeObject;
-    public GameObject rockObject;
+    public GameObject[] treeObject;
+    public GameObject[] rockObject;
 
     public int halfWidth = 10;
     public int halfHeight = 10;
+
+    public int UVscale = 8;
 
 	void Start () {
 		Mesh mesh = GetComponent<MeshFilter>().mesh;
@@ -29,6 +31,16 @@ public class TerrainManager : MonoBehaviour {
             tileSize = 5,
             voxelSize = 0.005f /*whatever, doesnt matter for quad source*/
         };
+
+        var UVs = UnityEditor.Unwrapping.GeneratePerTriangleUV(mesh);
+
+        Vector2[] uvs = new Vector2[mesh.vertices.Length];
+
+        for (int i = 0; i < uvs.Length; i++) {
+            uvs[i] = new Vector2(mesh.vertices[i].x / UVscale + mesh.vertices[i].y / UVscale, mesh.vertices[i].z / UVscale + mesh.vertices[i].y / UVscale);
+        }
+
+        mesh.uv = uvs;
 
         mesh.RecalculateNormals();
         mesh.RecalculateTangents();
@@ -72,11 +84,11 @@ public class TerrainManager : MonoBehaviour {
 	}
 
     void addTree (int x, int z) {
-        Instantiate(treeObject, new Vector3(x, 0, z), Quaternion.identity);
+        Instantiate(treeObject[Random.Range(0,2)], new Vector3(x, 0.2f, z), Quaternion.identity);
     }
 
     void addRock (int x, int z) {
         if (rockObject != null)
-            Instantiate(rockObject, new Vector3(x + 0.5f, 0.0f, z + 0.5f), Quaternion.identity);
+            Instantiate(rockObject[Random.Range(0,rockObject.Length)], new Vector3(x + 0.5f, 0.0f, z + 0.5f), Quaternion.identity);
     }
 }

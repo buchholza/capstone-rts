@@ -8,4 +8,5 @@ public class PlayerInfo {
     public bool isAI;
     public int wood;
     public int stone;
+    public bool hasCapitol;
 }

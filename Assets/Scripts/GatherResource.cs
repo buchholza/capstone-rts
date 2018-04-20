@@ -44,11 +44,15 @@ public class GatherResource : MonoBehaviour {
                 isIdle = false;
                 hasResource = true;
                 print(nearestResource.name+";");
-                if (nearestResource.name == "RocksPrefab(Clone)") {
-                    RtsManager.current.teams[0].stone+=10; 
+                if (nearestResource.name == "rock_h(Clone)"|| 
+                    nearestResource.name == "rock_g(Clone)"|| 
+                    nearestResource.name == "rock_e(Clone)"|| 
+                    nearestResource.name == "rock_f(Clone)") {
+                    RtsManager.current.teams[0].stone++; 
                 }
-                if (nearestResource.name == "TreePrefab(Clone)") {
-                    RtsManager.current.teams[0].wood+=10; 
+                if (nearestResource.name == "tree2(Clone)"||
+                    nearestResource.name == "tree1(Clone)") {
+                    RtsManager.current.teams[0].wood++; 
                 }
                 nearestResource.SetActive(false);
             }

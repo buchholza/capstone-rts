@@ -266,9 +266,9 @@ public class SelectionManager : MonoBehaviour {
     }
 
     public void TrainUnit() {
-        Transform parent = selectedUnits[0].GetComponent<Transform>();
-        var obj = Instantiate(unitToTrain, parent);
-        obj.transform.position += new Vector3(5, 0, 0);
+        Transform building = selectedUnits[0].GetComponent<Transform>();
+        var obj = Instantiate(unitToTrain);
+        obj.transform.position = building.transform.position + new Vector3(5, 0, 0);
     }
 
     // nick 4/7: everything below was in Utils.cs, but I moved it here because

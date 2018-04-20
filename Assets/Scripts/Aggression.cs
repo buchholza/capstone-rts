@@ -29,9 +29,10 @@ public class Aggression : MonoBehaviour {
     public void Scan() {
         Collider[] hitColliders = Physics.OverlapSphere(transform.position, unitAttribute.LOS, unitMask);
         if (hitColliders.Length != 0) {
-
-            // it should check if it's on its own team
-            Attack(hitColliders[0]);
+            UnitAttribute enemy = hitColliders[0].GetComponentInParent<UnitAttribute>();
+            if (enemy.isPlayerControlled != this.isPlayerControlled) { // on different teams
+                Attack(hitColliders[0]);
+            }
         }
         else {
             unitAttribute.wanderNPC.enabled = true;
