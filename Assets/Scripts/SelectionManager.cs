@@ -177,7 +177,7 @@ public class SelectionManager : MonoBehaviour {
                 //Display health value
                 unitHealthText.text = "Health: " + health;
                 //Change the title of the unit menu based on unit's type
-                var typeString = '';
+                var typeString = "";
                 if (lastUnit.type == UnitAttribute.UnitType.NormalUnit) {
                     typeString = "Normal Unit";
                 } else if (lastUnit.type == UnitAttribute.UnitType.PitchforkUnit) {
@@ -187,13 +187,13 @@ public class SelectionManager : MonoBehaviour {
                 } else if (lastUnit.type == UnitAttribute.UnitType.SpartanUnit) {
                     typeString = "Spartan";
                 }
-                unitTitle = typeString;
+                unitTitle.text = typeString;
                 //Set unit menu active, deactivating building menu
                 unitMenu.SetActive(true);
                 buildingMenu.SetActive(false);
             } else {
                 //Change the title of the building menu based on building's type
-                var typeString = '';
+                var typeString = "";
                 if (lastUnit.type == UnitAttribute.UnitType.Capitol) {
                     typeString = "Capitol";
                 } else if (lastUnit.type == UnitAttribute.UnitType.Barracks) {
@@ -201,7 +201,7 @@ public class SelectionManager : MonoBehaviour {
                 } else if (lastUnit.type == UnitAttribute.UnitType.Tower) {
                     typeString = "Tower";
                 }
-                buildingTitle = typeString;
+                buildingTitle.text = typeString;
                 //Set building menu active, deactivating unit menu
                 unitMenu.SetActive(false);
                 buildingMenu.SetActive(true);
