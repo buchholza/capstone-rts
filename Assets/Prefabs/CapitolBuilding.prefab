@@ -23,6 +23,8 @@ GameObject:
   - component: {fileID: 114251439884832640}
   - component: {fileID: 114189914319909184}
   - component: {fileID: 65399366606081658}
+  - component: {fileID: 65486899376205544}
+  - component: {fileID: 65232120015516380}
   m_Layer: 8
   m_Name: CapitolBuilding
   m_TagString: Untagged
@@ -327,6 +329,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4990002997464918}
+  - component: {fileID: 64606235730728346}
   m_Layer: 8
   m_Name: Capitol0Base
   m_TagString: Untagged
@@ -817,6 +820,32 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1628666487362382}
   m_Mesh: {fileID: 4300000, guid: e043f21adbc749b4c8241827f03e1891, type: 3}
+--- !u!64 &64606235730728346
+MeshCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1907341983338798}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Convex: 0
+  m_CookingOptions: 14
+  m_SkinWidth: 0.01
+  m_Mesh: {fileID: 0}
+--- !u!65 &65232120015516380
+BoxCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1009474714013390}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 2.183636, y: 1.8183239, z: 3.2498207}
+  m_Center: {x: 4.34, y: 0.9385307, z: 1.2278433}
 --- !u!65 &65399366606081658
 BoxCollider:
   m_ObjectHideFlags: 1
@@ -827,8 +856,20 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 6.7936544, y: 3.382163, z: 3.2498207}
-  m_Center: {x: 2.2057073, y: 1.7204503, z: 1.2278433}
+  m_Size: {x: 2.0409765, y: 1.8183239, z: 3.2498207}
+  m_Center: {x: -0.0279728, y: 0.9385307, z: 1.2278433}
+--- !u!65 &65486899376205544
+BoxCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1009474714013390}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 2.2582471, y: 1.9652919, z: 1.5415016}
+  m_Center: {x: 2.1167572, y: 0.8939232, z: 2.064014}
 --- !u!114 &114097434229349086
 MonoBehaviour:
   m_ObjectHideFlags: 1

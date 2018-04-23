@@ -29,8 +29,6 @@ public class UnitAttribute : MonoBehaviour {
     public Image healthBarFill;
     public Transform healthBarCanvas;
 
-    public RtsManager manager;
-
 	// Use this for initialization
 	void Start () {
         if(isPlayerControlled == false && type == UnitType.NormalUnit) {
@@ -42,6 +40,13 @@ public class UnitAttribute : MonoBehaviour {
 	// Update is called once per frame
 	void Update () { 
         if (health <= 0) {
+            if (type == UnitType.Capitol && isPlayerControlled) {
+                Time.timeScale = 0;
+                // if (defaultPlayer) { // ???
+                //     GameManager.current.lose.SetActive(true);
+                // }
+                RtsManager.current.CapitolStatus(); // ???
+            }
             Destroy(this.gameObject);
         }
 

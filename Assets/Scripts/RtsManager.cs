@@ -13,7 +13,9 @@ public class RtsManager : MonoBehaviour {
 
     public Text stoneText;
     public Text woodText;
+
     public GameObject winText;
+    public GameObject lose;
 
     public Vector3? ScreenPointToMapPosition(Vector2 point) {
         var ray = Camera.main.ScreenPointToRay(point);
