@@ -29,8 +29,11 @@ public class UnitAttribute : MonoBehaviour {
     public Image healthBarFill;
     public Transform healthBarCanvas;
 
-	// Use this for initialization
-	void Start () {
+    public GameObject winText;
+    public GameObject lose;
+
+    // Use this for initialization
+    void Start () {
         if(isPlayerControlled == false && type == UnitType.NormalUnit) {
             wanderNPC = GetComponent<WanderNPC>();
             wanderNPC.enabled = true;
@@ -53,6 +56,9 @@ public class UnitAttribute : MonoBehaviour {
         if (healthBarFill) healthBarFill.fillAmount = health / maxHealth;
         if (healthBarCanvas)
             healthBarCanvas.eulerAngles = new Vector3(0.0f, 0.0f, 0.0f);
+        if (isPlayerControlled && type == UnitType.Capitol && health == 0) {
+
+        }
 	}
 
     public void beingAttacked(int damage) {
