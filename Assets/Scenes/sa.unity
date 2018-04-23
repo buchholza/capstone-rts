@@ -1637,7 +1637,8 @@ MonoBehaviour:
     type: 2}
   unitMenu: {fileID: 1299534314}
   buildingMenu: {fileID: 1139057720}
-  unitToTrain: {fileID: 0}
+  unitToTrain: {fileID: 1347345562115204, guid: 02f17d062d5a18a4db9aaa4e822c2346,
+    type: 2}
   unitHealthText: {fileID: 1685943686}
   buildingHealthText: {fileID: 1904360177}
   unitTitle: {fileID: 1145887524}
