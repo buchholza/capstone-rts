@@ -1564,8 +1564,10 @@ MonoBehaviour:
   buildingMenu: {fileID: 1139057720}
   unitToTrain: {fileID: 1347345562115204, guid: 02f17d062d5a18a4db9aaa4e822c2346,
     type: 2}
-  healthText: {fileID: 1685943686}
-  testText: {fileID: 0}
+  unitHealthText: {fileID: 1685943686}
+  buildingHealthText: {fileID: 1904360177}
+  unitTitle: {fileID: 1145887524}
+  buildingTitle: {fileID: 187309071}
   buildingUpgradePrefab: {fileID: 1000124746796266, guid: 2a1740500a0272e4a87047bdfbfb561f,
     type: 2}
   crowdTargetPrefab: {fileID: 1775431406000416, guid: 72d63aea4fcf49449a9db9b4887e2e9e,
@@ -3337,21 +3339,6 @@ MonoBehaviour:
   innerRadius: 3
   outerRadius: 10
   spawnTimer: 20
---- !u!114 &981449685
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 981449679}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f39f9ab96ebf616408649e95ecc7c068, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  health: 1
-  isCapitol: 1
-  lose: {fileID: 71702609}
-  defaultPlayer: 1
 --- !u!1 &1027741701
 GameObject:
   m_ObjectHideFlags: 0
