@@ -375,7 +375,6 @@ MonoBehaviour:
   type: 5
   healthBarFill: {fileID: 114461657878062834}
   healthBarCanvas: {fileID: 224538279667304270}
-  manager: {fileID: 0}
 --- !u!114 &114461657878062834
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -435,9 +434,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 14341f56eec1352498783aec5c61cf97, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  unit: {fileID: 1562383776763534, guid: 91378d920a7ee574ab29bd9a794728f2, type: 2}
+  unit: {fileID: 1706304801344254, guid: 8b40cf54396bdf348b1b45583eb75969, type: 2}
   spawnTimer: 10
-  spawnOffset: {x: 5, y: 0, z: 5}
+  spawnOffset: {x: -1, y: 0, z: 0}
 --- !u!114 &114828740094615180
 MonoBehaviour:
   m_ObjectHideFlags: 1
