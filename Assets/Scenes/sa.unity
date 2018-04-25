@@ -2271,7 +2271,7 @@ MonoBehaviour:
     m_LineSpacing: 1
   m_Text: 'Upgrade
 
-    200 Glod'
+    20 Wood'
 --- !u!222 &800255825
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -2780,7 +2780,7 @@ MonoBehaviour:
     m_LineSpacing: 1
   m_Text: 'Sell Building
 
-    200 Stone'
+    50 Stone'
 --- !u!222 &834322895
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -4963,7 +4963,7 @@ MonoBehaviour:
     m_LineSpacing: 1
   m_Text: 'Upgrade
 
-    200 Glod'
+    20 Stone'
 --- !u!222 &1818522035
 CanvasRenderer:
   m_ObjectHideFlags: 0
