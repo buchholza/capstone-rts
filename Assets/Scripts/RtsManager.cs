@@ -66,12 +66,12 @@ public class RtsManager : MonoBehaviour {
 		
 	}
 
-    public void CapitolStatus() {
+    /*public void CapitolStatus() {
         int remainingCapitols = teams.Length;
         foreach (PlayerInfo player in teams) {
             if (!player.hasCapitol) {remainingCapitols--;}
         }
         Time.timeScale = 0;
         winText.SetActive(true);
-    }
+    }*/
 }

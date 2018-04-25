@@ -207,7 +207,7 @@ public class SelectionManager : MonoBehaviour {
                 } else if (lastUnit.type == UnitAttribute.UnitType.Tower) {
                     typeString = "Tower";
                 }
-                buildingTitle.text = typeString;
+                //buildingTitle.text = typeString;
                 //Set building menu active, deactivating unit menu
                 unitMenu.SetActive(false);
                 buildingMenu.SetActive(true);
