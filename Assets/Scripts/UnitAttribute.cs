@@ -38,7 +38,7 @@ public class UnitAttribute : MonoBehaviour {
             wanderNPC = GetComponent<WanderNPC>();
             wanderNPC.enabled = true;
         }
-        lose.SetActive(false);
+        //lose.SetActive(false);
 	}
 	
 	// Update is called once per frame
