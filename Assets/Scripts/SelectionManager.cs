@@ -6,6 +6,8 @@ using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
 public class SelectionManager : MonoBehaviour {
+    private const string SELECTION_CIRCLE_NAME = "SelectionCircle";
+
     public GameObject selectionCirclePrefab;
     public GameObject unitMenu;
     public GameObject buildingMenu;
@@ -42,9 +44,10 @@ public class SelectionManager : MonoBehaviour {
 
             // Remove selection circles from previously selected units
             foreach(var obj in FindObjectsOfType<UnitAttribute>()) {
-                if(obj.selectionCircle != null) {
-                    Destroy(obj.selectionCircle);
-                    obj.selectionCircle = null;
+                foreach(Transform child in obj.transform) {
+                    if(child.gameObject.name == SELECTION_CIRCLE_NAME) {
+                        child.gameObject.SetActive(false);
+                    } 
                 }
             }
         }
@@ -64,15 +67,17 @@ public class SelectionManager : MonoBehaviour {
 
                 // If that position is within the selection box
                 if(selectionBox.Contains(position)) {
-                    if(obj.selectionCircle == null) {
-                        obj.selectionCircle = Instantiate(selectionCirclePrefab);
-                        obj.selectionCircle.transform.SetParent(obj.transform, false);
+                    foreach(Transform child in obj.transform) {
+                        if(child.gameObject.name == SELECTION_CIRCLE_NAME) {
+                            child.gameObject.SetActive(true);
+                        }
                     }
                 } else {
                     // Remove circle from any previously highlighted objects
-                    if(obj.selectionCircle != null) {
-                        Destroy(obj.selectionCircle.gameObject);
-                        obj.selectionCircle = null;
+                    foreach(Transform child in obj.transform) {
+                        if(child.gameObject.name == SELECTION_CIRCLE_NAME) {
+                            child.gameObject.SetActive(false);
+                        }
                     }
                 }
             }
@@ -115,10 +120,11 @@ public class SelectionManager : MonoBehaviour {
                         selectedUnits.Add(hitObject);
                         UnitAttribute selectable = hitUnit;
                         selectable.OnSelect();
-                        selectable.selectionCircle = Instantiate(selectionCirclePrefab);
-                        selectable.selectionCircle.transform.position = new Vector3(0, 0, 0);
-                        selectable.selectionCircle.transform.localScale = hitObject.transform.lossyScale * 1.75f;
-                        selectable.selectionCircle.transform.SetParent(hitObject.transform, false);
+                        foreach(Transform child in selectable.gameObject.transform) {
+                            if(child.gameObject.name == SELECTION_CIRCLE_NAME) {
+                                child.gameObject.SetActive(true);
+                            }
+                        }
                     } 
                 }
             }
@@ -201,7 +207,7 @@ public class SelectionManager : MonoBehaviour {
                 } else if (lastUnit.type == UnitAttribute.UnitType.Tower) {
                     typeString = "Tower";
                 }
-                buildingTitle.text = typeString;
+                //buildingTitle.text = typeString;
                 //Set building menu active, deactivating unit menu
                 unitMenu.SetActive(false);
                 buildingMenu.SetActive(true);
