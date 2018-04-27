@@ -234,13 +234,18 @@ public class SelectionManager : MonoBehaviour {
     public void BuildingUpgrade() {
         // if its not a unit its a building
         if(!isPerson(lastUnit)) {
-            if(lastUnit.type == UnitAttribute.UnitType.Capitol) {
-                var buildingUnit = selectedUnits[0].GetComponent<UpgradeCapitol>();
-                buildingUnit.version++;
-            } else { // assume its the old type of building (the cube one)
-                var oldBuilding = selectedUnits[0];
-                Destroy(oldBuilding);
-                GameObject.Instantiate(buildingUpgradePrefab, oldBuilding.transform.position, oldBuilding.transform.rotation);
+            if(RtsManager.current.teams[0].stone >= 20) {
+                RtsManager.current.teams[0].stone -= 20;
+                // Update the stone number in the UI
+                RtsManager.current.stoneText.text = "Stone: " + RtsManager.current.teams[0].stone.ToString();
+                if(lastUnit.type == UnitAttribute.UnitType.Capitol) {
+                    var buildingUnit = selectedUnits[0].GetComponent<UpgradeCapitol>();
+                    buildingUnit.version++;
+                } else { // assume its the old type of building (the cube one)
+                    var oldBuilding = selectedUnits[0];
+                    Destroy(oldBuilding);
+                    GameObject.Instantiate(buildingUpgradePrefab, oldBuilding.transform.position, oldBuilding.transform.rotation);
+                }
             }
         }
     }
@@ -250,16 +255,25 @@ public class SelectionManager : MonoBehaviour {
         if(!isPerson(lastUnit)) {
             // Destroys the selected building
             Destroy(selectedUnits[0]);
+            RtsManager.current.teams[0].stone += 50;
+            // Update the UI's stone number
+            RtsManager.current.stoneText.text = "Stone: " + RtsManager.current.teams[0].stone.ToString();
         }
     }
 
     public void UnitUpgrade() {
-        // test if its a unit
+        // test if it's a unit
         if(isPerson(lastUnit)) {
-            // upgrades the unit's health to 30 from the default 10, then refreshes the health display
-            lastUnit.health = 30;
-            lastUnit.maxHealth = 30;
-            unitHealthText.text = "Health: " + lastUnit.health;
+            // check if player has enough wood to upgrade
+            if(RtsManager.current.teams[0].wood >= 20) {
+                RtsManager.current.teams[0].wood -= 20;
+                // Update the UI's wood number
+                RtsManager.current.woodText.text = "Wood: " + RtsManager.current.teams[0].wood.ToString();
+                // upgrades the unit's health to 30 from the default 10, then refreshes the health display
+                lastUnit.health = 30;
+                lastUnit.maxHealth = 30;
+                unitHealthText.text = "Health: " + lastUnit.health;
+            }
         }
     }
 
