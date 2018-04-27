@@ -29,16 +29,12 @@ public class UnitAttribute : MonoBehaviour {
     public Image healthBarFill;
     public Transform healthBarCanvas;
 
-    public GameObject winText;
-    public GameObject lose;
-
     // Use this for initialization
     void Start () {
         if(isPlayerControlled == false && type == UnitType.NormalUnit) {
             wanderNPC = GetComponent<WanderNPC>();
             wanderNPC.enabled = true;
         }
-        //lose.SetActive(false);
 	}
 	
 	// Update is called once per frame
@@ -57,11 +53,13 @@ public class UnitAttribute : MonoBehaviour {
         if (healthBarFill) healthBarFill.fillAmount = health / maxHealth;
         if (healthBarCanvas)
             healthBarCanvas.eulerAngles = new Vector3(0.0f, 0.0f, 0.0f);
+
         if (isPlayerControlled && type == UnitType.Capitol && health <= 0) {
-            lose.SetActive(true);
+            RtsManager.current.loseText.SetActive(true);
         }
+
         else if (!isPlayerControlled && type == UnitType.Capitol && health <= 0) {
-            winText.SetActive(true);
+            RtsManager.current.winText.SetActive(true);
         }
     }
 
