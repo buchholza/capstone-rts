@@ -244,9 +244,9 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1228645702465302}
-  m_LocalRotation: {x: 0, y: 0.649448, z: 0, w: 0.760406}
+  m_LocalRotation: {x: 0, y: 1, z: 0, w: 0}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 2, y: 2, z: 2}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4484458358498316}
   - {fileID: 4769566250766982}
@@ -255,7 +255,7 @@ Transform:
   - {fileID: 4289217237229436}
   m_Father: {fileID: 4453748851651092}
   m_RootOrder: 1
-  m_LocalEulerAnglesHint: {x: 0, y: 81, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
 --- !u!4 &4162033243097518
 Transform:
   m_ObjectHideFlags: 1
@@ -739,11 +739,9 @@ MonoBehaviour:
   Aggression: {fileID: 0}
   wanderNPC: {fileID: 0}
   isPlayerControlled: 1
-  type: 0
+  type: 2
   healthBarFill: {fileID: 114643433032188516}
   healthBarCanvas: {fileID: 224225343592420060}
-  winText: {fileID: 0}
-  lose: {fileID: 0}
 --- !u!114 &114643433032188516
 MonoBehaviour:
   m_ObjectHideFlags: 1
