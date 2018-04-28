@@ -509,7 +509,7 @@ MonoBehaviour:
   Aggression: {fileID: 0}
   wanderNPC: {fileID: 0}
   isPlayerControlled: 0
-  type: 0
+  type: 1
   healthBarFill: {fileID: 0}
   healthBarCanvas: {fileID: 0}
   manager: {fileID: 0}

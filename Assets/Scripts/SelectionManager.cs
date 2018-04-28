@@ -6,12 +6,16 @@ using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
 public class SelectionManager : MonoBehaviour {
+    private const string SELECTION_CIRCLE_NAME = "SelectionCircle";
+
     public GameObject selectionCirclePrefab;
     public GameObject unitMenu;
     public GameObject buildingMenu;
     public GameObject unitToTrain;
-    public Text healthText;
-    public Text testText;
+    public Text unitHealthText;
+    public Text buildingHealthText;
+    public Text unitTitle;
+    public Text buildingTitle;
 
     public GameObject buildingUpgradePrefab;
     public GameObject crowdTargetPrefab;
@@ -40,9 +44,10 @@ public class SelectionManager : MonoBehaviour {
 
             // Remove selection circles from previously selected units
             foreach(var obj in FindObjectsOfType<UnitAttribute>()) {
-                if(obj.selectionCircle != null) {
-                    Destroy(obj.selectionCircle);
-                    obj.selectionCircle = null;
+                foreach(Transform child in obj.transform) {
+                    if(child.gameObject.name == SELECTION_CIRCLE_NAME) {
+                        child.gameObject.SetActive(false);
+                    } 
                 }
             }
         }
@@ -55,22 +60,24 @@ public class SelectionManager : MonoBehaviour {
             foreach(var obj in FindObjectsOfType<UnitAttribute>()) {
 
                 // we are only interested in selecting units we can control
-                if (!obj.isPlayerControlled || obj.type != UnitAttribute.UnitType.NormalUnit) continue;
+                if (!obj.isPlayerControlled || !isPerson(obj)) continue;
 
                 // Get position of object in screen coordinates
                 Vector3 position = Camera.main.WorldToScreenPoint(obj.gameObject.transform.position);
 
                 // If that position is within the selection box
                 if(selectionBox.Contains(position)) {
-                    if(obj.selectionCircle == null) {
-                        obj.selectionCircle = Instantiate(selectionCirclePrefab);
-                        obj.selectionCircle.transform.SetParent(obj.transform, false);
+                    foreach(Transform child in obj.transform) {
+                        if(child.gameObject.name == SELECTION_CIRCLE_NAME) {
+                            child.gameObject.SetActive(true);
+                        }
                     }
                 } else {
                     // Remove circle from any previously highlighted objects
-                    if(obj.selectionCircle != null) {
-                        Destroy(obj.selectionCircle.gameObject);
-                        obj.selectionCircle = null;
+                    foreach(Transform child in obj.transform) {
+                        if(child.gameObject.name == SELECTION_CIRCLE_NAME) {
+                            child.gameObject.SetActive(false);
+                        }
                     }
                 }
             }
@@ -96,7 +103,7 @@ public class SelectionManager : MonoBehaviour {
                     Vector3 position = Camera.main.WorldToScreenPoint(obj.gameObject.transform.position);
 
                     if(selectionBox.Contains(position)) {
-                        if (obj.type == UnitAttribute.UnitType.NormalUnit) {
+                        if (isPerson(obj)) {
                             selectedUnits.Add(obj.gameObject);
                             obj.OnSelect();
                         }
@@ -113,10 +120,11 @@ public class SelectionManager : MonoBehaviour {
                         selectedUnits.Add(hitObject);
                         UnitAttribute selectable = hitUnit;
                         selectable.OnSelect();
-                        selectable.selectionCircle = Instantiate(selectionCirclePrefab);
-                        selectable.selectionCircle.transform.position = new Vector3(0, 0, 0);
-                        selectable.selectionCircle.transform.localScale = hitObject.transform.lossyScale * 1.75f;
-                        selectable.selectionCircle.transform.SetParent(hitObject.transform, false);
+                        foreach(Transform child in selectable.gameObject.transform) {
+                            if(child.gameObject.name == SELECTION_CIRCLE_NAME) {
+                                child.gameObject.SetActive(true);
+                            }
+                        }
                     } 
                 }
             }
@@ -169,14 +177,38 @@ public class SelectionManager : MonoBehaviour {
                 print("something is seriously messed up");
             }
 
-            if(lastUnit.type == UnitAttribute.UnitType.NormalUnit) {
-                //Access Health
+            if(isPerson(lastUnit)) {
+                //Access health
                 float health = lastUnit.health;
-                //Set unit menu to visible, display health value
-                healthText.text = "Health: " + health;
+                //Display health value
+                unitHealthText.text = "Health: " + health;
+                //Change the title of the unit menu based on unit's type
+                var typeString = "";
+                if (lastUnit.type == UnitAttribute.UnitType.NormalUnit) {
+                    typeString = "Normal Unit";
+                } else if (lastUnit.type == UnitAttribute.UnitType.PitchforkUnit) {
+                    typeString = "Farmer";
+                } else if (lastUnit.type == UnitAttribute.UnitType.SwordUnit) {
+                    typeString = "Fighter";
+                } else if (lastUnit.type == UnitAttribute.UnitType.SpartanUnit) {
+                    typeString = "Spartan";
+                }
+                unitTitle.text = typeString;
+                //Set unit menu active, deactivating building menu
                 unitMenu.SetActive(true);
                 buildingMenu.SetActive(false);
             } else {
+                //Change the title of the building menu based on building's type
+                var typeString = "";
+                if (lastUnit.type == UnitAttribute.UnitType.Capitol) {
+                    typeString = "Capitol";
+                } else if (lastUnit.type == UnitAttribute.UnitType.Barracks) {
+                    typeString = "Barracks";
+                } else if (lastUnit.type == UnitAttribute.UnitType.Tower) {
+                    typeString = "Tower";
+                }
+                //buildingTitle.text = typeString;
+                //Set building menu active, deactivating unit menu
                 unitMenu.SetActive(false);
                 buildingMenu.SetActive(true);
             }
@@ -201,42 +233,63 @@ public class SelectionManager : MonoBehaviour {
 
     public void BuildingUpgrade() {
         // if its not a unit its a building
-        if(lastUnit.type != UnitAttribute.UnitType.NormalUnit) {
-            if(lastUnit.type == UnitAttribute.UnitType.Capitol) {
-                var buildingUnit = selectedUnits[0].GetComponent<UpgradeCapitol>();
-                buildingUnit.version++;
-            } else {
-                var oldBuilding = selectedUnits[0];
-                Destroy(oldBuilding);
-                GameObject.Instantiate(buildingUpgradePrefab, oldBuilding.transform.position, oldBuilding.transform.rotation);
+        if(!isPerson(lastUnit)) {
+            if(RtsManager.current.teams[0].stone >= 20) {
+                RtsManager.current.teams[0].stone -= 20;
+                // Update the stone number in the UI
+                RtsManager.current.stoneText.text = "Stone: " + RtsManager.current.teams[0].stone.ToString();
+                if(lastUnit.type == UnitAttribute.UnitType.Capitol) {
+                    var buildingUnit = selectedUnits[0].GetComponent<UpgradeCapitol>();
+                    buildingUnit.version++;
+                } else { // assume its the old type of building (the cube one)
+                    var oldBuilding = selectedUnits[0];
+                    Destroy(oldBuilding);
+                    GameObject.Instantiate(buildingUpgradePrefab, oldBuilding.transform.position, oldBuilding.transform.rotation);
+                }
             }
-
-            // testText.text = "successfully pulled";
-            // testText.text = "successfully updated";
         }
     }
 
     public void BuildingSell() {
         // if its not a unit its a building
-        if(lastUnit.type != UnitAttribute.UnitType.NormalUnit) {
+        if(!isPerson(lastUnit)) {
             // Destroys the selected building
             Destroy(selectedUnits[0]);
+            RtsManager.current.teams[0].stone += 50;
+            // Update the UI's stone number
+            RtsManager.current.stoneText.text = "Stone: " + RtsManager.current.teams[0].stone.ToString();
         }
     }
 
     public void UnitUpgrade() {
-        // test if its a unit
-        if(lastUnit.type == UnitAttribute.UnitType.NormalUnit) {
-            // upgrades the unit's health to 30 from the default 10, then refreshes the health display
-            lastUnit.health = 30;
-            lastUnit.maxHealth = 30;
-            healthText.text = "Health: " + lastUnit.health;
+        // test if it's a unit
+        if(isPerson(lastUnit)) {
+            // check if player has enough wood to upgrade
+            if(RtsManager.current.teams[0].wood >= 20) {
+                RtsManager.current.teams[0].wood -= 20;
+                // Update the UI's wood number
+                RtsManager.current.woodText.text = "Wood: " + RtsManager.current.teams[0].wood.ToString();
+                // upgrades the unit's health to 30 from the default 10, then refreshes the health display
+                lastUnit.health = 30;
+                lastUnit.maxHealth = 30;
+                unitHealthText.text = "Health: " + lastUnit.health;
+            }
         }
+    }
+
+    public bool isPerson (UnitAttribute unit) {
+        if (unit.type == UnitAttribute.UnitType.NormalUnit
+            || unit.type == UnitAttribute.UnitType.PitchforkUnit
+            || unit.type == UnitAttribute.UnitType.SwordUnit
+            || unit.type == UnitAttribute.UnitType.SpartanUnit ) {
+            return true;
+        }
+        return false;
     }
 
     public void UnitGather() {
         // test if its a unit
-        if(lastUnit.type == UnitAttribute.UnitType.NormalUnit) {
+        if(isPerson(lastUnit)) {
             var gather = lastUnit.GetComponent<GatherResource>();
             if (gather) {
                 if (gather.enabled == false) {

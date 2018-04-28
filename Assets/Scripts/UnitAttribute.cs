@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 public class UnitAttribute : MonoBehaviour {
     
-    public enum UnitType { NormalUnit, Building, Capitol };
+    public enum UnitType { NormalUnit, PitchforkUnit, SwordUnit, SpartanUnit, Capitol, Barracks, Tower};
 
     [HideInInspector]
     public GameObject selectionCircle;
@@ -29,10 +29,8 @@ public class UnitAttribute : MonoBehaviour {
     public Image healthBarFill;
     public Transform healthBarCanvas;
 
-    public RtsManager manager;
-
-	// Use this for initialization
-	void Start () {
+    // Use this for initialization
+    void Start () {
         if(isPlayerControlled == false && type == UnitType.NormalUnit) {
             wanderNPC = GetComponent<WanderNPC>();
             wanderNPC.enabled = true;
@@ -42,13 +40,28 @@ public class UnitAttribute : MonoBehaviour {
 	// Update is called once per frame
 	void Update () { 
         if (health <= 0) {
+            if (type == UnitType.Capitol && isPlayerControlled) {
+                Time.timeScale = 0;
+                // if (defaultPlayer) { // ???
+                //     GameManager.current.lose.SetActive(true);
+                // }
+                //RtsManager.current.CapitolStatus(); // ???
+            }
             Destroy(this.gameObject);
         }
 
         if (healthBarFill) healthBarFill.fillAmount = health / maxHealth;
         if (healthBarCanvas)
             healthBarCanvas.eulerAngles = new Vector3(0.0f, 0.0f, 0.0f);
-	}
+
+        if (isPlayerControlled && type == UnitType.Capitol && health <= 0) {
+            RtsManager.current.loseText.SetActive(true);
+        }
+
+        else if (!isPlayerControlled && type == UnitType.Capitol && health <= 0) {
+            RtsManager.current.winText.SetActive(true);
+        }
+    }
 
     public void beingAttacked(int damage) {
         health -= damage;
