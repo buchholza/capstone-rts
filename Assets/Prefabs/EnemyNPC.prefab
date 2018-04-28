@@ -57,6 +57,7 @@ GameObject:
   - component: {fileID: 114046726878320240}
   - component: {fileID: 114164184277009404}
   - component: {fileID: 114372863297737570}
+  - component: {fileID: 135413887162229792}
   m_Layer: 8
   m_Name: EnemyNPC
   m_TagString: Untagged
@@ -238,6 +239,18 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 256
   attacking: 0
+--- !u!135 &135413887162229792
+SphereCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1667224120439090}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 0.5
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!195 &195733595011855464
 NavMeshAgent:
   m_ObjectHideFlags: 1

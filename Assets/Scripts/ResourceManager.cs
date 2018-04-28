@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class ResourceManager : MonoBehaviour {
-    public int food = 0;
-    public int glod = 0;
-    public int metal = 1000;
+    //public static ResourceManager current = null;
+    public int wood=200;
+    public int stone=300;
     void Awake()
     {
     }
@@ -22,8 +22,8 @@ public class ResourceManager : MonoBehaviour {
     {
         switch (resource)
         {
-            case "food":
-                if (food > amount)
+            case "wood":
+                if (wood > amount)
                 {
                     return true;
                 }
@@ -31,8 +31,8 @@ public class ResourceManager : MonoBehaviour {
                 {
                     return false;
                 }
-            case "Glod":
-                if(glod>amount)
+            case "stone":
+                if(stone>amount)
                 {
                     return true;
                 }
@@ -40,15 +40,7 @@ public class ResourceManager : MonoBehaviour {
                 {
                     return false;
                 }
-            case "metal":
-                if(metal>amount)
-                {
-                    return true;
-                }
-                else
-                {
-                    return false;
-                }
+            
             default:
                 break;
         }
@@ -60,15 +52,13 @@ public class ResourceManager : MonoBehaviour {
     {
     switch (resource)
     {
-        case "food":
-            food += amount;
+        case "wood":
+            wood += amount;
             break;
-        case "glod":
-            glod += amount;
+        case "stone":
+            stone += amount;
             break;
-        case "metal":
-             metal += amount;
-             break;
+        
         default:
             break;
     }
