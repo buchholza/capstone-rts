@@ -175,7 +175,6 @@ public class SelectionManager : MonoBehaviour {
             do {
                 if (unitIndex >= selectedUnits.Count) {
                     return;
-                    print("HASKFAJSJDFLASJALFNEDWOCFN");
                 }
                 unitIndex++;
                 lastUnit = selectedUnits[unitIndex].GetComponent<UnitAttribute>();
@@ -206,7 +205,6 @@ public class SelectionManager : MonoBehaviour {
                 unitMenu.SetActive(true);
                 buildingMenu.SetActive(false);
             } else {
-                //Change the title of the building menu based on building's type
                 var typeString = "";
                 if (lastUnit.type == UnitAttribute.UnitType.Capitol) {
                     typeString = "Capitol";
@@ -215,10 +213,11 @@ public class SelectionManager : MonoBehaviour {
                 } else if (lastUnit.type == UnitAttribute.UnitType.Tower) {
                     typeString = "Tower";
                 }
-                //buildingTitle.text = typeString;
+                buildingTitle.text = typeString;
                 //Set building menu active, deactivating unit menu
                 unitMenu.SetActive(false);
                 buildingMenu.SetActive(true);
+                // Exclude Sell Button from capitols
                 if(lastUnit.type == UnitAttribute.UnitType.Capitol){
                     sellButton.SetActive(false);
                 }

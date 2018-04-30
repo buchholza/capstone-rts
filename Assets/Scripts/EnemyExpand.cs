@@ -26,8 +26,8 @@ public class EnemyExpand : MonoBehaviour {
 
             GatherResource.ResourceType resType;
 
-            if (team.stone < team.wood) resType = GatherResource.ResourceType.Tree;
-            else resType = GatherResource.ResourceType.Rock;
+            if (team.stone < team.wood) resType = GatherResource.ResourceType.Rock;
+            else resType = GatherResource.ResourceType.Tree;
 
             int index = 0;
             while (true) {

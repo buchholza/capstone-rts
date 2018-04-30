@@ -14,7 +14,6 @@ public class PeriodicSpawn : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-        UnitAttribute unit;
         InvokeRepeating("Spawn", 2.0f, spawnTimer);
     }
 	

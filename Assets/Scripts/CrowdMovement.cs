@@ -31,7 +31,7 @@ public class CrowdMovement : MonoBehaviour {
 
     void CheckTarget () {
         // if we have a crowd target and a move target
-        if (!crowdTarget && moveTarget != null) {
+        if (!crowdTarget) {
 
             // if we're gathering then we shouldn't bother with this stuff at all
             var gather = gameObject.GetComponent<GatherResource>();
