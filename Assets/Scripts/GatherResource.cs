@@ -15,6 +15,9 @@ public class GatherResource : MonoBehaviour {
     // private Vector3 goal;
     private int team;
 
+    public enum ResourceType { Tree, Rock, Whatever };
+    public ResourceType resourceToGet = ResourceType.Whatever;
+
     public void Reset () {
         needsToFind = true;
         isIdle = true;
@@ -36,8 +39,7 @@ public class GatherResource : MonoBehaviour {
         //Tells an idle unit to gather the nearest resource
         if (isIdle) {
             if (needsToFind) {
-                var allResources = GameObject.FindGameObjectsWithTag("Resource");
-                nearestResource = GetClosestResource(new List<GameObject>(allResources));
+                nearestResource = GetClosestResource();
 
                 if (nearestResource != null && nearestResource.activeSelf) {
                     if (agent.SetDestination(nearestResource.transform.position)) {
@@ -56,11 +58,11 @@ public class GatherResource : MonoBehaviour {
                     nearestResource.name == "rock_g(Clone)"|| 
                     nearestResource.name == "rock_e(Clone)"|| 
                     nearestResource.name == "rock_f(Clone)") {
-                    RtsManager.current.teams[team].stone += 10; 
+                    RtsManager.current.teams[team].stone += 20; 
                 }
                 if (nearestResource.name == "tree2(Clone)"||
                     nearestResource.name == "tree1(Clone)") {
-                    RtsManager.current.teams[team].wood += 10; 
+                    RtsManager.current.teams[team].wood += 20; 
                 }
                 nearestResource.SetActive(false);
             }
@@ -72,10 +74,12 @@ public class GatherResource : MonoBehaviour {
 
             if (Vector3.Distance(transform.position, homeBase.position) < 1) {
                 hasResource = false;
-                RtsManager.current.woodText.text =
-                    "Wood: " + RtsManager.current.teams[team].wood.ToString();
-                RtsManager.current.stoneText.text =
-                    "Stone: " + RtsManager.current.teams[team].stone.ToString();
+                if (team == 0) {
+                    RtsManager.current.woodText.text =
+                        "Wood: " + RtsManager.current.teams[team].wood.ToString();
+                    RtsManager.current.stoneText.text =
+                        "Stone: " + RtsManager.current.teams[team].stone.ToString();
+                }
 
                 isIdle = true;
                 needsToFind = true;
@@ -83,14 +87,24 @@ public class GatherResource : MonoBehaviour {
         }
 	}
 
-
     //Method to find the nearest resource to the unit at the time
-    public GameObject GetClosestResource(List<GameObject> resources) {
+    public GameObject GetClosestResource() {
+        List<GameObject> resourcesToScan = new List<GameObject>();
+
+        if (resourceToGet == ResourceType.Rock || resourceToGet == ResourceType.Whatever) {
+            var allResources = GameObject.FindGameObjectsWithTag("Rock");
+            resourcesToScan.AddRange(allResources);
+        }
+        if (resourceToGet == ResourceType.Tree || resourceToGet == ResourceType.Whatever) {
+            var allResources = GameObject.FindGameObjectsWithTag("Tree");
+            resourcesToScan.AddRange(allResources);
+        }
+
         GameObject bestTarget = null;
         float closestDistanceSqr = Mathf.Infinity;
         Vector3 currentPosition = transform.position;
 
-        foreach (GameObject potentialTarget in resources) {
+        foreach (GameObject potentialTarget in resourcesToScan) {
             Vector3 directionToTarget = potentialTarget.transform.position - currentPosition;
             float dSqrToTarget = directionToTarget.sqrMagnitude;
             if (dSqrToTarget < closestDistanceSqr) {
