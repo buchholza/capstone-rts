@@ -24,9 +24,9 @@ public class EnemyExpand : MonoBehaviour {
             int unitsToSwitch = (int) ((resourceGoal - team.stone) / 2);
             int switchedUnits = 0;
 
-            GatherResource.ResourceType type;
+            GatherResource.ResourceType resType;
 
-            if (team.stone < team.wood) type = GatherResource.ResourceType.Tree;
+            if (team.stone < team.wood) resType = GatherResource.ResourceType.Tree;
             else resType = GatherResource.ResourceType.Rock;
 
             int index = 0;

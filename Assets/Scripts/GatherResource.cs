@@ -12,7 +12,6 @@ public class GatherResource : MonoBehaviour {
     private bool isIdle = true;
     private bool hasResource = false;
     private GameObject nearestResource;
-    // private Vector3 goal;
     private int team;
 
     public enum ResourceType { Tree, Rock, Whatever };
