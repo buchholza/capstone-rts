@@ -16,7 +16,7 @@ public class SelectionManager : MonoBehaviour {
     public Text buildingHealthText;
     public Text unitTitle;
     public Text buildingTitle;
-
+    public GameObject sellButton;
     public GameObject buildingUpgradePrefab;
     public GameObject crowdTargetPrefab;
 
@@ -219,6 +219,12 @@ public class SelectionManager : MonoBehaviour {
                 //Set building menu active, deactivating unit menu
                 unitMenu.SetActive(false);
                 buildingMenu.SetActive(true);
+                if(lastUnit.type == UnitAttribute.UnitType.Capitol){
+                    sellButton.SetActive(false);
+                }
+                else {
+                    sellButton.SetActive(true);
+                }
             }
         }
 	}

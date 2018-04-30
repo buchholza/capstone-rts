@@ -5,6 +5,7 @@ using UnityEngine;
 // Temporary script to demo selling buildings
 public class SellBuilding : MonoBehaviour {
     private bool isSelecting = false;
+    public GameObject sellButton;
 
     public void OnClick() {
         isSelecting = true;
