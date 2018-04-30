@@ -76,8 +76,7 @@ public class GatherResource : MonoBehaviour {
                         "Wood: " + RtsManager.current.teams[team].wood.ToString();
                     RtsManager.current.stoneText.text =
                         "Stone: " + RtsManager.current.teams[team].stone.ToString();
-                }
-
+                } 
                 isIdle = true;
                 needsToFind = true;
             }
