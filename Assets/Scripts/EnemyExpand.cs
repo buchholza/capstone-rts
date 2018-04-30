@@ -24,6 +24,11 @@ public class EnemyExpand : MonoBehaviour {
             int unitsToSwitch = (int) ((resourceGoal - team.stone) / 2);
             int switchedUnits = 0;
 
+            GatherResource.ResourceType type;
+
+            if (team.stone < team.wood) type = GatherResource.ResourceType.Tree;
+            else resType = GatherResource.ResourceType.Rock;
+
             int index = 0;
             while (true) {
                 if (index >= units.Count) break;
@@ -35,13 +40,13 @@ public class EnemyExpand : MonoBehaviour {
                 
                 if (gather) {
                     gather.enabled = true;
+                    gather.resourceToGet = resType;
                     wander.enabled = false;
                     switchedUnits++;
                 }
                 index++;
             }
         } else {
-            Debug.Log("Something is seriously messed up");
             int index = 0;
             while (true) {
                 if (index >= units.Count) break;
