@@ -120,7 +120,7 @@ public class AIResource : MonoBehaviour
                     hasResource = false;
                     
                     IncreaseResources("stone", 10);
-
+                    
                     isIdle = true;
                     needsToFind = true;
                 }
