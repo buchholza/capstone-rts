@@ -4,6 +4,7 @@ using UnityEngine;
 
 [System.Serializable]
 public class PlayerInfo {
+    [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2235:MarkAllNonSerializableFields")]
     public Color accentColor;
     public bool isAI;
     public int wood;

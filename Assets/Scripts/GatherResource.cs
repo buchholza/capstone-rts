@@ -32,7 +32,6 @@ public class GatherResource : MonoBehaviour {
 	void Update () {
 
         if (!hasResource && !isIdle) {
-            print("???");
         }
         
         //Tells an idle unit to gather the nearest resource
@@ -52,7 +51,6 @@ public class GatherResource : MonoBehaviour {
             if (Vector3.Distance(transform.position, nearestResource.transform.position) < .5) {
                 isIdle = false;
                 hasResource = true;
-                print(nearestResource.name+";");
                 if (nearestResource.name == "rock_h(Clone)"|| 
                     nearestResource.name == "rock_g(Clone)"|| 
                     nearestResource.name == "rock_e(Clone)"|| 

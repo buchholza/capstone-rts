@@ -1374,6 +1374,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ca377127775db9e449140d4969dd7e9b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  sellButton: {fileID: 455905616}
 --- !u!114 &562189838
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1456,6 +1457,7 @@ MonoBehaviour:
   buildingHealthText: {fileID: 1904360177}
   unitTitle: {fileID: 1145887524}
   buildingTitle: {fileID: 187309071}
+  sellButton: {fileID: 455905616}
   buildingUpgradePrefab: {fileID: 1000124746796266, guid: 2a1740500a0272e4a87047bdfbfb561f,
     type: 2}
   crowdTargetPrefab: {fileID: 1775431406000416, guid: 72d63aea4fcf49449a9db9b4887e2e9e,
@@ -3048,18 +3050,7 @@ MonoBehaviour:
   innerRadius: 3
   outerRadius: 10
   spawnTimer: 20
-  resourceGoal: 100
---- !u!114 &981449685
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 981449679}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f39f9ab96ebf616408649e95ecc7c068, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
+  resourceGoal: 200
 --- !u!1 &1027741701
 GameObject:
   m_ObjectHideFlags: 0
@@ -3331,7 +3322,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1139057721
 RectTransform:
   m_ObjectHideFlags: 0
