@@ -358,7 +358,7 @@ MonoBehaviour:
   maxHealth: 20
   Aggression: {fileID: 0}
   wanderNPC: {fileID: 0}
-  isPlayerControlled: 1
+  team: 0
   type: 5
   healthBarFill: {fileID: 114593510148985620}
   healthBarCanvas: {fileID: 224019039162033252}
@@ -374,8 +374,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   unit: {fileID: 1667224120439090, guid: d08622233d05b8d4fbfc528805331e01, type: 2}
+  unit2: {fileID: 0}
+  unit3: {fileID: 0}
   spawnTimer: 10
-  spawnOffset: {x: 5, y: 0, z: 5}
+  spawnOffset: {x: -1, y: 0, z: 0}
 --- !u!114 &114593510148985620
 MonoBehaviour:
   m_ObjectHideFlags: 1

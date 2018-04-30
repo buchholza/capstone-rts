@@ -60,7 +60,7 @@ public class SelectionManager : MonoBehaviour {
             foreach(var obj in FindObjectsOfType<UnitAttribute>()) {
 
                 // we are only interested in selecting units we can control
-                if (!obj.isPlayerControlled || !isPerson(obj)) continue;
+                if ((obj.team != 0) || !isPerson(obj)) continue;
 
                 // Get position of object in screen coordinates
                 Vector3 position = Camera.main.WorldToScreenPoint(obj.gameObject.transform.position);
@@ -98,7 +98,7 @@ public class SelectionManager : MonoBehaviour {
             // If user drags the mouse
             if(Time.time - pressTime > CLICK_DELTA) {
                 foreach(var obj in FindObjectsOfType<UnitAttribute>()) {
-                    if (!obj.isPlayerControlled) continue;
+                    if (obj.team != 0) continue;
                     // Get position of object in screen coordinates
                     Vector3 position = Camera.main.WorldToScreenPoint(obj.gameObject.transform.position);
 
@@ -116,7 +116,7 @@ public class SelectionManager : MonoBehaviour {
                     GameObject hitObject = hit.collider.gameObject;
                     UnitAttribute hitUnit = hitObject.GetComponent<UnitAttribute>();
 
-                    if(hitUnit != null && hitUnit.isPlayerControlled) {
+                    if(hitUnit != null && hitUnit.team == 0) {
                         selectedUnits.Add(hitObject);
                         UnitAttribute selectable = hitUnit;
                         selectable.OnSelect();
@@ -171,7 +171,15 @@ public class SelectionManager : MonoBehaviour {
 
         // When selection is finished, sets up the relevant menu for the unit last selected
         if(selectedUnits.Count > 0) {
-            lastUnit = selectedUnits[0].GetComponent<UnitAttribute>();
+            int unitIndex = -1;
+            do {
+                if (unitIndex >= selectedUnits.Count) {
+                    return;
+                    print("HASKFAJSJDFLASJALFNEDWOCFN");
+                }
+                unitIndex++;
+                lastUnit = selectedUnits[unitIndex].GetComponent<UnitAttribute>();
+            } while (lastUnit == null);
 
             if (!lastUnit) {
                 print("something is seriously messed up");

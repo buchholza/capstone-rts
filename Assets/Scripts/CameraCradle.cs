@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class CameraCradle : MonoBehaviour {
     public float speed = 20;
-    public GameObject startingSpot;
+    public GameObject startingSpot = null;
 	// Use this for initialization
 	void Start () {
         transform.position = (startingSpot.transform.position + new Vector3(1,6,-5));

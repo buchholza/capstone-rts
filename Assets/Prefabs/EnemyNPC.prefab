@@ -56,7 +56,7 @@ GameObject:
   - component: {fileID: 195733595011855464}
   - component: {fileID: 114046726878320240}
   - component: {fileID: 114164184277009404}
-  - component: {fileID: 114372863297737570}
+  - component: {fileID: 114695393126227896}
   m_Layer: 8
   m_Name: EnemyNPC
   m_TagString: Untagged
@@ -193,7 +193,7 @@ MonoBehaviour:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1667224120439090}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 8f6fd2428d39d3b4aa63df981568a5ed, type: 3}
   m_Name: 
@@ -217,27 +217,23 @@ MonoBehaviour:
   maxHealth: 20
   Aggression: {fileID: 0}
   wanderNPC: {fileID: 0}
-  isPlayerControlled: 0
+  team: 1
   type: 0
   healthBarFill: {fileID: 0}
   healthBarCanvas: {fileID: 0}
-  manager: {fileID: 0}
---- !u!114 &114372863297737570
+--- !u!114 &114695393126227896
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1667224120439090}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4f296962a62453a40a318b53be2f5192, type: 3}
+  m_Script: {fileID: 11500000, guid: 11c1e50ecf1390b42b7ccc13f43bb10c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  unitAttribute: {fileID: 0}
-  unitMask:
-    serializedVersion: 2
-    m_Bits: 256
-  attacking: 0
+  agent: {fileID: 195733595011855464}
+  homeBase: {fileID: 0}
 --- !u!195 &195733595011855464
 NavMeshAgent:
   m_ObjectHideFlags: 1

@@ -9,4 +9,6 @@ public class PlayerInfo {
     public int wood;
     public int stone;
     public bool hasCapitol;
+    public List<GameObject> units = new List<GameObject>();
+    public int researchLevel = 1;
 }

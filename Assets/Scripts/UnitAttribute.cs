@@ -22,8 +22,8 @@ public class UnitAttribute : MonoBehaviour {
     private bool isAttacked;
     public Component Aggression;
     public WanderNPC wanderNPC;
-    public bool isPlayerControlled = true;
-    // public int team = 0;
+    // public bool isPlayerControlled = true;
+    public int team = 0;
     public UnitType type = UnitType.NormalUnit;
 
     public Image healthBarFill;
@@ -31,16 +31,16 @@ public class UnitAttribute : MonoBehaviour {
 
     // Use this for initialization
     void Start () {
-        if(isPlayerControlled == false && type == UnitType.NormalUnit) {
-            wanderNPC = GetComponent<WanderNPC>();
-            wanderNPC.enabled = true;
+        if(team != 0 && type == UnitType.NormalUnit) {
+            // wanderNPC = GetComponent<WanderNPC>();
+            // wanderNPC.enabled = true;
         }
 	}
 	
 	// Update is called once per frame
 	void Update () { 
         if (health <= 0) {
-            if (type == UnitType.Capitol && isPlayerControlled) {
+            if (type == UnitType.Capitol && team == 0) {
                 Time.timeScale = 0;
                 // if (defaultPlayer) { // ???
                 //     GameManager.current.lose.SetActive(true);
@@ -54,11 +54,11 @@ public class UnitAttribute : MonoBehaviour {
         if (healthBarCanvas)
             healthBarCanvas.eulerAngles = new Vector3(0.0f, 0.0f, 0.0f);
 
-        if (isPlayerControlled && type == UnitType.Capitol && health <= 0) {
+        if (team == 0 && type == UnitType.Capitol && health <= 0) {
             RtsManager.current.loseText.SetActive(true);
         }
 
-        else if (!isPlayerControlled && type == UnitType.Capitol && health <= 0) {
+        else if (team != 0 && type == UnitType.Capitol && health <= 0) {
             RtsManager.current.winText.SetActive(true);
         }
     }

@@ -12,12 +12,18 @@ public class GatherResource : MonoBehaviour {
     private bool isIdle = true;
     private bool hasResource = false;
     private GameObject nearestResource;
+    // private Vector3 goal;
+    private int team;
 
     public void Reset () {
         needsToFind = true;
         isIdle = true;
         hasResource = false;
         nearestResource = null;
+    }
+
+    void Start () {
+        team = gameObject.GetComponent<UnitAttribute>().team;
     }
 
 	// Update is called once per frame
@@ -33,11 +39,13 @@ public class GatherResource : MonoBehaviour {
                 var allResources = GameObject.FindGameObjectsWithTag("Resource");
                 nearestResource = GetClosestResource(new List<GameObject>(allResources));
 
-                if (nearestResource != null) {
-                    needsToFind = false;
+                if (nearestResource != null && nearestResource.activeSelf) {
+                    if (agent.SetDestination(nearestResource.transform.position)) {
+                        // goal = nearestResource.transform.position;
+                        needsToFind = false;
+                        agent.isStopped = false;
+                    }
                 }
-
-                agent.SetDestination(nearestResource.transform.position);
             }
 
             if (Vector3.Distance(transform.position, nearestResource.transform.position) < .5) {
@@ -48,11 +56,11 @@ public class GatherResource : MonoBehaviour {
                     nearestResource.name == "rock_g(Clone)"|| 
                     nearestResource.name == "rock_e(Clone)"|| 
                     nearestResource.name == "rock_f(Clone)") {
-                    RtsManager.current.teams[0].stone++; 
+                    RtsManager.current.teams[team].stone += 10; 
                 }
                 if (nearestResource.name == "tree2(Clone)"||
                     nearestResource.name == "tree1(Clone)") {
-                    RtsManager.current.teams[0].wood++; 
+                    RtsManager.current.teams[team].wood += 10; 
                 }
                 nearestResource.SetActive(false);
             }
@@ -65,9 +73,9 @@ public class GatherResource : MonoBehaviour {
             if (Vector3.Distance(transform.position, homeBase.position) < 1) {
                 hasResource = false;
                 RtsManager.current.woodText.text =
-                    "Wood: " + RtsManager.current.teams[0].wood.ToString();
+                    "Wood: " + RtsManager.current.teams[team].wood.ToString();
                 RtsManager.current.stoneText.text =
-                    "Stone: " + RtsManager.current.teams[0].stone.ToString();
+                    "Stone: " + RtsManager.current.teams[team].stone.ToString();
 
                 isIdle = true;
                 needsToFind = true;

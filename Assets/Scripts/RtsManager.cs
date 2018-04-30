@@ -55,6 +55,10 @@ public class RtsManager : MonoBehaviour {
         return true;
     }
 
+    public void ResearchUpgrade() {
+        RtsManager.current.teams[0].researchLevel += 1;
+    }
+
 	// Use this for initialization
 	void Start () {
         current = this;
