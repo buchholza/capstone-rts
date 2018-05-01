@@ -1482,19 +1482,21 @@ MonoBehaviour:
   teams:
   - accentColor: {r: 0, g: 0, b: 1, a: 0}
     isAI: 0
-    wood: 0
-    stone: 0
+    wood: 200
+    stone: 200
     hasCapitol: 0
     units: []
-    building: []
+    buildings:
+    - {fileID: 108176073}
     researchLevel: 1
   - accentColor: {r: 1, g: 0, b: 0, a: 0}
     isAI: 1
-    wood: 0
-    stone: 0
+    wood: 200
+    stone: 200
     hasCapitol: 0
     units: []
-    building: []
+    buildings:
+    - {fileID: 981449679}
     researchLevel: 1
   groundCollider: {fileID: 1985912138}
   stoneText: {fileID: 1676663407}
@@ -3136,7 +3138,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   building: {fileID: 1297390429244644, guid: b69e281cfde193848bb5380372f660c8, type: 2}
   innerRadius: 3
-  outerRadius: 10
+  outerRadius: 9
   spawnTimer: 20
   resourceGoal: 200
 --- !u!1 &1027741701

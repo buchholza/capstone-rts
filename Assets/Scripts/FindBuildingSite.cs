@@ -34,17 +34,46 @@ public class FindBuildingSite : MonoBehaviour {
         }
 
         if(RtsManager.current.IsGameObjectSafeToPlace(gameObject)) {
-            rend.material.color = green;
-            if(Input.GetMouseButtonDown(0)) {
-                var go = GameObject.Instantiate(buildingPrefab);
-                go.transform.position = transform.position;
-                RtsManager.current.teams[0].buildings.Add(go);
-                // Player.defaultPlayer.currency -= 200;
-                go.AddComponent<Player>().info = Player.defaultPlayer;
-                Destroy(this.gameObject);
+
+            // check it is close enough to other buildings
+
+            float minDist = Mathf.Infinity;
+            float maxDist = Mathf.NegativeInfinity;
+
+            foreach (GameObject buildingGo in RtsManager.current.teams[0].buildings) {
+                Vector3 myLocation = transform.position;
+                Vector3 itsLocation = buildingGo.transform.position;
+
+                float thisDistance = Vector3.Distance(myLocation, itsLocation);
+                if (thisDistance > maxDist) maxDist = thisDistance;
+                if (thisDistance < minDist) minDist = thisDistance;
             }
+
+            if (minDist < 9.0f && maxDist > 3.0f) {
+                rend.material.color = green;
+                if(Input.GetMouseButtonDown(0)) {
+                    if (RtsManager.current.teams[0].stone >= 100) {
+
+                        var go = GameObject.Instantiate(buildingPrefab);
+                        go.transform.position = transform.position;
+                        RtsManager.current.teams[0].buildings.Add(go);
+                        RtsManager.current.teams[0].stone -= 100;
+                        go.AddComponent<Player>().info = Player.defaultPlayer; // what is this for?
+                    }
+                    Destroy(this.gameObject);
+                }
+            } else {
+                rend.material.color = red; // bad probably
+                if(Input.GetMouseButtonDown(0)) {
+                    Destroy(this.gameObject);
+                }
+            }
+
         } else {
             rend.material.color = red;
+            if(Input.GetMouseButtonDown(0)) {
+                Destroy(this.gameObject);
+            }
         }
     }
 

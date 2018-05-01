@@ -63,13 +63,21 @@ public class EnemyExpand : MonoBehaviour {
             }
         }
     }
-
+    
     void Build () {
         Vector3 center = new Vector3(
             transform.position.x,
             transform.position.y,
             transform.position.z
         );
+
+        var team = RtsManager.current.teams[1];
+        var otherteam = RtsManager.current.teams[0];
+
+        if (team.wood >= 200 && team.researchLevel <= 2 && otherteam.researchLevel > team.researchLevel) {
+            team.researchLevel++;
+            team.wood -= 200;
+        }
 
         float theta = Random.Range(0.0f, Mathf.PI * 2.0f);
         float radius = Random.Range(innerRadius, outerRadius);
