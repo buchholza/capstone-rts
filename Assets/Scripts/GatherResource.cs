@@ -66,19 +66,21 @@ public class GatherResource : MonoBehaviour {
         }
 
         //Once a resource is gathered, unit returns it to the capitol
-        if (hasResource) {
-            agent.SetDestination(homeBase.position);
+        if (homeBase) {
+            if (hasResource) {
+                agent.SetDestination(homeBase.position);
 
-            if (Vector3.Distance(transform.position, homeBase.position) < 1) {
-                hasResource = false;
-                if (team == 0) {
-                    RtsManager.current.woodText.text =
-                        "Wood: " + RtsManager.current.teams[team].wood.ToString();
-                    RtsManager.current.stoneText.text =
-                        "Stone: " + RtsManager.current.teams[team].stone.ToString();
-                } 
-                isIdle = true;
-                needsToFind = true;
+                if (Vector3.Distance(transform.position, homeBase.position) < 1) {
+                    hasResource = false;
+                    if (team == 0) {
+                        RtsManager.current.woodText.text =
+                            "Wood: " + RtsManager.current.teams[team].wood.ToString();
+                        RtsManager.current.stoneText.text =
+                            "Stone: " + RtsManager.current.teams[team].stone.ToString();
+                    } 
+                    isIdle = true;
+                    needsToFind = true;
+                }
             }
         }
 	}

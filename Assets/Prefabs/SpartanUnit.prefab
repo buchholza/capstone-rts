@@ -5776,17 +5776,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   selectionCircle: {fileID: 0}
-  LOS: 0
+  LOS: 3
   health: 10
   maxHealth: 10
   Aggression: {fileID: 0}
   wanderNPC: {fileID: 0}
-  isPlayerControlled: 1
+  team: 0
   type: 3
   healthBarFill: {fileID: 114689318159291518}
   healthBarCanvas: {fileID: 224872960626731476}
-  winText: {fileID: 0}
-  lose: {fileID: 0}
 --- !u!114 &114303500564638540
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -5919,6 +5917,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   agent: {fileID: 195729108071560604}
   homeBase: {fileID: 0}
+  resourceToGet: 2
 --- !u!135 &135074190476717006
 SphereCollider:
   m_ObjectHideFlags: 1

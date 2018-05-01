@@ -721,6 +721,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   agent: {fileID: 195133192329654222}
   homeBase: {fileID: 0}
+  resourceToGet: 2
 --- !u!114 &114625523068777120
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -733,12 +734,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   selectionCircle: {fileID: 0}
-  LOS: 0
+  LOS: 3
   health: 10
   maxHealth: 10
   Aggression: {fileID: 0}
   wanderNPC: {fileID: 0}
-  isPlayerControlled: 1
+  team: 0
   type: 2
   healthBarFill: {fileID: 114643433032188516}
   healthBarCanvas: {fileID: 224225343592420060}

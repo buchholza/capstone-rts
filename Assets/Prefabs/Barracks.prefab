@@ -439,8 +439,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   selectionCircle: {fileID: 0}
   LOS: 0
-  health: 20
-  maxHealth: 20
+  health: 30
+  maxHealth: 30
   Aggression: {fileID: 0}
   wanderNPC: {fileID: 0}
   team: 0
@@ -510,7 +510,7 @@ MonoBehaviour:
   unit2: {fileID: 1659503999333162, guid: 9b72dc3618b055741a21a36b188e3459, type: 2}
   unit3: {fileID: 1865299407172354, guid: 91378d920a7ee574ab29bd9a794728f2, type: 2}
   spawnTimer: 10
-  spawnOffset: {x: -1, y: 0, z: 0}
+  spawnOffset: {x: -0.5, y: 0, z: 0}
 --- !u!114 &114828740094615180
 MonoBehaviour:
   m_ObjectHideFlags: 1
