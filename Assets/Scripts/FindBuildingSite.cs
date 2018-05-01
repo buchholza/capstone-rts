@@ -38,7 +38,7 @@ public class FindBuildingSite : MonoBehaviour {
             if(Input.GetMouseButtonDown(0)) {
                 var go = GameObject.Instantiate(buildingPrefab);
                 go.transform.position = transform.position;
-                RtsManager.current.teams[0].building.Add(go);
+                RtsManager.current.teams[0].buildings.Add(go);
                 // Player.defaultPlayer.currency -= 200;
                 go.AddComponent<Player>().info = Player.defaultPlayer;
                 Destroy(this.gameObject);

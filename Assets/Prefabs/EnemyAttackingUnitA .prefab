@@ -505,14 +505,13 @@ MonoBehaviour:
   selectionCircle: {fileID: 0}
   LOS: 3
   health: 10
-  maxHealth: 20
-  Aggression: {fileID: 0}
-  wanderNPC: {fileID: 0}
-  isPlayerControlled: 0
+  maxHealth: 10
+  Aggression: {fileID: 114459685113189250}
+  wanderNPC: {fileID: 114550665157469468}
+  team: 1
   type: 1
   healthBarFill: {fileID: 0}
   healthBarCanvas: {fileID: 0}
-  manager: {fileID: 0}
 --- !u!114 &114459685113189250
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -524,7 +523,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4f296962a62453a40a318b53be2f5192, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  unitAttribute: {fileID: 0}
+  unitAttribute: {fileID: 114156840409487220}
   unitMask:
     serializedVersion: 2
     m_Bits: 0

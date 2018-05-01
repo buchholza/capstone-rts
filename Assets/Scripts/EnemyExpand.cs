@@ -87,6 +87,7 @@ public class EnemyExpand : MonoBehaviour {
         if (UnityEngine.AI.NavMesh.SamplePosition(groundLocation, out hit, 0.1f, UnityEngine.AI.NavMesh.AllAreas)) {
             if (RtsManager.current.teams[1].stone >= 100) {
                 Instantiate(building, location, Quaternion.identity);
+                RtsManager.current.teams[1].buildings.Add(building);
                 RtsManager.current.teams[1].stone -= 100;
             }
         }

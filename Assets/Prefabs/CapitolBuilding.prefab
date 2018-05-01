@@ -445,7 +445,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1009474714013390}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -3, y: 0, z: -1}
+  m_LocalPosition: {x: -25.46, y: 0, z: -7.79}
   m_LocalScale: {x: 0.7, y: 0.7, z: 0.7}
   m_Children:
   - {fileID: 4429922117315660}
@@ -982,16 +982,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   selectionCircle: {fileID: 0}
   LOS: 0
-  health: 20
-  maxHealth: 20
+  health: 100
+  maxHealth: 100
   Aggression: {fileID: 0}
   wanderNPC: {fileID: 0}
-  isPlayerControlled: 1
+  team: 0
   type: 4
   healthBarFill: {fileID: 114761366139059872}
   healthBarCanvas: {fileID: 224839229710390886}
-  winText: {fileID: 0}
-  lose: {fileID: 0}
 --- !u!114 &114251439884832640
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1004,6 +1002,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   unit: {fileID: 1521110764414236, guid: da1f309cf65946549af7dcc09fee65ac, type: 2}
+  unit2: {fileID: 0}
+  unit3: {fileID: 0}
   spawnTimer: 10
   spawnOffset: {x: 1.5, y: 0, z: 0}
 --- !u!114 &114339730193385692

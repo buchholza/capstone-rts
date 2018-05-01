@@ -662,7 +662,7 @@ MonoBehaviour:
   LOS: 3
   health: 10
   maxHealth: 10
-  Aggression: {fileID: 0}
+  Aggression: {fileID: 114121208078883718}
   wanderNPC: {fileID: 0}
   team: 0
   type: 1

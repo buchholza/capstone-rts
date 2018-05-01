@@ -30,7 +30,12 @@ public class PeriodicSpawn : MonoBehaviour {
 
             if (research == 2 && unit2 != null) unitToMake = unit2;
             else if (research == 3 && unit3 != null) unitToMake = unit3;
+            if (RtsManager.current.teams[newUnitAttribute.team].wood < 20) {
+                return;
+            }
+            RtsManager.current.teams[newUnitAttribute.team].wood -= 20;
         }
+
 
         var newUnit = GameObject.Instantiate(unitToMake, location, transform.rotation);
 

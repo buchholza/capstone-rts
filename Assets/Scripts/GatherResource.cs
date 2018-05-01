@@ -31,7 +31,8 @@ public class GatherResource : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 
-        if (!hasResource && !isIdle) {
+        if (isIdle && !needsToFind && !nearestResource.activeSelf) {
+            needsToFind = true;
         }
         
         //Tells an idle unit to gather the nearest resource

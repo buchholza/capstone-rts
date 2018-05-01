@@ -56,7 +56,11 @@ public class RtsManager : MonoBehaviour {
     }
 
     public void ResearchUpgrade() {
-        RtsManager.current.teams[0].researchLevel += 1;
+        if (RtsManager.current.teams[0].researchLevel >= 3) return;
+        if (RtsManager.current.teams[0].wood >= 200) {
+            RtsManager.current.teams[0].researchLevel += 1;
+            RtsManager.current.teams[0].wood -= 200;
+        }
     }
 
 	// Use this for initialization

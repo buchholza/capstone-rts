@@ -3087,6 +3087,16 @@ Prefab:
       propertyPath: team
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 114189914319909184, guid: 2f1adedfd4940e8408faa16b9b0e0775,
+        type: 2}
+      propertyPath: health
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 114189914319909184, guid: 2f1adedfd4940e8408faa16b9b0e0775,
+        type: 2}
+      propertyPath: maxHealth
+      value: 100
+      objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 0}
     - {fileID: 114251439884832640, guid: 2f1adedfd4940e8408faa16b9b0e0775, type: 2}
@@ -5883,16 +5893,6 @@ Prefab:
       propertyPath: m_RootOrder
       value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: 114189914319909184, guid: 2f1adedfd4940e8408faa16b9b0e0775,
-        type: 2}
-      propertyPath: winText
-      value: 
-      objectReference: {fileID: 154453775}
-    - target: {fileID: 114189914319909184, guid: 2f1adedfd4940e8408faa16b9b0e0775,
-        type: 2}
-      propertyPath: lose
-      value: 
-      objectReference: {fileID: 71702609}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 2f1adedfd4940e8408faa16b9b0e0775, type: 2}
   m_IsPrefabParent: 0

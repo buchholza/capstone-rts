@@ -600,7 +600,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4f296962a62453a40a318b53be2f5192, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  unitAttribute: {fileID: 0}
+  unitAttribute: {fileID: 114755696696794070}
   unitMask:
     serializedVersion: 2
     m_Bits: 0
@@ -618,15 +618,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   selectionCircle: {fileID: 0}
   LOS: 2
-  health: 20
+  health: 30
   maxHealth: 30
-  Aggression: {fileID: 0}
-  wanderNPC: {fileID: 0}
-  isPlayerControlled: 0
+  Aggression: {fileID: 114668674304779644}
+  wanderNPC: {fileID: 114555935519244692}
+  team: 1
   type: 2
   healthBarFill: {fileID: 0}
   healthBarCanvas: {fileID: 0}
-  manager: {fileID: 0}
 --- !u!135 &135033545487353046
 SphereCollider:
   m_ObjectHideFlags: 1
