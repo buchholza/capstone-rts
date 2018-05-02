@@ -301,27 +301,30 @@ public class SelectionManager : MonoBehaviour {
     }
 
     public void UnitGather() {
-        // test if its a unit
-        if(isPerson(lastUnit)) {
-            var gather = lastUnit.GetComponent<GatherResource>();
-            if (gather) {
-                if (gather.enabled == false) {
-                    gather.enabled = true;
-                    gather.Reset();
+        foreach(var unitObject in selectedUnits) {
+            UnitAttribute unit = unitObject.GetComponent<UnitAttribute>();
+            // test if its a unit
+            if(isPerson(unit)) {
+                var gather = unit.GetComponent<GatherResource>();
+                if(gather) {
+                    if(gather.enabled == false) {
+                        gather.enabled = true;
+                        gather.Reset();
 
-                    var crowd = lastUnit.GetComponent<CrowdMovement>();
-                    if (crowd) crowd.enabled = false;
+                        var crowd = unit.GetComponent<CrowdMovement>();
+                        if(crowd) crowd.enabled = false;
 
-                    var agent = lastUnit.GetComponent<NavMeshAgent>();
-                    if (agent) agent.isStopped = false;
-                } else {
-                    gather.enabled = false;
+                        var agent = unit.GetComponent<NavMeshAgent>();
+                        if(agent) agent.isStopped = false;
+                    } else {
+                        gather.enabled = false;
 
-                    var crowd = lastUnit.GetComponent<CrowdMovement>();
-                    if (crowd) crowd.enabled = true;
+                        var crowd = unit.GetComponent<CrowdMovement>();
+                        if(crowd) crowd.enabled = true;
 
-                    var agent = lastUnit.GetComponent<NavMeshAgent>();
-                    if (agent) agent.isStopped = true;
+                        var agent = unit.GetComponent<NavMeshAgent>();
+                        if(agent) agent.isStopped = true;
+                    }
                 }
             }
         }
