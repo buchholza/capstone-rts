@@ -28,16 +28,19 @@ public class Aggression : MonoBehaviour {
 
     public void Scan() {
         Collider[] hitColliders = Physics.OverlapSphere(transform.position, unitAttribute.LOS, unitMask);
-        if (hitColliders.Length != 0) {
+		bool found_something = false;
+
+		if (hitColliders.Length != 0) {
             for (int enemyIndex = 0; enemyIndex < hitColliders.Length; enemyIndex++) {
                 UnitAttribute enemy = hitColliders[enemyIndex].GetComponentInParent<UnitAttribute>();
                 if (enemy.team != this.team) { // on different teams
                     Attack(hitColliders[enemyIndex]);
+					found_something = true;
                     break;
                 }
             }
         }
-        else {
+		if  (!found_something) {
             if (unitAttribute.team == 1) unitAttribute.wanderNPC.enabled = true;
         }
     }
