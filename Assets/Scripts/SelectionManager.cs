@@ -174,9 +174,14 @@ public class SelectionManager : MonoBehaviour {
 			int unitIndex = 0;
 			for (; unitIndex < selectedUnits.Count; unitIndex++) {
 				GameObject lastUnitGo = selectedUnits[unitIndex];
-				if (lastUnitGo) lastUnit = selectedUnits[unitIndex].GetComponent<UnitAttribute>();
+				if (lastUnitGo) {
+					lastUnit = selectedUnits [unitIndex].GetComponent<UnitAttribute> ();
+					break;
+				}
 			}
+
 			if (unitIndex >= selectedUnits.Count) {
+				print("something is seriously messed up 2.0");
 				return;
 			}
 
