@@ -22,7 +22,7 @@ GameObject:
   - component: {fileID: 114362509058013206}
   - component: {fileID: 114769482667249300}
   - component: {fileID: 65251254930635530}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Barracks
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -86,7 +86,7 @@ GameObject:
   - component: {fileID: 224128703561325820}
   - component: {fileID: 222736712409867530}
   - component: {fileID: 114145085663925996}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: Border
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -104,7 +104,7 @@ GameObject:
   - component: {fileID: 223708288780631022}
   - component: {fileID: 114682657370008750}
   - component: {fileID: 114828740094615180}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: HealthCanvas
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -121,7 +121,7 @@ GameObject:
   - component: {fileID: 224388348540937420}
   - component: {fileID: 222357193099520706}
   - component: {fileID: 114461657878062834}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: Fill
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -153,7 +153,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 224522455605196540}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: Health Bar
   m_TagString: Untagged
   m_Icon: {fileID: 0}

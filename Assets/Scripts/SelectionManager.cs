@@ -17,6 +17,7 @@ public class SelectionManager : MonoBehaviour {
     public Text unitTitle;
     public Text buildingTitle;
     public GameObject sellButton;
+	public GameObject upgradeButton;
     public GameObject buildingUpgradePrefab;
     public GameObject crowdTargetPrefab;
 
@@ -230,6 +231,15 @@ public class SelectionManager : MonoBehaviour {
                 else {
                     sellButton.SetActive(true);
                 }
+
+				// im not leaving a comment
+				if(lastUnit.type == UnitAttribute.UnitType.Barracks){
+					upgradeButton.SetActive(false);
+				}
+				else {
+					upgradeButton.SetActive(true);
+				}
+
             }
         }
 	}

@@ -979,7 +979,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 0.5}
   m_AnchorMax: {x: 1, y: 0.5}
-  m_AnchoredPosition: {x: -274.7, y: -20.000027}
+  m_AnchoredPosition: {x: -112.8, y: -20.000027}
   m_SizeDelta: {x: 80, y: 40}
   m_Pivot: {x: 0, y: 0}
 --- !u!114 &455905618
@@ -1462,6 +1462,7 @@ MonoBehaviour:
   unitTitle: {fileID: 1145887524}
   buildingTitle: {fileID: 187309071}
   sellButton: {fileID: 455905616}
+  upgradeButton: {fileID: 322816893}
   buildingUpgradePrefab: {fileID: 1000124746796266, guid: 2a1740500a0272e4a87047bdfbfb561f,
     type: 2}
   crowdTargetPrefab: {fileID: 1775431406000416, guid: 72d63aea4fcf49449a9db9b4887e2e9e,
@@ -3303,7 +3304,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1139057721
 RectTransform:
   m_ObjectHideFlags: 0
@@ -4293,7 +4294,7 @@ MonoBehaviour:
     m_LineSpacing: 1
   m_Text: 'Research
 
-    100 Wood'
+    200 Wood'
 --- !u!222 &1567805836
 CanvasRenderer:
   m_ObjectHideFlags: 0
