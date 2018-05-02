@@ -39,6 +39,18 @@ public class UnitAttribute : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () { 
+		if (healthBarFill) healthBarFill.fillAmount = health / maxHealth;
+		if (healthBarCanvas)
+			healthBarCanvas.eulerAngles = new Vector3(0.0f, 0.0f, 0.0f);
+
+		if (team == 0 && type == UnitType.Capitol && health <= 0) {
+			RtsManager.current.loseText.SetActive(true);
+		}
+
+		else if (team != 0 && type == UnitType.Capitol && health <= 0) {
+			RtsManager.current.winText.SetActive(true);
+		}
+
         if (health <= 0) {
             if (type == UnitType.Capitol && team == 0) {
                 Time.timeScale = 0;
@@ -49,18 +61,6 @@ public class UnitAttribute : MonoBehaviour {
             }
             Destroy(this.gameObject);
             return;
-        }
-
-        if (healthBarFill) healthBarFill.fillAmount = health / maxHealth;
-        if (healthBarCanvas)
-            healthBarCanvas.eulerAngles = new Vector3(0.0f, 0.0f, 0.0f);
-
-        if (team == 0 && type == UnitType.Capitol && health <= 0) {
-            RtsManager.current.loseText.SetActive(true);
-        }
-
-        else if (team != 0 && type == UnitType.Capitol && health <= 0) {
-            RtsManager.current.winText.SetActive(true);
         }
     }
 
