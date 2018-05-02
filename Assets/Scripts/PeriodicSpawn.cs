@@ -34,6 +34,9 @@ public class PeriodicSpawn : MonoBehaviour {
                 return;
             }
             RtsManager.current.teams[newUnitAttribute.team].wood -= 20;
+            if (newUnitAttribute.team == 0) {
+                RtsManager.current.woodText.text = "Wood: " + RtsManager.current.teams[0].wood.ToString();
+            }
         }
 
 
