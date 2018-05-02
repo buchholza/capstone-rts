@@ -93,7 +93,8 @@ GameObject:
   - component: {fileID: 114301441849054024}
   - component: {fileID: 114091727940264090}
   - component: {fileID: 114398857891820668}
-  m_Layer: 0
+  - component: {fileID: 135398605041411918}
+  m_Layer: 8
   m_Name: PitchforkEnemy
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -128,7 +129,7 @@ GameObject:
   - component: {fileID: 224506741077291478}
   - component: {fileID: 222563160318572058}
   - component: {fileID: 114359005977569044}
-  m_Layer: 5
+  m_Layer: 0
   m_Name: Border
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -143,7 +144,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 224174038481721212}
-  m_Layer: 5
+  m_Layer: 0
   m_Name: Health Bar
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -175,7 +176,7 @@ GameObject:
   - component: {fileID: 224583783591346274}
   - component: {fileID: 222335648025279116}
   - component: {fileID: 114399021347142202}
-  m_Layer: 5
+  m_Layer: 0
   m_Name: Fill
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -267,7 +268,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1361990313297352}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 2.74, y: -2.018, z: 13.99224}
+  m_LocalPosition: {x: 12.17, y: -0.2, z: -23.79}
   m_LocalScale: {x: 0.5, y: 0.5, z: 0.5}
   m_Children:
   - {fileID: 224691832890028594}
@@ -320,7 +321,7 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1625796333139210}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: 0, y: -0.6841016, z: 0, w: 0.7293868}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -329,7 +330,7 @@ Transform:
   - {fileID: 4596481467411128}
   m_Father: {fileID: 4345053141423020}
   m_RootOrder: 1
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: -86.33, z: 0}
 --- !u!23 &23145885402856340
 MeshRenderer:
   m_ObjectHideFlags: 1
@@ -729,6 +730,18 @@ MonoBehaviour:
   m_BlockingMask:
     serializedVersion: 2
     m_Bits: 4294967295
+--- !u!135 &135398605041411918
+SphereCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1361990313297352}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 0.5
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!136 &136102384375488632
 CapsuleCollider:
   m_ObjectHideFlags: 1
@@ -884,7 +897,7 @@ RectTransform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1398740006882788}
   m_LocalRotation: {x: -0.036912035, y: 0.67342526, z: -0.03370217, w: -0.7375636}
-  m_LocalPosition: {x: 0, y: 0, z: -40.45886}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 2, y: 2, z: 2}
   m_Children:
   - {fileID: 224174038481721212}
@@ -893,6 +906,6 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 5.7300005, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: -26.752066, y: 6.336}
+  m_AnchoredPosition: {x: 0, y: 2.7}
   m_SizeDelta: {x: 1, y: 0.2}
   m_Pivot: {x: 0.5, y: 0.5}

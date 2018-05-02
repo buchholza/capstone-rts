@@ -177,11 +177,14 @@ public class SelectionManager : MonoBehaviour {
                     return;
                 }
                 unitIndex++;
-                lastUnit = selectedUnits[unitIndex].GetComponent<UnitAttribute>();
+                var lastUnitGo = selectedUnits[unitIndex];
+
+                if (lastUnitGo) lastUnit = selectedUnits[unitIndex].GetComponent<UnitAttribute>();
             } while (lastUnit == null);
 
             if (!lastUnit) {
                 print("something is seriously messed up");
+                return;
             }
 
             if(isPerson(lastUnit)) {

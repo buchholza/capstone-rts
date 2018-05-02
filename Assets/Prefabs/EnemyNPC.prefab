@@ -107,6 +107,7 @@ GameObject:
   - component: {fileID: 114046726878320240}
   - component: {fileID: 114164184277009404}
   - component: {fileID: 114695393126227896}
+  - component: {fileID: 135457090514716918}
   m_Layer: 8
   m_Name: EnemyNPC
   m_TagString: Untagged
@@ -164,7 +165,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1667224120439090}
   m_LocalRotation: {x: -0, y: 0.3106138, z: -0, w: 0.95053625}
-  m_LocalPosition: {x: 2.89256, y: 0.19, z: 3.01}
+  m_LocalPosition: {x: 16.13881, y: -0.2, z: -24.40758}
   m_LocalScale: {x: 0.5000001, y: 0.5, z: 0.5000001}
   m_Children:
   - {fileID: 224407936900599642}
@@ -282,7 +283,7 @@ MonoBehaviour:
   selectionCircle: {fileID: 0}
   LOS: 3
   health: 10
-  maxHealth: 20
+  maxHealth: 10
   Aggression: {fileID: 0}
   wanderNPC: {fileID: 0}
   team: 1
@@ -394,6 +395,18 @@ MonoBehaviour:
   m_FallbackScreenDPI: 96
   m_DefaultSpriteDPI: 96
   m_DynamicPixelsPerUnit: 1
+--- !u!135 &135457090514716918
+SphereCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1667224120439090}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 0.5
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!195 &195733595011855464
 NavMeshAgent:
   m_ObjectHideFlags: 1
@@ -490,7 +503,7 @@ RectTransform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1638246171520590}
   m_LocalRotation: {x: -0.024617866, y: 0.86921257, z: -0.043500524, w: -0.4919058}
-  m_LocalPosition: {x: 0, y: 0, z: -30.902916}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 2, y: 2, z: 2}
   m_Children:
   - {fileID: 224854336308380574}
@@ -499,7 +512,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 5.7300005, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: -10.915258, y: 1.9199996}
+  m_AnchoredPosition: {x: 0, y: 2.7}
   m_SizeDelta: {x: 1, y: 0.2}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!224 &224854336308380574

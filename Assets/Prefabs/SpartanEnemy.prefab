@@ -814,7 +814,8 @@ GameObject:
   - component: {fileID: 114221967991497736}
   - component: {fileID: 114202792460379232}
   - component: {fileID: 114997094358803436}
-  m_Layer: 0
+  - component: {fileID: 135704454651787806}
+  m_Layer: 8
   m_Name: SpartanEnemy
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2002,7 +2003,7 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1912585854684304}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: 0, y: 0.74238527, z: 0, w: 0.6699732}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -2071,7 +2072,7 @@ Transform:
   - {fileID: 4800009668374632}
   m_Father: {fileID: 4828544386254636}
   m_RootOrder: 1
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 95.87, z: 0}
 --- !u!4 &4652277263168224
 Transform:
   m_ObjectHideFlags: 1
@@ -2170,8 +2171,8 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1506330795350746}
   m_LocalRotation: {x: 0, y: 1, z: 0, w: 0}
-  m_LocalPosition: {x: 5.24, y: -1.9637799, z: 15.427246}
-  m_LocalScale: {x: 0.8, y: 0.8, z: 0.8}
+  m_LocalPosition: {x: 15.93, y: 0, z: -22.55}
+  m_LocalScale: {x: 0.5, y: 0.5, z: 0.5}
   m_Children:
   - {fileID: 224549198317173198}
   - {fileID: 4623507302844336}
@@ -5963,6 +5964,18 @@ SphereCollider:
   serializedVersion: 2
   m_Radius: 0.5
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!135 &135704454651787806
+SphereCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1506330795350746}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 0.5
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!195 &195989601391556470
 NavMeshAgent:
   m_ObjectHideFlags: 1
@@ -6079,7 +6092,7 @@ RectTransform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1348315443633104}
   m_LocalRotation: {x: 0.03370217, y: 0.7375636, z: -0.036912035, w: 0.67342526}
-  m_LocalPosition: {x: 0, y: 0, z: 27.080545}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1.2499998, y: 1.2500002, z: 1.2499999}
   m_Children:
   - {fileID: 224250340633247904}
@@ -6088,6 +6101,6 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 5.7300005, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 19.84504, y: 3.8922248}
+  m_AnchoredPosition: {x: 0, y: 2.7}
   m_SizeDelta: {x: 1, y: 0.2}
   m_Pivot: {x: 0.5, y: 0.5}

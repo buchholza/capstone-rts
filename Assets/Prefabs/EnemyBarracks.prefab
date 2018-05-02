@@ -373,9 +373,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 14341f56eec1352498783aec5c61cf97, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  unit: {fileID: 1882260890321862, guid: 00ff9fac68f795b4b99ce36cd0b7cfe7, type: 2}
-  unit2: {fileID: 1600548128199926, guid: e73bf9ddbd8392149832c49433548bc1, type: 2}
-  unit3: {fileID: 1010827025789206, guid: 50fd99c8f8150f8419dbd6792c710b7c, type: 2}
+  unit: {fileID: 1361990313297352, guid: a895a278201bd4f46b6fa9c3ea4ee5de, type: 2}
+  unit2: {fileID: 1504374142791858, guid: f0453b6e89d6be546b39cc2296a58baa, type: 2}
+  unit3: {fileID: 1506330795350746, guid: 887ca5db63977124d83a2b5a805829cf, type: 2}
   spawnTimer: 10
   spawnOffset: {x: -0.5, y: 0, z: 0}
 --- !u!114 &114593510148985620

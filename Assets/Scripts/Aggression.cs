@@ -29,10 +29,12 @@ public class Aggression : MonoBehaviour {
     public void Scan() {
         Collider[] hitColliders = Physics.OverlapSphere(transform.position, unitAttribute.LOS, unitMask);
         if (hitColliders.Length != 0) {
-            UnitAttribute enemy = hitColliders[0].GetComponentInParent<UnitAttribute>();
-
-            if (enemy.team != this.team) { // on different teams
-                Attack(hitColliders[0]);
+            for (int enemyIndex = 0; enemyIndex < hitColliders.Length; enemyIndex++) {
+                UnitAttribute enemy = hitColliders[enemyIndex].GetComponentInParent<UnitAttribute>();
+                if (enemy.team != this.team) { // on different teams
+                    Attack(hitColliders[enemyIndex]);
+                    break;
+                }
             }
         }
         else {
