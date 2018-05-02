@@ -29,9 +29,7 @@ public class EnemyExpand : MonoBehaviour {
             if (team.stone < team.wood) resType = GatherResource.ResourceType.Rock;
             else resType = GatherResource.ResourceType.Tree;
 
-            int index = 0;
-            while (true) {
-                if (index >= units.Count) break;
+			for (int index = 0; index < units.Count; index++) {
                 if (switchedUnits >= unitsToSwitch) break;
                 if (units[index] == null) continue;
 
@@ -44,12 +42,9 @@ public class EnemyExpand : MonoBehaviour {
                     wander.enabled = false;
                     switchedUnits++;
                 }
-                index++;
             }
         } else {
-            int index = 0;
-            while (true) {
-                if (index >= units.Count) break;
+			for (int index = 0; index < units.Count; index++) {
                 if (units[index] == null) continue;
 
                 var gather = units[index].GetComponent<GatherResource>();

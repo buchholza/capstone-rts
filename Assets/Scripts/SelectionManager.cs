@@ -171,16 +171,14 @@ public class SelectionManager : MonoBehaviour {
 
         // When selection is finished, sets up the relevant menu for the unit last selected
         if(selectedUnits.Count > 0) {
-            int unitIndex = -1;
-            do {
-                if (unitIndex >= selectedUnits.Count) {
-                    return;
-                }
-                unitIndex++;
-                var lastUnitGo = selectedUnits[unitIndex];
-
-                if (lastUnitGo) lastUnit = selectedUnits[unitIndex].GetComponent<UnitAttribute>();
-            } while (lastUnit == null);
+			int unitIndex = 0;
+			for (; unitIndex < selectedUnits.Count; unitIndex++) {
+				GameObject lastUnitGo = selectedUnits[unitIndex];
+				if (lastUnitGo) lastUnit = selectedUnits[unitIndex].GetComponent<UnitAttribute>();
+			}
+			if (unitIndex >= selectedUnits.Count) {
+				return;
+			}
 
             if (!lastUnit) {
                 print("something is seriously messed up");

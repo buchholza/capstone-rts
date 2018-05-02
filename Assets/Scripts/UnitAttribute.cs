@@ -48,6 +48,7 @@ public class UnitAttribute : MonoBehaviour {
                 //RtsManager.current.CapitolStatus(); // ???
             }
             Destroy(this.gameObject);
+            return;
         }
 
         if (healthBarFill) healthBarFill.fillAmount = health / maxHealth;
