@@ -1459,6 +1459,7 @@ MonoBehaviour:
     type: 2}
   unitHealthText: {fileID: 1685943686}
   buildingHealthText: {fileID: 1904360177}
+  attackText: {fileID: 888499976}
   unitTitle: {fileID: 1145887524}
   buildingTitle: {fileID: 187309071}
   sellButton: {fileID: 455905616}
@@ -3304,7 +3305,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1139057721
 RectTransform:
   m_ObjectHideFlags: 0

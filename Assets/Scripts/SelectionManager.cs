@@ -14,6 +14,7 @@ public class SelectionManager : MonoBehaviour {
     public GameObject unitToTrain;
     public Text unitHealthText;
     public Text buildingHealthText;
+    public Text attackText;
     public Text unitTitle;
     public Text buildingTitle;
     public GameObject sellButton;
@@ -210,6 +211,11 @@ public class SelectionManager : MonoBehaviour {
                 unitTitle.text = typeString;
                 //Set unit menu active, deactivating building menu
                 unitMenu.SetActive(true);
+                if (lastUnit.type == UnitAttribute.UnitType.NormalUnit) {
+                    attackText.text = "Attack: 0";
+                } else {
+                    attackText.text = "Attack: 4";
+                }
                 buildingMenu.SetActive(false);
             } else {
                 var typeString = "";
