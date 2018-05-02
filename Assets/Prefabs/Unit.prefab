@@ -362,6 +362,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   agent: {fileID: 195107424464871740}
   homeBase: {fileID: 0}
+  resourceToGet: 2
 --- !u!114 &114114575389819220
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -374,7 +375,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 0.3254902, g: 0.9411765, b: 0.35686275, a: 1}
   m_RaycastTarget: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
@@ -418,7 +419,7 @@ MonoBehaviour:
   maxHealth: 10
   Aggression: {fileID: 0}
   wanderNPC: {fileID: 0}
-  isPlayerControlled: 1
+  team: 0
   type: 0
   healthBarFill: {fileID: 114114575389819220}
   healthBarCanvas: {fileID: 224564477530705466}
@@ -434,7 +435,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.375, g: 0, b: 0, a: 1}
+  m_Color: {r: 0, g: 0, b: 0, a: 1}
   m_RaycastTarget: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
