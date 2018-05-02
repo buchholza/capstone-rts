@@ -60,6 +60,7 @@ public class RtsManager : MonoBehaviour {
         if (RtsManager.current.teams[0].wood >= 200) {
             RtsManager.current.teams[0].researchLevel += 1;
             RtsManager.current.teams[0].wood -= 200;
+            woodText.text = "Wood: " + RtsManager.current.teams[0].wood.ToString();
         }
     }
 
