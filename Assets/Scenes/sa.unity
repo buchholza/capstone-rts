@@ -747,7 +747,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 20
   startingSpot: {fileID: 108176073}
-  Menu: {fileID: 0}
+  Menu: {fileID: 2028065694}
   showMenu: 0
 --- !u!1 &237592843
 GameObject:
