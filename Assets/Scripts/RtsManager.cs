@@ -16,7 +16,7 @@ public class RtsManager : MonoBehaviour {
 
     public GameObject winText;
     public GameObject loseText;
-
+    public GameObject NotEnoughResourcesText;
     public Vector3? ScreenPointToMapPosition(Vector2 point) {
         var ray = Camera.main.ScreenPointToRay(point);
         RaycastHit hit;

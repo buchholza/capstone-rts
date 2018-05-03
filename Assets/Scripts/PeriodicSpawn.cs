@@ -25,12 +25,14 @@ public class PeriodicSpawn : MonoBehaviour {
         GameObject unitToMake = unit;
 
         UnitAttribute newUnitAttribute;
-        if (newUnitAttribute = unit.GetComponent<UnitAttribute>()) { 
-            int team = newUnitAttribute.team;
-            int research = RtsManager.current.teams[team].researchLevel;
+        if (newUnitAttribute = unit.GetComponent<UnitAttribute>() ) {
+            
+                int team = newUnitAttribute.team;
+                int research = RtsManager.current.teams[team].researchLevel;
 
-            if (research == 2 && unit2 != null) unitToMake = unit2;
-            else if (research == 3 && unit3 != null) unitToMake = unit3;
+                if (research == 2 && unit2 != null) unitToMake = unit2;
+                else if (research == 3 && unit3 != null) unitToMake = unit3;
+            
         }
 
         var newUnit = GameObject.Instantiate(unitToMake, location, transform.rotation);
@@ -43,6 +45,7 @@ public class PeriodicSpawn : MonoBehaviour {
         if (newUnitAttribute = newUnit.GetComponent<UnitAttribute>()) { 
             int team = newUnitAttribute.team;
             RtsManager.current.teams[team].units.Add(newUnit);
+
         }
 
     }

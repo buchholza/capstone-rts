@@ -8,12 +8,14 @@ public class EnemyExpand : MonoBehaviour {
     public float innerRadius = 3.0f;
     public float outerRadius = 10.0f;
     public float spawnTimer = 10.0f;
-    public float resourceGoal = 200;
+    public float upgradeTimer = 2.0f;
+    public float resourceGoal = 500;
 
 	// Use this for initialization
 	void Start () {
         InvokeRepeating("Build", 0.0f, spawnTimer);
         InvokeRepeating("CheckResources", 0.0f, 0.5f);
+        InvokeRepeating("upgradeUnit", 0.0f, upgradeTimer);
 	}
 
     void CheckResources () {
@@ -26,8 +28,8 @@ public class EnemyExpand : MonoBehaviour {
 
             GatherResource.ResourceType resType;
 
-            if (team.stone < team.wood) resType = GatherResource.ResourceType.Tree;
-            else resType = GatherResource.ResourceType.Rock;
+            if (team.stone < team.wood) resType = GatherResource.ResourceType.Rock;
+            else resType = GatherResource.ResourceType.Tree;
 
             int index = 0;
             while (true) {
@@ -88,6 +90,18 @@ public class EnemyExpand : MonoBehaviour {
             if (RtsManager.current.teams[1].stone >= 100) {
                 Instantiate(building, location, Quaternion.identity);
                 RtsManager.current.teams[1].stone -= 100;
+            }
+        }
+    }
+    void upgradeUnit()
+    {
+        if (RtsManager.current.teams[1].researchLevel < 3)
+        {
+            if (RtsManager.current.teams[1].wood >= 100)
+            {
+
+                RtsManager.current.teams[1].researchLevel += 1;
+                RtsManager.current.teams[1].wood -= 100;
             }
         }
     }

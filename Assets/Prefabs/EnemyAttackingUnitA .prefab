@@ -508,11 +508,10 @@ MonoBehaviour:
   maxHealth: 20
   Aggression: {fileID: 0}
   wanderNPC: {fileID: 0}
-  isPlayerControlled: 0
+  team: 0
   type: 1
   healthBarFill: {fileID: 0}
   healthBarCanvas: {fileID: 0}
-  manager: {fileID: 0}
 --- !u!114 &114459685113189250
 MonoBehaviour:
   m_ObjectHideFlags: 1
