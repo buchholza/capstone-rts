@@ -5,9 +5,12 @@ using UnityEngine;
 public class CameraCradle : MonoBehaviour {
     public float speed = 20;
     public GameObject startingSpot = null;
+    public GameObject Menu;
+    public bool showMenu;
 	// Use this for initialization
 	void Start () {
         transform.position = (startingSpot.transform.position + new Vector3(1,6,-5));
+        showMenu = false;
 	}
 	
 	// Update is called once per frame
@@ -18,5 +21,11 @@ public class CameraCradle : MonoBehaviour {
             Input.GetAxis("Vertical") * speed * Time.deltaTime,
             Space.World
         );
-	}
+        if (Input.GetKeyDown("m")) {
+            showMenu = !showMenu;
+            Menu.SetActive(showMenu);
+        }
+
+
+    }
 }

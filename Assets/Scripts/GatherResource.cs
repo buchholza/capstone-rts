@@ -32,7 +32,6 @@ public class GatherResource : MonoBehaviour {
 	void Update () {
 
         if (!hasResource && !isIdle) {
-            print("???");
         }
         
         //Tells an idle unit to gather the nearest resource
@@ -52,7 +51,6 @@ public class GatherResource : MonoBehaviour {
             if (Vector3.Distance(transform.position, nearestResource.transform.position) < .5) {
                 isIdle = false;
                 hasResource = true;
-                print(nearestResource.name+";");
                 if (nearestResource.name == "rock_h(Clone)"|| 
                     nearestResource.name == "rock_g(Clone)"|| 
                     nearestResource.name == "rock_e(Clone)"|| 
@@ -78,8 +76,7 @@ public class GatherResource : MonoBehaviour {
                         "Wood: " + RtsManager.current.teams[team].wood.ToString();
                     RtsManager.current.stoneText.text =
                         "Stone: " + RtsManager.current.teams[team].stone.ToString();
-                }
-
+                } 
                 isIdle = true;
                 needsToFind = true;
             }

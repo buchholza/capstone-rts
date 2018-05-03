@@ -16,7 +16,7 @@ public class SelectionManager : MonoBehaviour {
     public Text buildingHealthText;
     public Text unitTitle;
     public Text buildingTitle;
-
+    public GameObject sellButton;
     public GameObject buildingUpgradePrefab;
     public GameObject crowdTargetPrefab;
 
@@ -175,7 +175,6 @@ public class SelectionManager : MonoBehaviour {
             do {
                 if (unitIndex >= selectedUnits.Count) {
                     return;
-                    print("HASKFAJSJDFLASJALFNEDWOCFN");
                 }
                 unitIndex++;
                 lastUnit = selectedUnits[unitIndex].GetComponent<UnitAttribute>();
@@ -206,7 +205,6 @@ public class SelectionManager : MonoBehaviour {
                 unitMenu.SetActive(true);
                 buildingMenu.SetActive(false);
             } else {
-                //Change the title of the building menu based on building's type
                 var typeString = "";
                 if (lastUnit.type == UnitAttribute.UnitType.Capitol) {
                     typeString = "Capitol";
@@ -215,10 +213,17 @@ public class SelectionManager : MonoBehaviour {
                 } else if (lastUnit.type == UnitAttribute.UnitType.Tower) {
                     typeString = "Tower";
                 }
-                //buildingTitle.text = typeString;
+                buildingTitle.text = typeString;
                 //Set building menu active, deactivating unit menu
                 unitMenu.SetActive(false);
                 buildingMenu.SetActive(true);
+                // Exclude Sell Button from capitols
+                if(lastUnit.type == UnitAttribute.UnitType.Capitol){
+                    sellButton.SetActive(false);
+                }
+                else {
+                    sellButton.SetActive(true);
+                }
             }
         }
 	}
@@ -296,27 +301,30 @@ public class SelectionManager : MonoBehaviour {
     }
 
     public void UnitGather() {
-        // test if its a unit
-        if(isPerson(lastUnit)) {
-            var gather = lastUnit.GetComponent<GatherResource>();
-            if (gather) {
-                if (gather.enabled == false) {
-                    gather.enabled = true;
-                    gather.Reset();
+        foreach(var unitObject in selectedUnits) {
+            UnitAttribute unit = unitObject.GetComponent<UnitAttribute>();
+            // test if its a unit
+            if(isPerson(unit)) {
+                var gather = unit.GetComponent<GatherResource>();
+                if(gather) {
+                    if(gather.enabled == false) {
+                        gather.enabled = true;
+                        gather.Reset();
 
-                    var crowd = lastUnit.GetComponent<CrowdMovement>();
-                    if (crowd) crowd.enabled = false;
+                        var crowd = unit.GetComponent<CrowdMovement>();
+                        if(crowd) crowd.enabled = false;
 
-                    var agent = lastUnit.GetComponent<NavMeshAgent>();
-                    if (agent) agent.isStopped = false;
-                } else {
-                    gather.enabled = false;
+                        var agent = unit.GetComponent<NavMeshAgent>();
+                        if(agent) agent.isStopped = false;
+                    } else {
+                        gather.enabled = false;
 
-                    var crowd = lastUnit.GetComponent<CrowdMovement>();
-                    if (crowd) crowd.enabled = true;
+                        var crowd = unit.GetComponent<CrowdMovement>();
+                        if(crowd) crowd.enabled = true;
 
-                    var agent = lastUnit.GetComponent<NavMeshAgent>();
-                    if (agent) agent.isStopped = true;
+                        var agent = unit.GetComponent<NavMeshAgent>();
+                        if(agent) agent.isStopped = true;
+                    }
                 }
             }
         }

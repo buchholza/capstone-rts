@@ -13,8 +13,6 @@ public class WanderNPC : MonoBehaviour {
     void OnEnable() {
         agent = GetComponent<UnityEngine.AI.NavMeshAgent>();
         timer = wanderTimer;
-        Debug.Log("what???");
-        print("what???");
     }
 
     // Update is called once per frame
